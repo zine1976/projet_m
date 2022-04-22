@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+	<div class="ajoutprodtitre">
+
+		<h1>Inscription</h1>
+	</div>
+	<div class="register">
+
+		<div class="col-4">
+
+			{{ form_start(registrationForm, {'attr':{'novalidate': 'novalidate'}}) }}
+
+			<div class"form-group">{{ form_row(registrationForm.nom,
+         {'attr':{'class':'form-control'}}) }}
+			</div>
+			<div class"form-group">
+				{{ form_row(registrationForm.prenom, 
+        {'attr':{'class':'form-control'}}) }}
+			</div>
+			<div class"form-group">
+				{{ form_row(registrationForm.adresse, 
+        {'attr':{'class':'form-control'}}) }}
+			</div>
+			<div class"form-group">
+				{{ form_row(registrationForm.cp, 
+        {'attr':{'class':'form-control'}}) }}
+			</div>
+			<div class"form-group">
+				{{ form_row(registrationForm.pays, 
+        {'attr':{'class':'form-control'}}) }}
+			</div>
+
+			<div class"form-group">
+				{{ form_row(registrationForm.email,
+        {'attr':{'class':'form-control'}}) }}
+			</div>
+
+			<div class"form-group">
+				{{ form_row(registrationForm.plainPassword,
+        {'attr':{'class':'form-control'}, 
+							            label: 'Password'
+							        }) }}
+			</div>
+
+			<div class"form-group">
+				{{ form_row(registrationForm.agreeTerms,
+        ) }}
+			</div>
+			<div class="buttregis">
+				<button type="submit" class="btn btn-success">Envoyer</button>
+			</div>
+			{{ form_end(registrationForm) }}
+		</div>
+		<div class="col-4">
+			<img src="{{asset("lampe1.jpg")}}" alt="" class="img-fluid thumbnail">
+
+		</div>
+	</div>
+{% endblock %}

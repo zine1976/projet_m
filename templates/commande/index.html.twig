@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}commandes
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="example-wrapper">
+<div class="ajoutprodtitre">
+
+		<h1>Liste des commandes</h1>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Date</th>
+					<th>Etat</th>
+					<th>commande</th>
+					<th>image</th>
+					<th>quantité</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for commande in commandes %}
+					<tr>
+						<td>{{ commande.id }}</td>
+						<td>{{ commande.datecom|date('d/m/Y') }}</td>
+						<td>{{ commande.etat }}</td>
+
+						<td>
+							{% for cp in commande.commandeProduits %}
+								{{(cp.produit.nom) }}
+						</td>
+						<td>			<img src="{{cp.produit.image}}" alt="" class="imgreg img-fluid thumbnail">
+</td>
+
+						<td>{{(cp.quantite)}}</td>
+					{% endfor %}
+
+				</tr>
+
+
+			{% endfor %}
+		</tbody>
+	</table>
+</div>{% endblock %}

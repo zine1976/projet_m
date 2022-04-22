@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreateController!{% endblock %}
+
+{% block body %}
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+</div>
+<div class="ajoutprodtitre">
+    <h1>Adresse de facturation</h1> 
+</div>
+
+<div class="fact">
+
+	<div class="col-4">
+		<img src="{{asset("lampe1.jpg")}}" alt="" class="img-fluid thumbnail">
+
+	</div>
+	<div class="container col-4">
+		 {{ form(form) }}
+	</div>
+	</div>
+	<div>
+	<a href="{{ path('app_payment') }}" class="btn btn-primary col-2 offset-col-1 justify-content-center align-items-center">
+        <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Payer
+    </a>
+	</div>
+
+	{% endblock %}

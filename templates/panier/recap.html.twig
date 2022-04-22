@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %} {% block title %}Recap{% endblock %} {% block body %}
+
+
+
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+	</div>
+	<div class="ajoutprodtitre">
+		<h1>Recapitulatif</h1>
+	</div>
+
+	<div class="liv">
+		<div class="container col-4">
+
+		<h3>Adresse de livraison</h3>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>prenom</th>
+						<th>adresse</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					{% for uti in utilisateur %}
+						<tr>
+							<td>{{ uti.nom }}</td>
+							<td>{{ uti.prenom }}</td>
+							<td>{{ uti.adresseliv }}E</td>
+						{% endfor %}
+					</tbody>
+				</tbody>
+			</table>
+	</div>
+
+		<div class="container col-4">
+		<h3>Adresse de facturaction</h3>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>prenom</th>
+						<th>adresse</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					{% for uti in utilisateur %}
+						<tr>
+							<td>{{ uti.nom }}</td>
+							<td>{{ uti.prenom }}</td>
+							<td>{{ uti.adressefact }}E</td>
+						{% endfor %}
+					</tbody>
+				</tbody>
+			</table>
+			</div>
+	</div>
+			<div class="pan">
+		<h3>Mon panier</h3>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Prix total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entree in panier %}
+        <tr>
+            <td>{{ entree.produit.nom }}</td>
+            <td>{{ entree.produit.prix }}&nbsp;€</td>
+            <td>{{ entree.quantite }}</td>
+            <td>{{ entree.quantite * entree.produit.prix }}&nbsp;€</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<dl class="row">
+    <div class="col-4">
+        <dt>Total</dt>
+        <dd>{{total}}&nbsp;€</dd>
+    </div>
+
+    <div class="col-4">
+        <dt>Dont TVA</dt>
+        <dd>{{tva}}&nbsp;€</dd>
+    </div>
+
+    <a href="{{ path('app_payment') }}" class="btn btn-primary col-2 offset-col-1 justify-content-center align-items-center">
+        <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Payer
+    </a>
+</dl>
+{# {% if app.user %} #}
+		
+
+{% endblock %}
