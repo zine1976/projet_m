@@ -40,7 +40,7 @@ class PanierController extends AbstractController
 
         $session->set('panier', $panier);
 
-        return $this->redirectToRoute('app_produit');
+        return $this->redirectToRoute('app_accueil');
     }
     /**
      * @Route("/panier", name="app_panier")

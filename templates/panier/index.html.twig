@@ -1,48 +1,55 @@
-{% extends 'base.html.twig' %} {% block title %}Mon panier{% endblock %} {% block body %}
-<div class="pan">
+{% extends 'base.html.twig' %}
+{% block title %}Mon panier
+{% endblock %}
+{% block body %}
+	<div class="pan">
 		<h1>Mon panier</h1>
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Produit</th>
-            <th>Prix unitaire</th>
-            <th>Quantité</th>
-            <th>Prix total</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for entree in panier %}
-        <tr>
-            <td>{{ entree.produit.nom }}</td>
-            <td>{{ entree.produit.prix }}&nbsp;€</td>
-            <td>{{ entree.quantite }}</td>
-            <td>{{ entree.quantite * entree.produit.prix }}&nbsp;€</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Produit</th>
+				<th>Prix unitaire</th>
+				<th>image</th>
+				<th>Quantité</th>
+				<th>Prix total</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for entree in panier %}
+				<tr>
+					<td>{{ entree.produit.nom }}</td>
+					<td>{{ entree.produit.prix }}&nbsp;€</td>
+					<td><img src="{{entree.produit.image}}" alt="" class="imgreg img-fluid thumbnail"></td>
+					<td>{{ entree.quantite }}</td>
+					<td>{{ entree.quantite * entree.produit.prix }}&nbsp;€</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
 
-<dl class="row">
-    <div class="col-4">
-        <dt>Total</dt>
-        <dd>{{total}}&nbsp;€</dd>
-    </div>
+	<dl class="row">
+		<div class="col-4">
+			<dt>Total</dt>
+			<dd>{{total}}&nbsp;€</dd>
+		</div>
 
-    <div class="col-4">
-        <dt>Dont TVA</dt>
-        <dd>{{tva}}&nbsp;€</dd>
-    </div>
-{# justify-content-center align-items-center #}
-    <a href="{{ path('app_adresseliv') }}" class="btn btn-primary col-2 offset-col-1 ">
-        <i class="buttpan fa fa-credit-card-alt" aria-hidden="true"></i> Paiement
-    </a>
-</dl>
-{% if app.user %}
-<a  name="" id="" class="btn btn-danger"  role="button"  href="{{ path('app_vider_panier') }}">Vider le panier</a> {% endif %}
-					<a class="nav-link" href="{{path('app_adresseliv')}}">livraison</a>
-					<a class="nav-link" href="{{path('app_adressefact')}}">facturation</a>
-					<a class="nav-link" href="{{path('app_recap')}}">recap</a>
-	
+		<div class="col-4">
+			<dt>Dont TVA</dt>
+			<dd>{{tva}}&nbsp;€</dd>
+		</div>
+		{# justify-content-center align-items-center #}
+		<a href="{{ path('app_adresseliv') }}" class="btn btn-primary col-2 offset-col-1 ">
+			<i class="buttpan fa fa-credit-card-alt" aria-hidden="true"></i>
+			Paiement
+		</a>
+	</dl>
+	{% if app.user %}
+		<a name="" id="" class="btn btn-danger" role="button" href="{{ path('app_vider_panier') }}">Vider le panier</a>
+	{% endif %}
+	<a class="nav-link" href="{{path('app_adresseliv')}}">livraison</a>
+	<a class="nav-link" href="{{path('app_adressefact')}}">facturation</a>
+	<a class="nav-link" href="{{path('app_recap')}}">recap</a>
+
 {% endblock %}

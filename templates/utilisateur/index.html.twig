@@ -10,19 +10,22 @@
 		<h1>Mon compte</h1>
 	</div>
 	<div class="compteperso">
-		<div class=" comp container col-4>
-						<ol class=" list-group list-group-numbered">
+		<div class="comp container col-4>
+						<ol class="list-group list-group-numbered">
 			<li class="list-group-item">{{ app.user.nom }}</li>
 			<li class="list-group-item">{{ app.user.prenom }}</li>
 			<li class="list-group-item">{{ app.user.adresse }}</li>
 			<li class="list-group-item">{{ app.user.cp }}</li>
-			<li class="list-group-item">{{ app.user.pays }}</li>
+			<li class="list-group-item">{{ app.user.ville }}</li>
 			<li class="list-group-item">{{ app.user.email }}</li>
+</ol>
+<div class="buttmodif">
 
-		</ol>
+		<a class="btn btn-danger" type="button">modifier vos données</a>
+</div>
+</div>
 
 
-	</div>
 
 	<div class="col-4">
 

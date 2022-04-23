@@ -75,7 +75,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $pays;
+    private $ville;
 
     public function getId(): ?int
     {
@@ -250,14 +250,14 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPays(): ?string
+    public function getVille(): ?string
     {
-        return $this->pays;
+        return $this->ville;
     }
 
-    public function setPays(string $pays): self
+    public function setVille(string $ville): self
     {
-        $this->pays = $pays;
+        $this->ville = $ville;
 
         return $this;
     }
