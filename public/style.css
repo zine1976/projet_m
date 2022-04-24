@@ -131,6 +131,8 @@
   justify-content: space-around;
   margin-bottom: 50px;
   margin-top: 50px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
 }
 #produit_submit,
 #adresse_facturation_submit,
@@ -157,4 +159,15 @@
 }
 .buttlogin, .buttmodif {
   margin-top: 20px;
+}
+.tit1 {
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 45px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.parag{
+  font-family: BeauRivage-Regular;
+font-size: 30px;
 }
