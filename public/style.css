@@ -56,7 +56,6 @@
 .nav2{
   display: flex;
   justify-content: space-between;
-  /* padding-right: 80px; */
 }
 .corps1 {
   display: flex;
@@ -64,8 +63,6 @@
   margin-bottom: 50px;
 }
 .caro {
-  /* display: flex;
-  justify-content: center; */
   margin-top: 40px;
   padding-top: 40px;
   background-color: #f8b884;
@@ -73,10 +70,19 @@
 .carotte {
   height: 300px;
   width: 300px;
+  margin-bottom: 20px;
 }
 .rowi {
   display: flex;
   justify-content: space-around;
+}
+.surplus {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+
 }
 
 /* modal */
@@ -113,7 +119,6 @@
 }
 
 .ajoutprodtitre,
-
 .pan,
 .compte {
   display: flex;
@@ -153,8 +158,6 @@
 }
 .fin {
   background-color: #f8b884;
-  /* display: flex;
-  justify-content: center; */
   color: black;
 }
 .buttlogin, .buttmodif {
@@ -170,4 +173,8 @@
 .parag{
   font-family: BeauRivage-Regular;
 font-size: 30px;
+}
+.img-fluid1 {
+  width: 700px;
+  height: 400px;
 }
