@@ -79,10 +79,13 @@
 .surplus {
   display: flex;
   justify-content: space-around;
-  width: 300px;
-  height: 300px;
-  padding: 20px;
+  
 
+}
+.surplus1 {
+  margin-right: 40px;
+  width: 400px;
+  height: 400px;
 }
 
 /* modal */
