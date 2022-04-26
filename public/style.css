@@ -16,6 +16,13 @@
   src: url("Sabana.eot") format("eot"), url("Sabana.woff") format("woff"),
     url("Sabana.ttf") format("truetype");
 }
+#scroll_to_top {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  bottom: 50px;
+  right: 30px;
+}
 
 .corps {
   background-color: rgb(175, 156, 242);
@@ -143,6 +150,7 @@
 
 }
 #produit_submit,
+#contact_submit,
 #adresse_facturation_submit,
 #adresse_livraison_submit {
   margin-top: 20px;
@@ -180,4 +188,5 @@ font-size: 30px;
 .img-fluid1 {
   width: 700px;
   height: 400px;
+
 }
