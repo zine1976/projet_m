@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ImageController!{% endblock %}
+
+{% block body %}
+<div class="ajoutprodtitre">
+    <h1>Ajouter les images</h1> 
+</div>
+<div class="ajout">
+
+	<div class="col-4">
+		<img src="{{asset("lampe1.jpg")}}" alt="" class="img-fluid thumbnail">
+
+	</div>
+	<div class="container col-4">
+        {{ form(form) }}
+    </div>
+    </div>
+
+
+{% endblock %}
