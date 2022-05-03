@@ -16,8 +16,10 @@ class ProduitController extends AbstractController
     public function index(ProduitRepository $produit): Response
     {
         $produits = $produit->findAll();
+
         return $this->render('produit/index.html.twig', [
             'produit' => $produits,
+
         ]);
     }
     /**
@@ -26,10 +28,13 @@ class ProduitController extends AbstractController
     public function detailproduit($id, ProduitRepository $produit): Response
     {
         $produits = $produit->find($id);
+
         return $this->render('produit/indexdetail.html.twig', [
             'produit' => $produits,
+
         ]);
     }
+    
    
 }
  

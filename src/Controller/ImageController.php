@@ -15,7 +15,7 @@ class ImageController extends AbstractController
     /**
      * @Route("/image", name="app_image")
      */
-    public function index(ImageRepository $image): Response
+    public function image(ImageRepository $image): Response
     {
         $images = $image->findAll();
         return $this->render('image/index.html.twig', [
