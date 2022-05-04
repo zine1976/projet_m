@@ -25,7 +25,7 @@
 					<td>{{ prod.id }}</td>
 					<td>{{ prod.nom }}</td>
 					<td>{{ prod.stock }}</td>
-					<td>{{ prod.prix }}E</td>
+					<td>{{ prod.prix }}&nbsp;€</td>
 					<td>
 						<a href="{{path('app_detailproduit',{id: prod.id})}}" class="btn btn-primary">detail</td>
 						{% if is_granted('ROLE_ADMIN') %}
