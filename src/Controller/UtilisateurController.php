@@ -22,4 +22,15 @@ class UtilisateurController extends AbstractController
             'utilisateur' => $utilisateurs,
         ]);
     }
+     /**
+     * @Route("/utilisateur/liste", name="app_utiliste")
+     */
+    public function liste(UtilisateurRepository $utilisateur): Response
+    {
+
+        $utilisateurs = $utilisateur->findAll();
+        return $this->render('utilisateur/liste.html.twig', [
+            'utilisateur' => $utilisateurs,
+        ]);
+    }
 }
