@@ -35,14 +35,14 @@
 					L'art du Maroc</h1>
 				<div class="nav2">
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
-						
+
 						<div class="container-fluid">
 							<form class="d-flex">
 								<input class="form-control me-2" type="search" placeholder="chercher" aria-label="Search">
 								<button class="btn btn-outline-success" type="submit">chercher</button>
 							</form>
 						</div>
-						
+
 					</nav>
 					<!-- Button trigger modal -->
 					<div class="butticon">
@@ -67,19 +67,27 @@
 
 							<div class="modal-content">
 								<div class="modal-header1">
-									<a class="modal-title" type"button" id="exampleModalLabel" href="{{path('app_utilisateur')}}">mon compte</a>
+									{% if app.user %}
+										<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+									{% else %}
+
+										<a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+									{% endif %}
 								</div>
 								<div class="modal-body1">
 									ou
 								</div>
 								<div class="modal-footer1">
-									<a type="button" href="{{path('app_register')}}" class="">s'inscrire</a>
+									{% if app.user %}
+										<a class="modal-title" type"button" id="exampleModalLabel" href="{{path('app_utilisateur')}}">mon compte</a>
+									{% else %}
+										<a type="button" href="{{path('app_register')}}" class="">s'inscrire</a>
+									{% endif %}
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<a class="nav-link" href="{{path('app_register')}}">Inscription</a>
 					<a class="nav-link" href="{{path('app_accueil')}}">Accueil</a>
 					{% if is_granted('ROLE_ADMIN') %}
 						<a class="nav-link" href="{{path('app_commande')}}">Commandes</a>
@@ -89,15 +97,7 @@
 						<a class="nav-link" href="{{path('app_create')}}">Ajouter un produit</a>
 					{% endif %}
 
-					{% if app.user %}
-						<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-					{% else %}
 
-						<a class="nav-link" href="{{path('app_login')}}">Connexion</a>
-					{% endif %}
-
-					<a class="nav-link" href="{{ path('app_panier') }}">Mon panier</a>
-					<a class="nav-link" href="{{ path('app_utilisateur') }}">Mon compte</a>
 					<a class="nav-link" href="{{ path('app_ajoutImage') }}">Ajouter des images</a>
 					<a class="nav-link" href="{{ path('app_image') }}">image</a>
 
