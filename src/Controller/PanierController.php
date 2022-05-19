@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Repository\UserRepository;
 use App\Repository\ProduitRepository;
-use App\Repository\UtilisateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -86,7 +86,7 @@ class PanierController extends AbstractController
       /**
      * @Route("/panier/recap", name="app_recap")
      */
-    public function panier( UtilisateurRepository $utilisateur, SessionInterface $session, ProduitRepository $pr ): Response
+    public function panier( UserRepository $user, SessionInterface $session, ProduitRepository $pr ): Response
     {
 
        
@@ -109,13 +109,13 @@ class PanierController extends AbstractController
                 'produit' => $produit
             ];
         }
-        $utilisateurs = $utilisateur->findAll();
+        $users = $user->findAll();
         
         return $this->render('panier/recap.html.twig', [
             'panier' => $printablePanier,
             'total' => $total,
             'tva' => $tva,
-            'utilisateur' => $utilisateurs,
+            'user' => $users,
 
         ]);
     }

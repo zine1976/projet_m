@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\UtilisateurRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,14 +27,14 @@ class DeleteController extends AbstractController
     /**
      * @Route("/delete/{id}", name="app_delete")
      */
-    public function indexListe($id, UtilisateurRepository $util): Response
-    { $utilisateur = $util->find($id);
+    public function indexListe($id, UserRepository $util): Response
+    { $user = $util->find($id);
 
         
-            $util->remove($utilisateur);
+            $util->remove($user);
             $this->addFlash('success',   ' a été correctement supprimé.');
         //  else $this->addFlash('errors', 'On ne peut pas supprimer un utilisateur');
-        return $this->redirectToRoute('app_utiliste');
+        return $this->redirectToRoute('app_userliste');
 }
 }
    
