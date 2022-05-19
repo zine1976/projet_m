@@ -7,9 +7,9 @@
 
 
 	<div class="example-wrapper">
-<div class="ajoutprodtitre">
+		<div class="ajoutprodtitre">
 
-		<h1>Liste des commandes</h1>
+			<h1>Liste des commandes</h1>
 		</div>
 		<table class="table">
 			<thead>
@@ -20,6 +20,8 @@
 					<th>commande</th>
 					<th>image</th>
 					<th>quantité</th>
+					<th>id User</th>
+
 
 				</tr>
 			</thead>
@@ -32,14 +34,19 @@
 
 						<td>
 							{% for cp in commande.commandeProduits %}
-								{{(cp.produit.nom) }}
+								{{(cp.produit.nom) }}</td>
 						</td>
-						<td>			<img src="{{cp.produit.image}}" alt="" class="imgreg img-fluid thumbnail">
-</td>
+						<td>
+							<img src="{{cp.produit.image}}" alt="" class="imgreg img-fluid thumbnail">
+						</td>
 
 						<td>{{(cp.quantite)}}</td>
 					{% endfor %}
+					<td>{{ commande.user.id }}</td>
 
+					<td>
+						<a class="btn btn-danger" href="{{path('app_delete',{id: commande.id})}}">Supprimer une commande</a>
+					</td>
 				</tr>
 
 

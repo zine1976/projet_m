@@ -32,12 +32,12 @@
     </table>
     <a href="{{ path('app_user_edit', {'id': user.id}) }}">modifier mes données</a>
 
-				{# {% if is_granted('ROLE_ADMIN') %} #}
+				{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_user_index') }}">liste</a>
 
 
     <a class="btn btn-danger"{{ include('user/_delete_form.html.twig') }}</a>
-				{# {% endif %} #}
+				{% endif %}
 
 {% endblock %}

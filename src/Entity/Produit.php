@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
@@ -52,11 +54,19 @@ class Produit
      */
     private $Histoire;
 
+     /**
+     * @ORM\OneToMany(targetEntity=CommandeProduit::class, mappedBy="Produit")
+     */
+    private $commandeProduits;
+
     public function getId(): ?int
     {
         return $this->id;
     }
-
+    public function __construct()
+    {
+        $this->commandeProduits = new ArrayCollection();
+    }
     public function getNom(): ?string
     {
         return $this->nom;
@@ -137,6 +147,35 @@ class Produit
     public function setHistoire(string $Histoire): self
     {
         $this->Histoire = $Histoire;
+
+        return $this;
+    }
+    /**
+     * @return Collection<int, CommandeProduit>
+     */
+    public function getCommandeProduits(): Collection
+    {
+        return $this->commandeProduits;
+    }
+
+    public function addCommandeProduit(CommandeProduit $commandeProduit): self
+    {
+        if (!$this->commandeProduits->contains($commandeProduit)) {
+            $this->commandeProduits[] = $commandeProduit;
+            $commandeProduit->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeProduit(CommandeProduit $commandeProduit): self
+    {
+        if ($this->commandeProduits->removeElement($commandeProduit)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeProduit->getProduit() === $this) {
+                $commandeProduit->setProduit(null);
+            }
+        }
 
         return $this;
     }

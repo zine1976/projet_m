@@ -41,9 +41,15 @@ class Commande
     private $token;
 
     /**
-     * @ORM\OneToMany(targetEntity=CommandeProduit::class, mappedBy="commande", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=CommandeProduit::class, mappedBy="commande", cascade={"persist"})
      */
     private $commandeProduits;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function __construct()
     {
@@ -128,6 +134,18 @@ class Commande
                 $commandeProduit->setCommande(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

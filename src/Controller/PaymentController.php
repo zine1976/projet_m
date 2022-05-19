@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Stripe\Stripe;
 use App\Entity\Commande;
-use App\Entity\CommandeProduit;
 use Stripe\Checkout\Session;
-use App\Repository\CommandeRepository;
-use App\Repository\ProduitRepository;
-use DateTime;
+use App\Entity\CommandeProduit;
 use Doctrine\ORM\EntityManager;
+use App\Repository\ProduitRepository;
+use App\Repository\CommandeRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -28,7 +29,7 @@ class PaymentController extends AbstractController
     /**
      * @Route("/payment", name="app_payment")
      */
-    public function index(SessionInterface $session, ProduitRepository $pr, CommandeRepository $cr, ManagerRegistry $mr): Response
+    public function index(SessionInterface $session, ProduitRepository $pr, CommandeRepository $cr, Security $security, ManagerRegistry $mr): Response
     {
         $panier = $session->get('panier', []);
 
@@ -47,7 +48,8 @@ class PaymentController extends AbstractController
         $commande->setToken(hash('sha256', random_bytes(32)));
 
         $commande->setDateCom(new DateTime);
-
+        $user = $security->getUser();
+        $commande->setUser($user);
         $line_items = [];
 
         foreach ($panier as $id => $quantite) {

@@ -89,13 +89,13 @@
 					</div>
 
 					<a class="nav-link" href="{{path('app_accueil')}}">Accueil</a>
-					{# {% if is_granted('ROLE_ADMIN') %} #}
+					{% if is_granted('ROLE_ADMIN') %}
 						<a class="nav-link" href="{{path('app_commande')}}">Commandes</a>
 						<a class="nav-link" href="{{path('app_user_index')}}">liste</a>
 
 						<a class="nav-link" href="{{path('app_produit')}}">Produits</a>
 						<a class="nav-link" href="{{path('app_create')}}">Ajouter un produit</a>
-					{# {% endif %} #}
+					{% endif %}
 
 
 					<a class="nav-link" href="{{ path('app_ajoutImage') }}">Ajouter des images</a>

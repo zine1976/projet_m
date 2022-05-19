@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Repository\UserRepository;
 use App\Repository\ProduitRepository;
-use App\Repository\UtilisateurRepository;
+use App\Repository\CommandeProduitRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,6 +35,18 @@ class DeleteController extends AbstractController
             $this->addFlash('success',   ' a été correctement supprimé.');
         //  else $this->addFlash('errors', 'On ne peut pas supprimer un utilisateur');
         return $this->redirectToRoute('app_userliste');
+}
+ /**
+     * @Route("/delete/{id}", name="app_delete")
+     */
+    public function indexcom($id, CommandeProduitRepository $com): Response
+    { $commande = $com->find($id);
+
+        
+            $com->remove($commande);
+            $this->addFlash('success',   ' a été correctement supprimé.');
+        //  else $this->addFlash('errors', 'On ne peut pas supprimer une commande');
+        return $this->redirectToRoute('app_commande');
 }
 }
    
