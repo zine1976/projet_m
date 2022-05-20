@@ -39,6 +39,20 @@ class AdresseLivraisonType extends AbstractType
                 ])
             ]
         ]) 
+        ->add('cp', NumberType::class, [
+            'constraints' => [
+                new Length([
+                    'max' => 20
+                ])
+            ]
+        ]) 
+        ->add('ville', TextType::class, [
+            'constraints' => [
+                new Length([
+                    'max' => 150
+                ])
+            ]
+        ]) 
         
         ->add('submit', SubmitType::class, [
             'label' => 'Envoyer'

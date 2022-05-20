@@ -83,40 +83,40 @@ class PanierController extends AbstractController
         return $this->redirectToRoute('app_accueil');
     }
 
-      /**
-     * @Route("/panier/recap", name="app_recap")
-     */
-    public function panier( UserRepository $user, SessionInterface $session, ProduitRepository $pr ): Response
-    {
+    //   /**
+    //  * @Route("/panier/recap", name="app_recap")
+    //  */
+    // public function panier( UserRepository $user, SessionInterface $session, ProduitRepository $pr ): Response
+    // {
 
        
     
-        $panier = $session->get('panier', []);
+    //     $panier = $session->get('panier', []);
 
-        $ids = array_keys($panier);
-        $produits = $pr->getAllProduits($ids);
+    //     $ids = array_keys($panier);
+    //     $produits = $pr->getAllProduits($ids);
 
-        $tva = 0;
-        $total = 0;
-        $printablePanier = [];
-        foreach ($panier as $id => $quantite) {
-            $produit = $produits[$id];
-            $tva += $produit->getPrix() * $quantite * $produit->getTauxTva() / 100;
-            $total += $produit->getPrix() * $quantite;
+    //     $tva = 0;
+    //     $total = 0;
+    //     $printablePanier = [];
+    //     foreach ($panier as $id => $quantite) {
+    //         $produit = $produits[$id];
+    //         $tva += $produit->getPrix() * $quantite * $produit->getTauxTva() / 100;
+    //         $total += $produit->getPrix() * $quantite;
 
-            $printablePanier[$id] = [
-                'quantite' => $quantite,
-                'produit' => $produit
-            ];
-        }
-        $users = $user->findAll();
+    //         $printablePanier[$id] = [
+    //             'quantite' => $quantite,
+    //             'produit' => $produit
+    //         ];
+    //     }
+    //     $users = $user->findAll();
         
-        return $this->render('panier/recap.html.twig', [
-            'panier' => $printablePanier,
-            'total' => $total,
-            'tva' => $tva,
-            'user' => $users,
+    //     return $this->render('panier/recap.html.twig', [
+    //         'panier' => $printablePanier,
+    //         'total' => $total,
+    //         'tva' => $tva,
+    //         'user' => $users,
 
-        ]);
-    }
+    //     ]);
+    // }
 }

@@ -77,11 +77,7 @@ class Commande
         return $this;
     }
 
-    
-
-    
-
-    
+   
 
 
     public function getEtat(): ?string
