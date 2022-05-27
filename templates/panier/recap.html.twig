@@ -20,15 +20,21 @@
 						<th>Nom</th>
 						<th>prenom</th>
 						<th>adresse</th>
+						<th>code postal</th>
+						<th>ville</th>
 
 					</tr>
 				</thead>
 				<tbody>
-					{% for uti in utilisateur %}
+					{% for us in user %}
 						<tr>
-							<td>{{ uti.nom }}</td>
-							<td>{{ uti.prenom }}</td>
-							<td>{{ uti.adresseliv }}E</td>
+							<td>{{ us.nom }}</td>
+							<td>{{ us.prenom }}</td>
+							<td>{{ us.adressliv }}</td>
+							<td>{{ us.cpliv }}</td>
+							<td>{{ us.villeliv }}</td>
+
+
 						{% endfor %}
 					</tbody>
 				</tbody>
@@ -44,23 +50,28 @@
 						<th>Nom</th>
 						<th>prenom</th>
 						<th>adresse</th>
+						<th>code postal</th>
+						<th>ville</th>
 
 					</tr>
 				</thead>
 				<tbody>
-					{% for uti in utilisateur %}
+					{% for us in user %}
 						<tr>
-							<td>{{ uti.nom }}</td>
-							<td>{{ uti.prenom }}</td>
-							<td>{{ uti.adressefact }}E</td>
+							<td>{{ us.nom }}</td>
+							<td>{{ us.prenom }}</td>
+							<td>{{ us.adressfact }}</td>
+							<td>{{ us.cpfact }}</td>
+							<td>{{ us.villefact }}</td>
+
 						{% endfor %}
 					</tbody>
 				</tbody>
 			</table>
 			</div>
 	</div>
-			<div class="pan">
-		<h3>Mon panier</h3>
+			{# <div class="pan"> #}
+		{# <h3>Mon panier</h3>
 </div>
 <table class="table">
     <thead>
@@ -98,7 +109,7 @@
     <a href="{{ path('app_payment') }}" class="btn btn-primary col-2 offset-col-1 justify-content-center align-items-center">
         <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Payer
     </a>
-</dl>
+</dl> #}
 {# {% if app.user %} #}
 		
 

@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,9 +28,20 @@ class ProduitType extends AbstractType
             ->add('stock', NumberType::class)
             ->add('prix', NumberType::class)
             ->add('description', TextType::class)
-            ->add('image', UrlType::class)
+            // ->add('image', UrlType::class)
             ->add('histoire', TextType::class)
             ->add('tauxTva', NumberType::class)
+            ->add('image', FileType::class, [
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        
+                    ]),
+                    
+                    new Image
+                ]
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer'
             ]);;
