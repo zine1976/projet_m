@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Produit;
+use App\Entity\Commande;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -29,6 +30,10 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Produit', 'fas fa-list', Produit::class);
+        yield MenuItem::linkToCrud('Commande', 'fas fa-list', Commande::class);
+
+        yield MenuItem::linkToLogout('Logout', 'fa fa-exit');
+        yield MenuItem::linkToRoute('back to the site', 'fa fa-home', 'app_accueil');
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
