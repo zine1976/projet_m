@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}plateaux
+{% endblock %}
+
+{% block body %}
+{# <div class="imgglob">
+				<img src="{{ asset("poufrouge.jpg")}}" class="tof46 card-img-top" alt="..."></a>
+
+</div> #}
+<div class="titrepouf">
+		<h1>NOS PLATEAUX</h1>
+	</div>
+	<div class="pouf">
+
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:14})}}">
+				<img src="{{ asset("uploads/0c547fa49f49c8e3aa48be0e7b4e322c41e1a4a5.jpg")}}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">PLATEAU <br>LONG<br>métal argenté</p>
+		
+		</div>
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:15})}}">
+				<img src="{{ asset('uploads/c7e679bce5b32e946644e25df8ea279956c1c00e.jpg') }}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">PLATEAU <br>ROND<br>métal argenté</p>
+		
+		</div>
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:16})}}">
+				<img src="{{ asset("uploads/f863484cbf82d4580c2f72b5c11ae42977219e5b.jpg")}}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">PLATEAU <br>ROND<br>en cuivre</p>
+		
+		</div>
+		
+
+	</div>
+
+	
+
+{% endblock %}

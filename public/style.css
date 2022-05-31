@@ -38,10 +38,12 @@ margin-top: 40px;
 }
 .container {
   /* background-color: #f8b884; */
-  min-height: 300px;
+  min-height: 500px;
   background-color: white;
 }
-
+.surplus5 {
+  margin-left: 60px;
+}
 
 .title {
   border: solid 2px;
@@ -184,6 +186,11 @@ margin-top: 40px;
   /* background-color: #f8b884; */
   color: black;
   background-color: white;
+  position: absolute; 
+     right: auto;
+    left: auto; 
+     bottom: 1;
+    width: 100%;
 
 }
 .buttlogin, .buttmodif {
@@ -204,4 +211,19 @@ font-size: 30px;
   width: 700px;
   height: 400px;
 
+}
+.pouf {
+  display: flex;
+  justify-content: space-around;
+}
+.pouf1 {
+  margin-right: 40px;
+  width: 200px;
+  height: 200px;
+}
+.titrepouf {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }

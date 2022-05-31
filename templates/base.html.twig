@@ -20,7 +20,7 @@
 			<!-- FontAwesome CSS -->
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	<link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
+			<link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
 
 			<link rel="stylesheet" href="{{asset('style.css')}}">
 			<script type="text/javascript" src="script.js"></script>
@@ -91,16 +91,13 @@
 
 					<a class="nav-link" href="{{path('app_accueil')}}">Accueil</a>
 					{% if is_granted('ROLE_ADMIN') %}
-					
+
 						<a class="nav-link" href="{{path('app_commande_index')}}">Commandes</a>
-						<a class="nav-link" href="{{path('app_user_index')}}">liste</a>
+						<a class="nav-link" href="{{path('app_user_index')}}">liste utilisateurs</a>
 						<a class="nav-link" href="{{path('admin')}}">Admin</a>
 
 						{# <a class="nav-link" href="{{path('app_produit')}}">Produits</a> #}
 					{% endif %}
-
-
-					
 
 
 				</nav>
@@ -117,19 +114,20 @@
 					{% endblock %}
 
 				</div>
-				<div class="fin">
-					<nav class="nav justify-content-center">
-						<a class="nav-link" href="{{path('app_reglement')}}">regles de confidentialité</a>
-						<a class="nav-link" href="{{path('app_cgu')}}">conditions d'utilisation</a>
-						<a class="nav-link" href="{{path('app_contact')}}">contact</a>
-						<a class="nav-link" href="{{path('app_retour')}}">politique de retour</a>
 
-					</nav>
-					<div id="scroll_to_top">
-						<a href="#top" class="material-symbols-outlined">arrow_upward</a>
-					</div>
+
+				<div id="scroll_to_top">
+					<a href="#top" class="material-symbols-outlined">arrow_upward</a>
 				</div>
 			</div>
+			<div class="fin">
+				<nav class="nav justify-content-center">
+					<a class="nav-link" href="{{path('app_reglement')}}">regles de confidentialité</a>
+					<a class="nav-link" href="{{path('app_cgu')}}">conditions d'utilisation</a>
+					<a class="nav-link" href="{{path('app_contact')}}">contact</a>
+					<a class="nav-link" href="{{path('app_retour')}}">politique de retour</a>
 
+				</nav>
+			</div>
 		</body>
 	</html>
