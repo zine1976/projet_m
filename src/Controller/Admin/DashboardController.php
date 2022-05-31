@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
 use App\Entity\Produit;
 use App\Entity\Commande;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,12 +13,31 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
+
+    protected $userRepository;
+    protected $commandeRepository;
+    protected $produitRepository;
+
+    public function __construct(
+        UserRepository $userRepository,
+        CommandeRepository $commandeRepository,
+        ProduitRepository $produitRepository
+    ) {
+        $this->userRepository = $userRepository;
+        $this->commandeRepository = $commandeRepository;
+        $this->produitRepository = $produitRepository;
+    }
     /**
      * @Route("/admin", name="admin")
      */
     public function index(): Response
     {
-        return parent::index();
+
+           return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
+            'countUser' => $this->userRepository->countAllUser(),
+            'countCommande' => $this->commandeRepository->countAllCommande(),
+            'produits' => $this->produitRepository->findAll()
+        ]);
     }
 
     public function configureDashboard(): Dashboard
@@ -31,9 +51,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Produit', 'fas fa-list', Produit::class);
         yield MenuItem::linkToCrud('Commande', 'fas fa-list', Commande::class);
+        yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
 
-        yield MenuItem::linkToLogout('Logout', 'fa fa-exit');
-        yield MenuItem::linkToRoute('back to the site', 'fa fa-home', 'app_accueil');
+        yield MenuItem::linkToRoute('retour au site', 'fa fa-home', 'app_accueil');
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
