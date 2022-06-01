@@ -59,6 +59,13 @@ class Produit
      */
     private $commandeProduits;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $utilisation;
+
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -179,4 +186,20 @@ class Produit
 
         return $this;
     }
+
+    public function getUtilisation(): ?string
+    {
+        return $this->utilisation;
+    }
+
+    public function setUtilisation(string $utilisation): self
+    {
+        $this->utilisation = $utilisation;
+
+        return $this;
+    }
+
+    
+
+    
 }

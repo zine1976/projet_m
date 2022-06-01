@@ -90,6 +90,24 @@
 					</div>
 
 					<a class="nav-link" href="{{path('app_accueil')}}">Accueil</a>
+					<a class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Produits
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+						<li>
+							<a class="dropdown-item" href="{{path('app_pouf')}}">poufs</a>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_theiere')}}">théières</a>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_plateau')}}">plateaux</a>
+						</li>
+					</ul>
+				</a> 
 					{% if is_granted('ROLE_ADMIN') %}
 
 						<a class="nav-link" href="{{path('app_commande_index')}}">Commandes</a>

@@ -34,7 +34,7 @@ class ProduitController extends AbstractController
 
         ]);
     }
-       /**
+    /**
      * @Route("/produit/pouf", name="app_pouf")
      */
     public function pouf(ProduitRepository $produit): Response
@@ -46,7 +46,7 @@ class ProduitController extends AbstractController
 
         ]);
     }
-       /**
+    /**
      * @Route("/produit/plateau", name="app_plateau")
      */
     public function plateau(ProduitRepository $produit): Response
@@ -58,7 +58,7 @@ class ProduitController extends AbstractController
 
         ]);
     }
-         /**
+    /**
      * @Route("/produit/theiere", name="app_theiere")
      */
     public function theiere(ProduitRepository $produit): Response
@@ -70,5 +70,16 @@ class ProduitController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route("/produit/khol", name="app_khol")
+     */
+    public function khol(ProduitRepository $produit): Response
+    {
+        $produits = $produit->findAll();
+
+        return $this->render('produit/khol.html.twig', [
+            'produit' => $produits,
+
+        ]);
+    }
 }
- 
