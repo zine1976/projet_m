@@ -33,7 +33,7 @@ class ProduitType extends AbstractType
             ->add('histoire', TextType::class)
             ->add('utilisation', TextType::class)
 
-            ->add('tauxTva', NumberType::class)
+            // ->add('tauxTva', NumberType::class)
             ->add('image', FileType::class, [
                 'required' => false,
                 'constraints' => [

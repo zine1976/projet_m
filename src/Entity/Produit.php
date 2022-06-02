@@ -44,10 +44,7 @@ class Produit
      */
     private $image;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $tauxTva;
+   
 
     /**
      * @ORM\Column(type="text")
@@ -134,17 +131,7 @@ class Produit
         return $this;
     }
 
-    public function getTauxTva(): ?float
-    {
-        return $this->tauxTva;
-    }
-
-    public function setTauxTva(float $tauxTva): self
-    {
-        $this->tauxTva = $tauxTva;
-
-        return $this;
-    }
+   
 
     public function getHistoire(): ?string
     {

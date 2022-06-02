@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 {% block title %}Mon panier
 {% endblock %}
 {% block body %}
-	<div class="pan">
+	 <div class="pan">
 		<h1>Mon panier</h1>
 	</div>
 	<table class="table">
@@ -22,7 +22,11 @@
 					<td>{{ entree.produit.prix }}&nbsp;€</td>
 					<td><img src="{{entree.produit.image}}" alt="" class="imgreg img-fluid thumbnail"></td>
 					<td>{{ entree.quantite }}</td>
-					<td>{{ entree.quantite * entree.produit.prix }}&nbsp;€</td>
+									{# <a name="" id="" class="btn btn-danger" role="button" href="{{ path('decremente_panier',{"id"}) }}">-</a> #}
+														{# <a name="" id="" class="btn btn-danger" role="button" href="{{ path('add_panier') }}">+</a> #}
+														{# <a name="" id="" class="btn btn-danger" role="button" href="{{ path('del_ligne-panier') }}">enlever la ligne</a> #}
+
+					{# <td>{{ entree.quantite * entree.produit.prix }}&nbsp;€</td>
 				</tr>
 			{% endfor %}
 		</tbody>
@@ -50,6 +54,6 @@
 	{% endif %}
 	<a class="nav-link" href="{{path('app_adresseliv')}}">livraison</a>
 	<a class="nav-link" href="{{path('app_adressefact')}}">facturation</a>
-	<a class="nav-link" href="{{path('app_recap')}}">recap</a>
+	<a class="nav-link" href="{{path('app_recap')}}">recap</a>  
 
-{% endblock %}
+{% endblock %} 
