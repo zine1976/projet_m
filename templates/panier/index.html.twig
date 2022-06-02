@@ -1,59 +1,98 @@
-{# {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+
 {% block title %}Mon panier
 {% endblock %}
+
 {% block body %}
-	 <div class="pan">
+
+	<div class="text-center m-3">
 		<h1>Mon panier</h1>
+		<i>
+			Les produits que vous avez ajouté à votre panier
+		</i>
 	</div>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Produit</th>
-				<th>Prix unitaire</th>
-				<th>image</th>
-				<th>Quantité</th>
-				<th>Prix total</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for entree in panier %}
-				<tr>
-					<td>{{ entree.produit.nom }}</td>
-					<td>{{ entree.produit.prix }}&nbsp;€</td>
-					<td><img src="{{entree.produit.image}}" alt="" class="imgreg img-fluid thumbnail"></td>
-					<td>{{ entree.quantite }}</td>
-									{# <a name="" id="" class="btn btn-danger" role="button" href="{{ path('decremente_panier',{"id"}) }}">-</a> #}
-														{# <a name="" id="" class="btn btn-danger" role="button" href="{{ path('add_panier') }}">+</a> #}
-														{# <a name="" id="" class="btn btn-danger" role="button" href="{{ path('del_ligne-panier') }}">enlever la ligne</a> #}
+	<hr>
+	{% if panier|length > 0 %}
 
-					{# <td>{{ entree.quantite * entree.produit.prix }}&nbsp;€</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+		<div class="container mt-5">
+			<table class="table mt-4">
+				<thead>
+					<tr>
+						<th scope="col">Produit</th>
+						{# <th></th> #}
+						<th scope="col">Quantité</th>
+						<th scope="col">Image</th>
+
+						<th scope="col">Prix</th>
+						<th scope="col">HT</th>
+						<th scope="col">TVA</th>
+						<th scope="col">TTC</th>
 
 
-	<dl class="row">
-		<div class="col-4">
-			<dt>Total</dt>
-			<dd>{{total}}&nbsp;€</dd>
-		</div>
+					</tr>
+				</thead>
+				<tbody>
+					{% set total = null %}
+					{% for produit in panier %}
+						<tr>
+							<th>{{ produit.produit.nom}}</th>
 
-		<div class="col-4">
-			<dt>Dont TVA</dt>
-			<dd>{{tva}}&nbsp;€</dd>
-		</div>
-		{# justify-content-center align-items-center #}
-		<a href="{{ path('app_adresseliv') }}" class="btn btn-primary col-2 offset-col-1 ">
-			<i class="buttpan fa fa-credit-card-alt" aria-hidden="true"></i>
-			Paiement
-		</a>
-	</dl>
+							<td>	<a href="{{path('decremente_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-minus" alt="diminuer" style="width:18px ;"></a>
+							&nbsp;{{ produit.quantite }}&nbsp;
+								<a href="{{path('add_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-plus" alt="ajout" style="width:18px ;"></a>
+							
+							</td>
+							<th> <img src="/uploads/{{produit.produit.image}}" alt="image produit {{produit.produit.nom}}" style="width:35px;"></th>
+
+							<td>{{ produit.produit.prix }}&nbsp;€</td>
+
+							<td>{{ (produit.produit.prix * produit.quantite) }}&nbsp;€</td>
+							<td>{{ produit.produit.prix * 0.206 * produit.quantite}}&nbsp;€</td>
+
+							<td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.206 * produit.quantite) }}&nbsp;€</td>
+
+							
+
+							<td>
+								<a href="{{path('del_ligne-panier', {'id' : produit.produit.id})}}" class="fa-solid fa-trash-can" alt="supprimer" style="width:18px ;"></a>
+							</td>
+
+							
+						</tr>
+
+						{% set total = total + (produit.produit.prix * produit.quantite)*1.206 %}
+					{% endfor %}
+
+				</tbody>
+			</table>
+<div class="totalpanier">
+<b>Total TTC :
+					&nbsp;{{total}}
+					€</b>
+			 <a href="{{ path('app_adresseliv') }}" class="btn btn-primary mt-4"> Valider mon panier {{total}} €</a> 
+
+</div>
+
+		
+		
 	{% if app.user %}
-		<a name="" id="" class="btn btn-danger" role="button" href="{{ path('app_vider_panier') }}">Vider le panier</a>
+		<a name="" id="" class="btn btn-danger" role="button" href="{{ path('remove_panier') }}">Vider le panier</a>
 	{% endif %}
 	<a class="nav-link" href="{{path('app_adresseliv')}}">livraison</a>
 	<a class="nav-link" href="{{path('app_adressefact')}}">facturation</a>
-	<a class="nav-link" href="{{path('app_recap')}}">recap</a>  
+	<a class="nav-link" href="{{path('app_recap')}}">recap</a>   
+				
+				{# <b>
+					Total de mon panier :
+					{{panier|length}}</b> #}
 
-{% endblock %} 
+		 </div>
+	{% else %}
+		 <div class="my-formular">
+			<h5 class="text-center">
+				Oups ! Votre panier est vide...</h5>
+			<p class="text-center">
+				Ajoutez un produit pour remédier à ce malentendu !</p>
+		</div> 
+	{% endif %} 
+{% endblock %}

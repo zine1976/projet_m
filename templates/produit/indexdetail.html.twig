@@ -48,7 +48,7 @@
 				<dd></dd>
 				{% if app.user and produit.stock > 0 %}
 					<td>
-						<form action="{{ path('add_panier', {produit: produit.id}) }}" method="post">
+						<form action="{{ path('add_panier', {'id' : produit.id}) }}" method="post">
 							<input type="number" name="qtte" id="qtte" min="1" max="{{produit.stock}}" step="1" placeholder="Quantité" style="max-width: 50px;" value="1">
 							<button type="submit" class="btn btn-primary">
 								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
