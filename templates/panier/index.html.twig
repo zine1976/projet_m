@@ -66,10 +66,14 @@
 				</tbody>
 			</table>
 <div class="totalpanier">
-<b>Total TTC :
-					&nbsp;{{total}}
-					€</b>
-			 <a href="{{ path('app_adresseliv') }}" class="btn btn-primary mt-4"> Valider mon panier {{total}} €</a> 
+
+<tr>
+<td><strong>Frais de port : 5€</strong></td><br>
+<td><strong>Total TTC :
+					&nbsp;{{total + 5}}
+					€</strong></td>
+			 <td><a href="{{ path('app_adresseliv') }}" class="btn btn-primary mt-4"> Valider mon panier {{total + 5}} €</a> </td>
+</tr>
 
 </div>
 
@@ -80,7 +84,7 @@
 	{% endif %}
 	<a class="nav-link" href="{{path('app_adresseliv')}}">livraison</a>
 	<a class="nav-link" href="{{path('app_adressefact')}}">facturation</a>
-	<a class="nav-link" href="{{path('app_recap')}}">recap</a>   
+	{# <a class="nav-link" href="{{path('app_recap')}}">recap</a>    #}
 				
 				{# <b>
 					Total de mon panier :

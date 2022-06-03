@@ -230,4 +230,6 @@ font-size: 30px;
 }
 .totalpanier {
   margin-left: 770px;
+  /* display: flex;
+  justify-content: center; */
 }

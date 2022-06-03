@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}abat-hour
+{% endblock %}
+
+{% block body %}
+{# <div class="imgglob">
+				<img src="{{ asset("poufrouge.jpg")}}" class="tof46 card-img-top" alt="..."></a>
+
+</div> #}
+<div class="titrepouf">
+		<h1>NOS ABAT-JOURS</h1>
+	</div>
+	<div class="pouf">
+
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:26})}}">
+				<img src="{{ asset("uploads/6a7ec7ecdec5686b9310aa63103f0e0e27714773.jpg")}}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">ABAT-JOUR <br>LONG<br>en fer</p>
+		
+		</div>
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:25})}}">
+				<img src="{{ asset('uploads/43e37eceeae4fd428dc1d96456d5321d70cf3bef.jpg') }}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">ABAT-JOUR <br>LONG<br>en fer</p>
+		
+		</div>
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:24})}}">
+				<img src="{{ asset("uploads/f232e01660797f7fce2130abc0c6576c5b153c7c.jpg")}}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">ABAT-JOUR<br>LONG<br>en fer</p>
+		
+		</div>
+		
+
+	</div>
+
+	
+
+{% endblock %}

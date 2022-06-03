@@ -4,7 +4,6 @@
 
 {% block body %}
 
-				
 
 	<h1>{{produit.nom}}</h1>
 	<div class="rowi">
@@ -61,51 +60,23 @@
 			</dl>
 
 		</div>
-		<div class="col-4">
+		<div
+			class="col-4">
+			{# debut liste #}
+			<div class="list-group">
+				<a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>
 
-			<div class="carotte">
-				<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 3"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 3"></button>
-
-
-					</div>
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<img src="{{asset('uploads/' ~ produit.image) }}" class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block"></div>
-						</div>
-						<div class="carousel-item">
-							<img src="{{ asset("poufrouge.jpg")}}" class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block"></div>
-						</div>
-						<div class="carousel-item">
-							<img src="{{asset('uploads/' ~ produit.image) }}" class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block"></div>
-						</div>
-						<div class="carousel-item">
-							<img src="{{ asset("kholima.jpg")}}" class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block"></div>
-						</div>
-						<div class="carousel-item">
-							<img src="{{ asset("poufrouge.jpg")}}" class="d-block w-100" alt="...">
-							<div class="carousel-caption d-none d-md-block"></div>
-						</div>
-					</div>
-					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-				</div>
+				<a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary list group item</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary list group item</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group item</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group item</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group item</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+				<a href="{{path('app_pouf')}}" class="list-group-item list-group-item-action list-group-item-dark">Poufs</a>
 			</div>
+			{# fin de list #}
+
 		</div>
 
 	</div>
@@ -145,26 +116,26 @@
 	</div>
 	<div class="tit">
 		<h2>Vous aimerez aussi</h2>
+	</div>
+	<div class="surplus">
+
+		<div class="surplus1">
+			<a href="{{path('app_plateau')}}">
+				<img src="{{ asset("uploads/0c547fa49f49c8e3aa48be0e7b4e322c41e1a4a5.jpg")}}" class="card-img-top" alt="..."></a>
 		</div>
-		<div class="surplus">
-		
-			<div class="surplus1">
-				<a href="{{path('app_plateau')}}">
-					<img src="{{ asset("uploads/0c547fa49f49c8e3aa48be0e7b4e322c41e1a4a5.jpg")}}" class="card-img-top"  alt="..."></a>
-			</div>
-			<div class="surplus1">
-				<a href="{{path('app_pouf')}}">
-					<img src="{{ asset("poufrouge.jpg")}}" class="card-img-top"  alt="..."></a>
-			</div>
-			<div class="surplus1">
-				<a href="{{path('app_theiere')}}">
-					<img src="{{ asset("uploads/11df291cf4ed4c2c751a6beb24092904b462f55e.jpg")}}" class="card-img-top"  alt="..."></a>
-			</div>
-			<div class="surplus1">
-				<a href="{{path('app_khol')}}">
-					<img src="{{ asset("kholima.jpg")}}" class="card-img-top"  alt="..."></a>
-			</div>
-			
+		<div class="surplus1">
+			<a href="{{path('app_pouf')}}">
+				<img src="{{ asset("poufrouge.jpg")}}" class="card-img-top" alt="..."></a>
 		</div>
+		<div class="surplus1">
+			<a href="{{path('app_theiere')}}">
+				<img src="{{ asset("uploads/11df291cf4ed4c2c751a6beb24092904b462f55e.jpg")}}" class="card-img-top" alt="..."></a>
+		</div>
+		<div class="surplus1">
+			<a href="{{path('app_khol')}}">
+				<img src="{{ asset("kholima.jpg")}}" class="card-img-top" alt="..."></a>
+		</div>
+
+	</div>
 
 {% endblock %}

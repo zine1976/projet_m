@@ -82,4 +82,28 @@ class ProduitController extends AbstractController
 
         ]);
     }
+       /**
+     * @Route("/produit/lampe", name="app_lampe")
+     */
+    public function lampe(ProduitRepository $produit): Response
+    {
+        $produits = $produit->findAll();
+
+        return $this->render('produit/lampe.html.twig', [
+            'produit' => $produits,
+
+        ]);
+    }
+        /**
+     * @Route("/produit/abat", name="app_abat")
+     */
+    public function abat(ProduitRepository $produit): Response
+    {
+        $produits = $produit->findAll();
+
+        return $this->render('produit/abat.html.twig', [
+            'produit' => $produits,
+
+        ]);
+    }
 }

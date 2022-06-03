@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}lampes
+{% endblock %}
+
+{% block body %}
+{# <div class="imgglob">
+				<img src="{{ asset("poufrouge.jpg")}}" class="tof46 card-img-top" alt="..."></a>
+
+</div> #}
+<div class="titrepouf">
+		<h1>NOS LAMPES</h1>
+	</div>
+	<div class="pouf">
+
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:1})}}">
+				<img src="{{ asset("uploads/ef82d3970a78037c57be3569a02f43f7818d0d94.jpg")}}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">LAMPE <br>LONG<br>en fer</p>
+		
+		</div>
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:22})}}">
+				<img src="{{ asset('uploads/249c9826ec44277b9bed8090a3db4bff2dd5000c.jpg') }}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">LAMPE <br>ROND<br>en fer</p>
+		
+		</div>
+		<div class="pouf1">
+			<a href="{{path('app_detailproduit',{id:23})}}">
+				<img src="{{ asset("uploads/d785e26da9b15eeeae307c023933b5dc13d1af1f.jpg")}}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">LAMPE<br>ROND<br>en fer</p>
+		
+		</div>
+		
+
+	</div>
+
+	
+
+{% endblock %}
