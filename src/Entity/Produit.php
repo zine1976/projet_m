@@ -61,6 +61,11 @@ class Produit
      */
     private $utilisation;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="produits", orphanRemoval=true)
+     */
+    private $comments;
+
    
 
     public function getId(): ?int
@@ -70,6 +75,7 @@ class Produit
     public function __construct()
     {
         $this->commandeProduits = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
     public function getNom(): ?string
     {
@@ -182,6 +188,36 @@ class Produit
     public function setUtilisation(string $utilisation): self
     {
         $this->utilisation = $utilisation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comments>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setProduits($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getProduits() === $this) {
+                $comment->setProduits(null);
+            }
+        }
 
         return $this;
     }
