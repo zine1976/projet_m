@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -23,7 +24,12 @@ class UserCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             TextField::new('email'),
-            TextField::new('password'),
+            // TextField::new('password'),
+            TextField::new('adressliv', 'adresse de livraison'),
+            NumberField::new('cpliv', 'code postal'),
+            TextField::new('villeliv', 'ville'),
+
+
 
            
         

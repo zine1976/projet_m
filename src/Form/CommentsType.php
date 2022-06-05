@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Comments;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,11 +25,11 @@ class CommentsType extends AbstractType
                 'class' => 'form-control'
             ]
         ])
-        ->add('content', TextareaType::class, [
+        ->add('content', CKEditorType::class, [
             'label' => 'Votre commentaire',
-            'attr' => [
-                'class' => 'form-control'
-            ]
+            // 'attr' => [
+            //     'class' => 'form-control'
+            // ]
         ])
         ->add('rgpd', CheckboxType::class, [
             'label' => 'j/accepte de mettre mes données personnelles',

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Commande;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
@@ -20,7 +21,9 @@ class CommandeCrudController extends AbstractCrudController
     {
         return [
             // DateField::new('datecom'),
-            // TextField::new('user'),
+            IdField::new('id'),
+            TextField::new('user.nom','client'),
+
             TextField::new('etat'),
             
         ];
