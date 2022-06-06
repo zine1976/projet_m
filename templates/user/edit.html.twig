@@ -3,7 +3,7 @@
 {% block title %}Edit User{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+    <h1>Modifiez mes données</h1>
 
     {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 				{% if is_granted('ROLE_ADMIN') %}

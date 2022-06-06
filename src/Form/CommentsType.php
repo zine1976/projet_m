@@ -27,9 +27,8 @@ class CommentsType extends AbstractType
         ])
         ->add('content', CKEditorType::class, [
             'label' => 'Votre commentaire',
-            // 'attr' => [
-            //     'class' => 'form-control'
-            // ]
+
+            
         ])
         ->add('rgpd', CheckboxType::class, [
             'label' => 'j/accepte de mettre mes données personnelles',

@@ -64,15 +64,15 @@
 			class="col-4">
 			{# debut liste #}
 			<div class="list-group">
-				<a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>
+				<a href="#" class="list-group-item list-group-item-dark">A simple default list group item</a>
 
-				<a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary list group item</a>
-				<a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary list group item</a>
-				<a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group item</a>
-				<a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group item</a>
-				<a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group item</a>
-				<a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>
-				<a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+				<a href="{{path('app_pouf')}}" class="list-group-item list-group-item-action list-group-item-dark">A simple primary list group item</a>
+				<a href="{{path('app_pouf')}}" class="list-group-item list-group-item-action list-group-item-dark">A simple secondary list group item</a>
+				<a href="{{path('app_abat')}}" class="list-group-item list-group-item-action list-group-item-dark">Abat-jour</a>
+				<a href="{{path('app_plateau')}}" class="list-group-item list-group-item-action list-group-item-dark">plateaux</a>
+				<a href="{{path('app_theiere')}}" class="list-group-item list-group-item-action list-group-item-dark">théières</a>
+				<a href="{{path('app_lampe')}}" class="list-group-item list-group-item-action list-group-item-dark">Lampes</a>
+				<a href="{{path('app_khol')}}" class="list-group-item list-group-item-action list-group-item-dark">Khol</a>
 				<a href="{{path('app_pouf')}}" class="list-group-item list-group-item-action list-group-item-dark">Poufs</a>
 			</div>
 			{# fin de list #}
@@ -117,29 +117,42 @@
 	<div class="tit">
 		<h2>Vous aimerez aussi</h2>
 	</div>
-	<div class="surplus">
+	<main>
+<section>
 
-		<div class="surplus1">
+		<div class="colib">
 			<a href="{{path('app_plateau')}}">
-				<img src="{{ asset("uploads/0c547fa49f49c8e3aa48be0e7b4e322c41e1a4a5.jpg")}}" class="card-img-top" alt="..."></a>
+				<img src="{{ asset("uploads/0b109d14f9cffea8af44feea17086d37ddc77607.jpg")}}" class="card-img-top" alt="..."></a>
 		</div>
-		<div class="surplus1">
+		<div class="colib">
 			<a href="{{path('app_pouf')}}">
 				<img src="{{ asset("poufrouge.jpg")}}" class="card-img-top" alt="..."></a>
 		</div>
-		<div class="surplus1">
+		<div class="colib">
 			<a href="{{path('app_theiere')}}">
 				<img src="{{ asset("uploads/11df291cf4ed4c2c751a6beb24092904b462f55e.jpg")}}" class="card-img-top" alt="..."></a>
 		</div>
-		<div class="surplus1">
+		<div class="colib">
 			<a href="{{path('app_khol')}}">
 				<img src="{{ asset("kholima.jpg")}}" class="card-img-top" alt="..."></a>
 		</div>
-
-	</div>
+		<div class="colib">
+			<a href="{{path('app_pouf')}}">
+				<img src="{{ asset("poufrouge.jpg")}}" class="card-img-top" alt="..."></a>
+		</div>
+		<div class="colib">
+			<a href="{{path('app_pouf')}}">
+				<img src="{{ asset("poufrouge.jpg")}}" class="card-img-top" alt="..."></a>
+		</div>
+		<div class="colib">
+			<a href="{{path('app_pouf')}}">
+				<img src="{{ asset("poufrouge.jpg")}}" class="card-img-top" alt="..."></a>
+		</div>
+</section>
+</main>
 	 <div class="grix xs2 sm3 gutter-0 card">
 			<div class="col-xs2 col-sm3">
-				<h2>Liste des commentaires</h2>
+				<h2>Commentaires</h2>
 				{% for comment in produit.comments %}
 					{% if comment.parent == null %}
 						<h3>Commentaire de {{comment.nickname}}</h3>
@@ -156,7 +169,7 @@
 				{% endfor %}
 			</div>
 			<div class="col-xs2 col-sm3" id="ajout-commentaire">
-				<h2>Ajouter un commentaire</h2>
+				<h3>Ajouter un commentaire</h3>
 				{{ form_start(commentForm) }}
 				    {{ form_row(commentForm.nickname) }}
                     <p>Message</p>

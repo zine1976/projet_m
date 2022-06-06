@@ -24,7 +24,7 @@
 
 			<link rel="stylesheet" href="{{asset('style.css')}}">
 			<script type="text/javascript" src="{{asset('script.js')}}"></script>
-			// <script type="text/javascript" src="{{asset('ckeditor.js')}}"></script>
+			<script type="text/javascript" src="{{asset('ckeditor.js')}}"></script>
 			
 			<link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 		{% endblock %}
@@ -112,7 +112,6 @@
 				</a> 
 					{% if is_granted('ROLE_ADMIN') %}
 
-						<a class="nav-link" href="{{path('app_commande_index')}}">Commandes</a>
 						<a class="nav-link" href="{{path('app_user_index')}}">liste utilisateurs</a>
 						<a class="nav-link" href="{{path('admin')}}">Admin</a>
 

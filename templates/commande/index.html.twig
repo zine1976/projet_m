@@ -1,30 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commande index{% endblock %}
+{% block title %}Mes commandes{% endblock %}
 
 {% block body %}
-    <h1>Commande index</h1>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{path('app_user_show',{id: app.user.id})}}">Mon compte</a></li>
+
+    <li class="breadcrumb-item active" aria-current="page">vous êtes ici</li>
+  </ol>
+</nav>
+    <h1>Mes commandes</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Datecom</th>
+                {# <th>Id</th> #}
+                <th>Date de la commande</th>
                 <th>Etat</th>
-                {# <th>commande</th>
-					<th>image</th>
-					<th>quantité</th> #}
+                <th>produit</th>
+					 <th>image</th>
+					<th>quantité</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for commande in commandes %}
+        {# {% for commande in commandes %} #}
+        {% for commande in app.user.commandes %}
+
             <tr>
-                <td>{{ commande.id }}</td>
+                {# <td>{{ commande.id }}</td> #}
                 <td>{{ commande.datecom ? commande.datecom|date('Y-m-d') : '' }}</td>
                 <td>{{ commande.etat }}</td>
+                {# <td>{{ commande.user.nom }}</td> #}
+
                 <td>
-                {# {% for cp in commande.commandeProduits %}
+                {% for cp in commande.commandeProduits %}
 								{{(cp.produit.nom) }}</td>
 						</td>
 						<td>
@@ -32,10 +43,11 @@
 						</td>
 
 						<td>{{(cp.quantite)}}</td>
-                        
-					{% endfor %} #}
-                    <a href="{{ path('app_commande_show', {'id': commande.id}) }}">detail</a>
-                    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">modifier</a>
+
+					{% endfor %}
+                                                                <td><a href="{{ path('app_commande_show', {'id': commande.id}) }}">detail</a> </td>
+
+                    {# <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">modifier</a> #}
                 </td>
             </tr>
         {% else %}
@@ -46,5 +58,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_commande_new') }}">Create new</a>
+    {# <a href="{{ path('app_commande_new') }}">Create new</a> #}
 {% endblock %}

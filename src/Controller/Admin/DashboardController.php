@@ -5,9 +5,11 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Entity\Produit;
 use App\Entity\Commande;
+use App\Entity\Comments;
 use App\Repository\UserRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
+use App\Repository\CommentsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -20,15 +22,21 @@ class DashboardController extends AbstractDashboardController
     protected $userRepository;
     protected $commandeRepository;
     protected $produitRepository;
+    protected $commentsRepository;
+
 
     public function __construct(
         UserRepository $userRepository,
         CommandeRepository $commandeRepository,
-        ProduitRepository $produitRepository
+        ProduitRepository $produitRepository,
+        CommentsRepository $commentsRepository
+
     ) {
         $this->userRepository = $userRepository;
         $this->commandeRepository = $commandeRepository;
         $this->produitRepository = $produitRepository;
+        $this->commentsRepository = $commentsRepository;
+
     }
     /**
      * @Route("/admin", name="admin")
@@ -55,6 +63,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produit', 'fas fa-list', Produit::class);
         yield MenuItem::linkToCrud('Commande', 'fas fa-list', Commande::class);
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Comments', 'fas fa-list', Comments::class);
 
         yield MenuItem::linkToRoute('retour au site', 'fa fa-home', 'app_accueil');
 
