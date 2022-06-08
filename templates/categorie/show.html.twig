@@ -8,11 +8,18 @@
     <table class="table">
         <tbody>
             {% for produit in produits %}
-                <tr>
-                    <td>{{ produit.nom }}</td>
-                    <td>{{ produit.prix }}</td>
-                </tr>
+                
+                <div class="pouf">
+
+		<div class="pouf1">
+			{# <a href="{{path('app_detailproduit',{id:26})}}"> #}
+				<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="..."></a>
+				<p class="surplus5">{{ produit.nom }}</p>
+		
+		</div>
             {% endfor %}
+
+        </div>
         </tbody>
     </table>
 

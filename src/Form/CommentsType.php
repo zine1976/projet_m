@@ -19,12 +19,12 @@ class CommentsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('nickname', TextType::class, [
-            'label' => 'Votre pseudo',
-            'attr' => [
-                'class' => 'form-control'
-            ]
-        ])
+        // ->add('nickname', TextType::class, [
+        //     'label' => 'Votre pseudo',
+        //     'attr' => [
+        //         'class' => 'form-control'
+        //     ]
+        // ])
         ->add('content', TextType::class, [
             'label' => 'Votre commentaire',
 

@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Produit;
+use App\Entity\Comments;
+use App\Form\CommentsType;
 use App\Form\Produit1Type;
 use App\Repository\ProduitRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/produit")
@@ -48,10 +51,46 @@ class ProduitController extends AbstractController
     /**
      * @Route("/{id}", name="app_produit_show", methods={"GET"})
      */
-    public function show(Produit $produit): Response
+    public function show(Request $request, Produit $produit): Response
     {
+        $comment = new Comments;
+        $commentForm = $this->createForm(CommentsType::class, $comment);
+        $commentForm->handleRequest($request);
+
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            // traitement du nouveau commentaire
+            $comment->setUser($this->getUser());
+            // dd($comment);
+            $comment->setCreatedAt(new DateTime());
+            $comment->setProduits($produit);
+
+            // On récupère le contenu du champ parentid
+            $parentid = $commentForm->get("parentid")->getData();
+
+            // On va chercher le commentaire correspondant
+            $em = $this->getDoctrine()->getManager();
+
+            if($parentid != null){
+                $parent = $em->getRepository(Comments::class)->find($parentid);
+            }
+
+            // On définit le parent
+            $comment->setParent($parent ?? null);
+
+            $em->persist($comment);
+            $em->flush();
+
+            $this->addFlash('message', 'Votre commentaire a bien été envoyé');
+            return $this->redirectToRoute('app_produit_show');
+
+        }
+
+        
+
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
+            'comments' => $produit->getComments(),
+            'commentForm' => $commentForm->createView()
         ]);
     }
 

@@ -205,10 +205,10 @@ font-size: 30px;
 }
 .pouf {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .pouf1 {
-  margin-right: 40px;
+  /* margin-right: 40px; */
   width: 200px;
   height: 200px;
 }
