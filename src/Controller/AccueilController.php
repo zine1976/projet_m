@@ -2,20 +2,27 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CategorieRepository;
+use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AccueilController extends AbstractController
 {
     /**
      * @Route("/", name="app_accueil")
      */
-    public function index(): Response
+    public function index(ProduitRepository $produitRepo, CategorieRepository $categorieRepo): Response
     {
+        $categories = $categorieRepo->findAll();
+        $derniersProduits = $produitRepo->findBy([], ['id' => 'DESC'], 3);
+
         return $this->render('accueil/index.html.twig',
          [
             'controller_name' => 'AccueilController',
+            'categories' => $categories,
+            'derniersProduits' => $derniersProduits
         ]);
     }
       /**

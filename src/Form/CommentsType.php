@@ -25,7 +25,7 @@ class CommentsType extends AbstractType
                 'class' => 'form-control'
             ]
         ])
-        ->add('content', CKEditorType::class, [
+        ->add('content', TextType::class, [
             'label' => 'Votre commentaire',
 
             

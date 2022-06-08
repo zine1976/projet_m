@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}all
+{% endblock %}
+
+{% block body %}
+{# <div class="imgglob">
+				<img src="{{ asset("poufrouge.jpg")}}" class="tof46 card-img-top" alt="..."></a>
+
+</div> #}
+{# <div class="titrepouf"> #}
+		{# <h1>{{ produit.nom }}</h1> #}
+	</div>
+	{# <div class="pouf"> #}
+			{% for prod in produit %}
+
+		{# <div class="pouf1"> #}
+			{# <a href="{{path('app_detailproduit',{id:13})}}"> #}
+				<img src="{{ prod.image }}" class="card-img-top" alt="..."></a>
+				{# <p class="surplus5">POUF <br>ROUGE</p> #}
+                <p>{{ prod.nom }}</p>
+			{% endfor %}
+		
+		{# </div> #}
+		
+		
+		
+
+	{# </div> #}
+
+	
+
+{% endblock %}
