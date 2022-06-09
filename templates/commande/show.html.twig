@@ -42,7 +42,7 @@
                 <td>{{ cp.produit.nom}}</td>
             </tr> <tr>
                 <th>image</th>
-                <td>							<img src="{{cp.produit.image}}" alt="" class="imgreg img-fluid thumbnail">
+                <td>							<img src="{{ asset("uploads/" ~ cp.produit.image) }}" alt="" class="imgreg img-fluid thumbnail">
 </td>
             </tr>
             <tr>

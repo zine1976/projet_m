@@ -12,20 +12,45 @@
                 <div class="pouf">
 
 		<div class="pouf1">
-			{# <a href="{{path('app_detailproduit',{id:26})}}"> #}
-				<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="..."></a>
-				<p class="surplus5">{{ produit.nom }}</p>
+    <figure class="card">
+
+			{# <a href="{{path('app_produit_show',{id: produit.id})}}"> #}
+				<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
+                {# </a> #}
+					<figcaption class="overlay">
+<p>{{ produit.nom }}</p>
+</figcaption>
+		</figure>
+		</p>
+                {# <p class="surplus5">{{ produit.nom }}</p> #}
+			<a class="btn btn-primary" href="{{path('app_produit_show',{id: produit.id})}}" role="button">voir</a>
+					{# <a class="btn btn-primary" href="{{path('app_detailproduit',{id:8})}}" role="button">suite...</a> #}
 		
 		</div>
+
             {% endfor %}
 
         </div>
         </tbody>
     </table>
 
+    {# <figure class="card"> #}
+			{# <a href="{{path('app_theiere')}}"> #}
+				{# <img src="{{ asset("uploads/11df291cf4ed4c2c751a6beb24092904b462f55e.jpg")}}" class="card-img-top" style="width: 28rem;" alt="les théières"></a> #}
+					{# <figcaption class="overlay"> #}
+{# <p>les théières</p> #}
+{# </figcaption> #}
+		{# </figure> #}
+		{# </p> #}
+	</div>
+	{# </main> #}
+						{% if is_granted('ROLE_ADMIN') %}
+
     <a href="{{ path('app_categorie_index') }}">back to list</a>
 
-    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">edit</a>
+    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">modifier</a>
 
     {{ include('categorie/_delete_form.html.twig') }}
+						{% endif %}
+
 {% endblock %}

@@ -5,8 +5,8 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Produit;
 use App\Entity\Comments;
+use App\Form\ProduitType;
 use App\Form\CommentsType;
-use App\Form\Produit1Type;
 use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,7 +34,7 @@ class ProduitController extends AbstractController
     public function new(Request $request, ProduitRepository $produitRepository): Response
     {
         $produit = new Produit();
-        $form = $this->createForm(Produit1Type::class, $produit);
+        $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,10 +49,11 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_produit_show", methods={"GET"})
+     * @Route("/{id}", name="app_produit_show", methods={"GET", "POST"})
      */
     public function show(Request $request, Produit $produit): Response
     {
+        
         $comment = new Comments;
         $commentForm = $this->createForm(CommentsType::class, $comment);
         $commentForm->handleRequest($request);
@@ -60,6 +61,7 @@ class ProduitController extends AbstractController
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             // traitement du nouveau commentaire
             $comment->setUser($this->getUser());
+            $comment->setNickname($this->getUser()->getPrenom());
             // dd($comment);
             $comment->setCreatedAt(new DateTime());
             $comment->setProduits($produit);
@@ -81,10 +83,8 @@ class ProduitController extends AbstractController
             $em->flush();
 
             $this->addFlash('message', 'Votre commentaire a bien été envoyé');
-            return $this->redirectToRoute('app_produit_show');
 
         }
-
         
 
         return $this->render('produit/show.html.twig', [
@@ -99,7 +99,7 @@ class ProduitController extends AbstractController
      */
     public function edit(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
     {
-        $form = $this->createForm(Produit1Type::class, $produit);
+        $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

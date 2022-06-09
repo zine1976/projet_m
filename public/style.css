@@ -208,7 +208,7 @@ font-size: 30px;
   justify-content: center;
 }
 .pouf1 {
-  /* margin-right: 40px; */
+  margin-right: 40px;
   width: 200px;
   height: 200px;
 }
@@ -256,10 +256,10 @@ scroll-snap-align: center;
   width: 400px;
   
 }
-/* .card{
-border: 1px solid grey;
+.card{
+border: 1px solid white;
 padding: 3px;
-box-shadow: 2px 2px 2px grey;
+/* box-shadow: 2px 2px 2px grey; */
 position: relative;
 }
 .card img{
@@ -281,4 +281,4 @@ position: relative;
 }
 .card:hover .overlay{
   transform: scale(1);
-} */
+} 

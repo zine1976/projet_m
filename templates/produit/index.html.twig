@@ -14,10 +14,10 @@
                 <th>Nom</th>
                 <th>Stock</th>
                 <th>Prix</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Histoire</th>
-                <th>Utilisation</th>
+                {# <th>Description</th> #}
+                {# <th>Image</th> #}
+                {# <th>Histoire</th> #}
+                {# <th>Utilisation</th> #}
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,14 +27,18 @@
                 <td>{{ produit.id }}</td>
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.stock }}</td>
-                <td>{{ produit.prix }}</td>
-                <td>{{ produit.description }}</td>
-                <td>{{ produit.image }}</td>
-                <td>{{ produit.Histoire }}</td>
-                <td>{{ produit.utilisation }}</td>
+                <td>{{ produit.prix }}&nbsp;€</td>
+                {# <td>{{ produit.description }}</td> #}
+                {# <td>{{asset('uploads/' ~ produit.image) }}</td> #}
+                {# <td>{{ produit.Histoire }}</td> #}
+                {# <td>{{ produit.utilisation }}</td> #}
                 <td>
                     <a href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
+						{% if is_granted('ROLE_ADMIN') %}
+                   
                     <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
+						{% endif %}
+                
                 </td>
             </tr>
         {% else %}
@@ -44,6 +48,9 @@
         {% endfor %}
         </tbody>
     </table>
+						{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_produit_new') }}">Create new</a>
+						{% endif %}
+
 {% endblock %}

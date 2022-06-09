@@ -145,4 +145,9 @@ class Commande
 
         return $this;
     }
+    public function numcom()
+    {
+        $numcom = $this->getId().''.$this->getUser()->getId().''.$this->getDateCom()->format('dmY');
+    return $numcom;
+    }
 }
