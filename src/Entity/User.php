@@ -57,35 +57,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $commandes;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adressliv;
+   
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $cpliv;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $villeliv;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adressfact;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $cpfact;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $villefact;
+    
 
     /**
      * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="user", orphanRemoval=true)
@@ -248,77 +222,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAdressliv(): ?string
-    {
-        return $this->adressliv;
-    }
-
-    public function setAdressliv(string $adressliv): self
-    {
-        $this->adressliv = $adressliv;
-
-        return $this;
-    }
-
-    public function getCpliv(): ?float
-    {
-        return $this->cpliv;
-    }
-
-    public function setCpliv(float $cpliv): self
-    {
-        $this->cpliv = $cpliv;
-
-        return $this;
-    }
-
-    public function getVilleliv(): ?string
-    {
-        return $this->villeliv;
-    }
-
-    public function setVilleliv(string $villeliv): self
-    {
-        $this->villeliv = $villeliv;
-
-        return $this;
-    }
-
-    public function getAdressfact(): ?string
-    {
-        return $this->adressfact;
-    }
-
-    public function setAdressfact(string $adressfact): self
-    {
-        $this->adressfact = $adressfact;
-
-        return $this;
-    }
-
-    public function getCpfact(): ?float
-    {
-        return $this->cpfact;
-    }
-
-    public function setCpfact(float $cpfact): self
-    {
-        $this->cpfact = $cpfact;
-
-        return $this;
-    }
-
-    public function getVillefact(): ?string
-    {
-        return $this->villefact;
-    }
-
-    public function setVillefact(string $villefact): self
-    {
-        $this->villefact = $villefact;
-
-        return $this;
-    }
+   
 
     /**
      * @return Collection<int, Comments>

@@ -25,9 +25,6 @@ class UserCrudController extends AbstractCrudController
             TextField::new('prenom'),
             TextField::new('email'),
             // TextField::new('password'),
-            TextField::new('adressliv', 'adresse de livraison'),
-            NumberField::new('cpliv', 'code postal'),
-            TextField::new('villeliv', 'ville'),
 
 
 

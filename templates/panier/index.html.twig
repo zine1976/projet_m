@@ -72,7 +72,7 @@
 <td><strong>Total TTC :
 					&nbsp;{{total + 5}}
 					€</strong></td>
-			 <td><a href="{{ path('app_adresseliv') }}" class="btn btn-primary mt-4"> Valider mon panier {{total + 5}} €</a> </td>
+			 {# <td><a href="{{ path('app_adresseliv') }}" class="btn btn-primary mt-4"> Valider mon panier {{total + 5}} €</a> </td> #}
 </tr>
 
 </div>
@@ -82,8 +82,8 @@
 	{% if app.user %}
 		<a name="" id="" class="btn btn-danger" role="button" href="{{ path('remove_panier') }}">Vider le panier</a>
 	{% endif %}
-	<a class="nav-link" href="{{path('app_adresseliv')}}">livraison</a>
-	<a class="nav-link" href="{{path('app_adressefact')}}">facturation</a>
+	{# <a class="nav-link" href="{{path('app_adresseliv')}}">livraison</a> #}
+	{# <a class="nav-link" href="{{path('app_adressefact')}}">facturation</a> #}
 	{# <a class="nav-link" href="{{path('app_recap')}}">recap</a>    #}
 				
 				{# <b>
