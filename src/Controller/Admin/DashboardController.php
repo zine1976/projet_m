@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Entity\Adresse;
 use App\Entity\Produit;
 use App\Entity\Commande;
 use App\Entity\Comments;
@@ -72,7 +73,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Comments', 'fas fa-list', Comments::class);
         yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Categorie::class);
-
+        yield MenuItem::linkToCrud('Adresse', 'fas fa-list', Adresse::class);
         yield MenuItem::linkToRoute('retour au site', 'fa fa-home', 'app_accueil');
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);

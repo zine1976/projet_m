@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use App\Classe\Panier;
 use App\Entity\Commande;
+use App\Form\RegroupType;
 use App\Form\CommandeType;
 use App\Repository\CommandeRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/commande")
@@ -84,5 +86,30 @@ class CommandeController extends AbstractController
         }
 
         return $this->redirectToRoute('app_commande_index', [], Response::HTTP_SEE_OTHER);
+    }
+    /**
+     * @Route("/commande/regroup", name="app_regroup")
+     */
+    public function regroup(Panier $panier, Request $request)
+    {
+        if (!$this->getUser()->getAdresses()->getValues()) {
+
+            return $this->redirectToRoute('app_adresse_new');
+        }
+
+        $form = $this->createForm(RegroupType::class, null, [
+            'user' => $this->getUser()
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // dd($form->getData());
+        }
+
+        return $this->render('commande/regroup.html.twig', [
+            'panier' => $panier->getMyPanier(),
+            'form' => $form->createView(),
+
+        ]);
     }
 }
