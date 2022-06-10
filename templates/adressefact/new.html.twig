@@ -6,6 +6,9 @@
     <h1>Create new Adressefact</h1>
 
     {{ include('adressefact/_form.html.twig') }}
+				{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_adressefact_index') }}">back to list</a>
+				{% endif %}
+
 {% endblock %}

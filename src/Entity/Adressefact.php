@@ -210,6 +210,8 @@ class Adressefact
     }
     public function __toString()
 {
-    return $this->getNom().' '.$this->getRue();
+    return $this->getNomPrenom();
+    // return $this->getNom().' '.$this->getNomPrenom();
+
 }
 }

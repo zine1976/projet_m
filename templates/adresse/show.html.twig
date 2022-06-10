@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adresse{% endblock %}
+{% block title %}Adresse livraison{% endblock %}
 
 {% block body %}
-    <h1>Adresse</h1>
+    <h1>Adresse de livraison</h1>
 
     <table class="table">
         <tbody>
+				{% if is_granted('ROLE_ADMIN') %}
+
             <tr>
                 <th>Id</th>
                 <td>{{ adresse.id }}</td>
             </tr>
+				{% endif %}
+
             <tr>
                 <th>Nom</th>
                 <td>{{ adresse.nom }}</td>
@@ -53,8 +57,10 @@
             </tr>
         </tbody>
     </table>
+				{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_adresse_index') }}">back to list</a>
+				{% endif %}
 
     <a href="{{ path('app_adresse_edit', {'id': adresse.id}) }}">edit</a>
 

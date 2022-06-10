@@ -9,6 +9,7 @@ use App\Entity\Commande;
 use App\Entity\Comments;
 use App\Entity\Categorie;
 use App\Entity\Transport;
+use App\Entity\Adressefact;
 use App\Repository\UserRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
@@ -74,7 +75,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Comments', 'fas fa-list', Comments::class);
         yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Categorie::class);
-        yield MenuItem::linkToCrud('Adresse', 'fas fa-list', Adresse::class);
+        yield MenuItem::linkToCrud('Adresse de livraison', 'fas fa-list', Adresse::class);
+        yield MenuItem::linkToCrud('Adresse de facturation', 'fas fa-list', Adressefact::class);
+
         yield MenuItem::linkToCrud('Transport', 'fas fa-list', Transport::class);
 
         yield MenuItem::linkToRoute('retour au site', 'fa fa-home', 'app_accueil');

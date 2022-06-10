@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Adresse{% endblock %}
+{% block title %}Adresse de livraison{% endblock %}
 
 {% block body %}
-    <h1>Create new Adresse</h1>
+    <h1>Adresse de livraison</h1>
 
     {{ include('adresse/_form.html.twig') }}
+				{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_adresse_index') }}">back to list</a>
+				{% endif %}
+
 {% endblock %}

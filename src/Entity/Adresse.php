@@ -220,6 +220,6 @@ class Adresse
 
 public function __toString()
 {
-    return $this->getNom().' '.$this->getRue();
+    return $this->getNom().' '.$this->getNomPrenom();
 }
 }

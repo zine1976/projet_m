@@ -7,10 +7,14 @@
 
     <table class="table">
         <tbody>
+				{% if is_granted('ROLE_ADMIN') %}
+
             <tr>
                 <th>Id</th>
                 <td>{{ adressefact.id }}</td>
             </tr>
+				{% endif %}
+
             <tr>
                 <th>Nom</th>
                 <td>{{ adressefact.nom }}</td>
@@ -53,8 +57,10 @@
             </tr>
         </tbody>
     </table>
+				{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_adressefact_index') }}">back to list</a>
+				{% endif %}
 
     <a href="{{ path('app_adressefact_edit', {'id': adressefact.id}) }}">edit</a>
 
