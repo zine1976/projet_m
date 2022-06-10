@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Adressefact{% endblock %}
+
+{% block body %}
+    <h1>Create new Adressefact</h1>
+
+    {{ include('adressefact/_form.html.twig') }}
+
+    <a href="{{ path('app_adressefact_index') }}">back to list</a>
+{% endblock %}

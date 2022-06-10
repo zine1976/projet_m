@@ -2,13 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Adresse;
+use App\Entity\Adressefact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 
-class AdresseType extends AbstractType
+class AdressefactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -19,7 +19,6 @@ class AdresseType extends AbstractType
             ->add('cp')
             ->add('ville')
             ->add('pays', CountryType::class)
-            
             ->add('info')
             ->add('societe')
             ->add('tel')
@@ -31,7 +30,7 @@ class AdresseType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Adresse::class,
+            'data_class' => Adressefact::class,
         ]);
     }
 }

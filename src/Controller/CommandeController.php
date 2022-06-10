@@ -96,6 +96,10 @@ class CommandeController extends AbstractController
 
             return $this->redirectToRoute('app_adresse_new');
         }
+        if (!$this->getUser()->getAdressefacts()->getValues()) {
+
+            return $this->redirectToRoute('app_adressefact_new');
+        }
 
         $form = $this->createForm(RegroupType::class, null, [
             'user' => $this->getUser()

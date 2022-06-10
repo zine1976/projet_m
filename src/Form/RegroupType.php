@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Adresse;
 use App\Entity\Transport;
+use App\Entity\Adressefact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,14 +26,14 @@ public function buildForm(FormBuilderInterface $builder, array $options): void
             'multiple' => false,
             'expanded' => true
         ])
-        // ->add('AdresseFacturation', EntityType::class, [
-        //     'label' => 'Choisissez votre adresse de facturation',
-        //     'required' => true,
-        //     'class' => AdresseFacturation::class,
-        //     // 'choices' => $user->getAdresseFacturation(),
-        //     'multiple' => false,
-        //     'expanded' => true,
-        // ])
+        ->add('AdresseFacturation', EntityType::class, [
+            'label' => 'Choisissez votre adresse de facturation',
+            'required' => true,
+            'class' => Adressefact::class,
+            'choices' => $user->getAdressefacts(),
+            'multiple' => false,
+            'expanded' => true,
+        ])
         ->add('transporteur', EntityType::class, [
             'label' => 'Choisissez votre livraison',
             'required' => true,

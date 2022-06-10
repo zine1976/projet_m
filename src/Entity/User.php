@@ -71,6 +71,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $adresses;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Adressefact::class, mappedBy="user")
+     */
+    private $adressefacts;
+
   
 
     public function __construct()
@@ -78,6 +83,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->commandes = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->adresses = new ArrayCollection();
+        $this->adressefacts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -294,6 +300,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    /**
+     * @return Collection<int, Adressefact>
+     */
+    public function getAdressefacts(): Collection
+    {
+        return $this->adressefacts;
+    }
+
+    public function addAdressefact(Adressefact $adressefact): self
+    {
+        if (!$this->adressefacts->contains($adressefact)) {
+            $this->adressefacts[] = $adressefact;
+            $adressefact->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdressefact(Adressefact $adressefact): self
+    {
+        if ($this->adressefacts->removeElement($adressefact)) {
+            // set the owning side to null (unless already changed)
+            if ($adressefact->getUser() === $this) {
+                $adressefact->setUser(null);
+            }
+        }
+
+        return $this;
     }
     
 }

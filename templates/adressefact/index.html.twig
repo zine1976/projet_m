@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adressefact index{% endblock %}
+
+{% block body %}
+    <h1>Adressefact index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Numero</th>
+                <th>Rue</th>
+                <th>Cp</th>
+                <th>Ville</th>
+                <th>Pays</th>
+                <th>Info</th>
+                <th>Societe</th>
+                <th>Tel</th>
+                <th>Nom_prenom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adressefact in adressefacts %}
+            <tr>
+                <td>{{ adressefact.id }}</td>
+                <td>{{ adressefact.nom }}</td>
+                <td>{{ adressefact.numero }}</td>
+                <td>{{ adressefact.rue }}</td>
+                <td>{{ adressefact.cp }}</td>
+                <td>{{ adressefact.ville }}</td>
+                <td>{{ adressefact.pays }}</td>
+                <td>{{ adressefact.info }}</td>
+                <td>{{ adressefact.societe }}</td>
+                <td>{{ adressefact.tel }}</td>
+                <td>{{ adressefact.nomPrenom }}</td>
+                <td>
+                    <a href="{{ path('app_adressefact_show', {'id': adressefact.id}) }}">show</a>
+                    <a href="{{ path('app_adressefact_edit', {'id': adressefact.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adressefact_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adressefact{% endblock %}
+
+{% block body %}
+    <h1>Adressefact</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ adressefact.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ adressefact.nom }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ adressefact.numero }}</td>
+            </tr>
+            <tr>
+                <th>Rue</th>
+                <td>{{ adressefact.rue }}</td>
+            </tr>
+            <tr>
+                <th>Cp</th>
+                <td>{{ adressefact.cp }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ adressefact.ville }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ adressefact.pays }}</td>
+            </tr>
+            <tr>
+                <th>Info</th>
+                <td>{{ adressefact.info }}</td>
+            </tr>
+            <tr>
+                <th>Societe</th>
+                <td>{{ adressefact.societe }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ adressefact.tel }}</td>
+            </tr>
+            <tr>
+                <th>Nom_prenom</th>
+                <td>{{ adressefact.nomPrenom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adressefact_index') }}">back to list</a>
+
+    <a href="{{ path('app_adressefact_edit', {'id': adressefact.id}) }}">edit</a>
+
+    {{ include('adressefact/_delete_form.html.twig') }}
+{% endblock %}
