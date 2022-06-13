@@ -18,7 +18,7 @@ public function buildForm(FormBuilderInterface $builder, array $options): void
     $user = $options['user'];
 
     $builder
-        ->add('livraisonAdresse', EntityType::class, [
+        ->add('Adresse', EntityType::class, [
             'label' => 'Choisissez votre adresse de livraison',
             'required' => true,
             'class' => Adresse::class,
@@ -26,7 +26,7 @@ public function buildForm(FormBuilderInterface $builder, array $options): void
             'multiple' => false,
             'expanded' => true
         ])
-        ->add('AdresseFacturation', EntityType::class, [
+        ->add('Adressefact', EntityType::class, [
             'label' => 'Choisissez votre adresse de facturation',
             'required' => true,
             'class' => Adressefact::class,
@@ -34,7 +34,7 @@ public function buildForm(FormBuilderInterface $builder, array $options): void
             'multiple' => false,
             'expanded' => true,
         ])
-        ->add('transporteur', EntityType::class, [
+        ->add('transport', EntityType::class, [
             'label' => 'Choisissez votre livraison',
             'required' => true,
             'class' => Transport::class,

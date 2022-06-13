@@ -23,7 +23,7 @@
 				<div class="confirm-section">
                     <h5>Votre adresse de livraison</h5>
                     <hr>
-                    <b> Votre nom et prénom : </b>{{adresse.nom_prenom}} <br>
+                    <b> Votre nom et prénom : </b>{{adresse.nomPrenom}} <br>
                     <b> Societé :</b> {{adresse.societe}}<br>
                     <b> Télephone :</b> {{adresse.tel}}<br>
                     {{adresse.info}}<br>
@@ -36,8 +36,9 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Image</th>
+
                             <th scope="col">Produit</th>
-                            <th></th>
                             <th scope="col">Quantité</th>
                             <th scope="col">Prix</th>
                             <th scope="col">Total</th>
@@ -62,8 +63,8 @@
                 <strong>Sous total : {{ total }} €</strong><br>
                 <strong>Livraison : {{transport.prix}} €</strong><br>
                 <strong>Total TTC :{{ total + transport.prix}} €</strong><br>
-                <strong>Dont TVA : {{ 0.206 *(total + transport.prix)/(1+0.206)|round}} €</strong><br>
-                {# <a id="checkout-button" href="{{path('app_payment_stripe',{'token': commande.token})}}" class="btn btn-primary"> Payer {{ total + transport.prix }} €</a> #}
+                <strong>Dont TVA : {{ 0.20 *(total + transport.prix)/(1+0.20)|round}} €</strong><br>
+                <a id="checkout-button" href="{{path('app_payment',{'token': commande.token})}}" class="btn btn-primary"> Payer {{ total + transport.prix }} €</a>
             </div>
         </div>
     </div>
@@ -74,7 +75,7 @@
 
     </div>
 
-    <a href="{{ path('app_payment') }}" class="btn btn-primary col-2 offset-col-1 justify-content-center align-items-center">
+    {# <a href="{{ path('app_payment') }}" class="btn btn-primary col-2 offset-col-1 justify-content-center align-items-center"> #}
         <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Payer
     </a>
 

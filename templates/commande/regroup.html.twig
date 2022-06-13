@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				{% set formHtml %}
-				{{form_start(form, {action: path('app_accueil')})}}
+				{{form_start(form, {action: path('app_recap')})}}
 				<a href="{{path('app_adresse_new')}}">Créer une nouvelle adresse de livraison</a>
 				<br>
 				<a href="{{path('app_adressefact_new')}}">Créer une nouvelle adresse de facturation</a>
@@ -50,9 +50,10 @@
 							<td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.206 * produit.quantite) }}&nbsp;€</td>
 
 								</tr>
-								{# {% set total = total + (produit.produit.prix * produit.quantite)*1.206 %} #}
+								{% set total = total + (produit.produit.prix * produit.quantite)*1.206 %}
 							{% endfor %}
-						</tbody>
+						</tbody> 
+						
 					</table>
 				</div>
 			</div>

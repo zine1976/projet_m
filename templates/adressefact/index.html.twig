@@ -8,7 +8,9 @@
     <table class="table">
         <thead>
             <tr>
+				{% if is_granted('ROLE_ADMIN') %}
                 <th>Id</th>
+				{% endif %}
                 <th>Nom</th>
                 <th>Numero</th>
                 <th>Rue</th>
@@ -18,14 +20,16 @@
                 <th>Info</th>
                 <th>Societe</th>
                 <th>Tel</th>
-                <th>Nom_prenom</th>
+                {# <th>Nom_prenom</th> #}
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for adressefact in adressefacts %}
+        {% for adressefact in app.user.adressefacts %}
             <tr>
+				{% if is_granted('ROLE_ADMIN') %}
                 <td>{{ adressefact.id }}</td>
+				{% endif %}
                 <td>{{ adressefact.nom }}</td>
                 <td>{{ adressefact.numero }}</td>
                 <td>{{ adressefact.rue }}</td>
@@ -35,10 +39,10 @@
                 <td>{{ adressefact.info }}</td>
                 <td>{{ adressefact.societe }}</td>
                 <td>{{ adressefact.tel }}</td>
-                <td>{{ adressefact.nomPrenom }}</td>
+                {# <td>{{ adressefact.nomPrenom }}</td> #}
                 <td>
-                    <a href="{{ path('app_adressefact_show', {'id': adressefact.id}) }}">show</a>
-                    <a href="{{ path('app_adressefact_edit', {'id': adressefact.id}) }}">edit</a>
+                    <a href="{{ path('app_adressefact_show', {'id': adressefact.id}) }}">detail</a>
+                    <a href="{{ path('app_adressefact_edit', {'id': adressefact.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -49,5 +53,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_adressefact_new') }}">Create new</a>
+    <a href="{{ path('app_adressefact_new') }}">Créer une nouvelle adresse</a>
 {% endblock %}

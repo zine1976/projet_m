@@ -36,9 +36,9 @@
 						<tr>
 							<th>{{ produit.produit.nom}}</th>
 
-							<td>	<a href="{{path('decremente_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-minus" alt="diminuer" style="width:18px ;"></a>
+							<td>	<a href="{{path('decremente_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-minus nav-link active link-style" alt="diminuer" style="width:18px ;"></a>
 							&nbsp;{{ produit.quantite }}&nbsp;
-								<a href="{{path('add_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-plus" alt="ajout" style="width:18px ;"></a>
+								<a href="{{path('add_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-plus nav-link active link-style" alt="ajout" style="width:18px ;"></a>
 							
 							</td>
 							<th> <img src="/uploads/{{produit.produit.image}}" alt="image produit {{produit.produit.nom}}" style="width:35px;"></th>
@@ -67,9 +67,8 @@
 <div class="totalpanier">
 
 <tr>
-<td><strong>Frais de port : 5€</strong></td><br>
 <td><strong>Total TTC :
-					&nbsp;{{total + 5}}
+					&nbsp;{{total}}
 					€</strong></td>
 			 <td><a href="{{path('app_regroup')}}" class="btn btn-primary mt-4"> Valider mon panier {{total + 5}} €</a> </td>
 </tr>

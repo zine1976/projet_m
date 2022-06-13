@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Classe\Panier;
+use App\Entity\Commande;
+use App\Form\RegroupType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -79,24 +81,7 @@ class PanierController extends AbstractController
 
 
 
-    // /**
-    //  * @Route("/recap/", name="app_recap", methods={"GET", "POST"})
-    //  */
-    // public function recap(Request $request, User $user, UserRepository $userRepository): Response
-    // {
-    //     $form = $this->createForm(AdresseLivraisonType::class, $user);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $userRepository->add($user);
-    //         return $this->redirectToRoute('app_accueil', [], Response::HTTP_SEE_OTHER);
-    //     }
-
-    //     return $this->renderForm('panier/recap.html.twig', [
-    //         'user' => $user,
-    //         'form' => $form,
-    //     ]);
-    }
+}
     
 
 

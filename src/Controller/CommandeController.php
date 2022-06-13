@@ -2,11 +2,16 @@
 
 namespace App\Controller;
 
+use DateTime;
+use App\Entity\User;
 use App\Classe\Panier;
 use App\Entity\Commande;
 use App\Form\RegroupType;
 use App\Form\CommandeType;
+use App\Entity\CommandeProduit;
+use App\Repository\UserRepository;
 use App\Repository\CommandeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +22,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class CommandeController extends AbstractController
 {
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
      * @Route("/", name="app_commande_index", methods={"GET"})
      */
@@ -116,4 +126,99 @@ class CommandeController extends AbstractController
 
         ]);
     }
+
+     /**
+      * @Route("/commande/recap", name="app_recap", methods={"GET", "POST"})
+      */
+      public function recap(Request $request, Panier $panier): Response
+      {
+         $form = $this->createForm(RegroupType::class, null, [
+             'user' => $this->getUser()
+         ]);
+ 
+         $form->handleRequest($request);
+ 
+         if ($form->isSubmitted() && $form->isValid()) {
+ 
+             $dateCommande = new DateTime();
+             $transport = $form->get('transport')->getData();
+             $adresse = $form->get('Adresse')->getData();
+             $adressefact = $form->get('Adressefact')->getData();
+ 
+ 
+             // Je recupere les informations liés à la livraison
+             $adresse_info = $adresse->getNomPrenom();
+             $adresse_info .= '<br/>' . $adresse->getTel();
+ 
+             if ($adresse->getSociete()) {
+ 
+                 $adresse_info .= '<br/>' . $adresse->getSociete();
+             }
+             $adresse_info .= '<br/>' . $adresse->getNumero();
+             $adresse_info .= '<br/>' .  $adresse->getRue();
+ 
+             if ($adresse->getInfo()) {
+ 
+                 $adresse_info .= '<br/>' . $adresse->getInfo();
+             }
+ 
+             $adresse_info .= '<br/>' . $adresse->getCp();
+             $adresse_info .= '<br/>' . $adresse->getVille();
+             $adresse_info .= '<br/>' . $adresse->getPays();
+ //Je recupere toutes les information liés à la facturation
+ 
+             $adressefact_info = $adresse->getNomPrenom();
+             $adressefact_info .= '<br/>' . $adressefact->getTel();
+ 
+             if ($adressefact->getSociete()) {
+                 $adressefact_info .= '<br/>' . $adressefact->getSociete();
+             }
+             $adressefact_info .= '<br/>' . $adressefact->getNumero();
+             $adressefact_info .= '<br/>' .  $adressefact->getRue();
+ 
+             if ($adressefact->getInfo()) {
+ 
+                 $adressefact_info .= '<br/>' . $adressefact->getInfo();
+             }
+             $adressefact_info .= '<br/>' . $adressefact->getCp();
+             $adressefact_info .= '<br/>' . $adressefact->getVille();
+             $adressefact_info .= '<br/>' . $adressefact->getPays();
+ 
+ 
+             $commande = new Commande();
+             $commande->setUser($this->getUser());
+             $commande->setDateCom($dateCommande);
+             $commande->setTransportNom($transport->getNom());
+             $commande->setTransportPrix($transport->getPrix());
+             $commande->setAdresse($adresse_info);
+             $commande->setAdressefact($adressefact_info);
+             $commande->setToken(hash('sha256', random_bytes(32)));
+ //Je fige les données de commande
+             $this->entityManager->persist($commande);
+ 
+             foreach ($panier->getMyPanier() as $produit) {
+                 $commandeProduit = new CommandeProduit;
+                 $commandeProduit->setCommande($commande);
+                 $commandeProduit->setProduit($produit['produit']);
+                 $commandeProduit->setQuantite($produit['quantite']);
+                 $commandeProduit->setPrix($produit['produit']->getPrix());
+                 $commandeProduit->setTotal($produit['produit']->getPrix() * $produit['quantite']);
+ 
+                 // je fige les données de commandeProduit
+                 $this->entityManager->persist($commandeProduit);
+             }
+             // J'envoi tout en bdd
+             $this->entityManager->flush();
+ 
+             return $this->render('commande/recap.html.twig', [
+                 'transport' => $transport,
+                 'adresse' => $adresse,
+                 'panier' => $panier->getMyPanier(),
+                 'form' => $form->createView(),
+                 'commande' => $commande,
+             ]);
+         }
+         return $this->redirectToRoute('app_panier');
+ 
+     }
 }

@@ -31,7 +31,7 @@ class Commande
   
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $etat;
 
@@ -50,6 +50,26 @@ class Commande
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $TransportNom;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $TransportPrix;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Adressefact;
 
     public function __construct()
     {
@@ -149,5 +169,53 @@ class Commande
     {
         $numcom = $this->getId().''.$this->getUser()->getId().''.$this->getDateCom()->format('dmY');
     return $numcom;
+    }
+
+    public function getTransportNom(): ?string
+    {
+        return $this->TransportNom;
+    }
+
+    public function setTransportNom(string $TransportNom): self
+    {
+        $this->TransportNom = $TransportNom;
+
+        return $this;
+    }
+
+    public function getTransportPrix(): ?int
+    {
+        return $this->TransportPrix;
+    }
+
+    public function setTransportPrix(int $TransportPrix): self
+    {
+        $this->TransportPrix = $TransportPrix;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->Adresse;
+    }
+
+    public function setAdresse(string $Adresse): self
+    {
+        $this->Adresse = $Adresse;
+
+        return $this;
+    }
+
+    public function getAdressefact(): ?string
+    {
+        return $this->Adressefact;
+    }
+
+    public function setAdressefact(string $Adressefact): self
+    {
+        $this->Adressefact = $Adressefact;
+
+        return $this;
     }
 }

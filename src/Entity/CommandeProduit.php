@@ -34,6 +34,16 @@ class CommandeProduit
      */
     private $quantite;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Prix;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Total;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +81,34 @@ class CommandeProduit
     public function setQuantite(int $quantite): self
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->getProduit();
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->Prix;
+    }
+
+    public function setPrix(int $Prix): self
+    {
+        $this->Prix = $Prix;
+
+        return $this;
+    }
+
+    public function getTotal(): ?int
+    {
+        return $this->Total;
+    }
+
+    public function setTotal(int $Total): self
+    {
+        $this->Total = $Total;
 
         return $this;
     }

@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use DateTime;
 use Stripe\Stripe;
+use App\Classe\Panier;
 use App\Entity\Commande;
 use Stripe\Checkout\Session;
 use App\Entity\CommandeProduit;
 use Doctrine\ORM\EntityManager;
 use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,62 +29,133 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class PaymentController extends AbstractController
 {
     /**
-     * @Route("/payment", name="app_payment")
+     * @Route("/payment/{token}", name="app_payment")
      */
-    public function index(SessionInterface $session, ProduitRepository $pr, CommandeRepository $cr, Security $security, ManagerRegistry $mr): Response
+    // public function index(SessionInterface $session, ProduitRepository $pr, CommandeRepository $cr, Security $security, ManagerRegistry $mr): Response
+    // {
+    //     $panier = $session->get('panier', []);
+
+    //     Stripe::setApiKey($this->getParameter('stripeSecretKey'));
+
+    //     if (empty($panier)) {
+    //         $this->addFlash('error', 'Votre panier est vide, vous ne pouvez donc pas payer...');
+    //         return $this->redirectToRoute('app_produit');
+    //     }
+
+    //     $ids = array_keys($panier);
+    //     $produits = $pr->getAllProduits($ids);
+
+    //     $commande = new Commande;
+    //     $commande->setEtat('En cours');
+    //     $commande->setToken(hash('sha256', random_bytes(32)));
+
+    //     $commande->setDateCom(new DateTime);
+    //     $user = $security->getUser();
+    //     $commande->setUser($user);
+    //     $line_items = [];
+
+    //     foreach ($panier as $id => $quantite) {
+    //         $produit = $produits[$id];
+    //         $cp = new CommandeProduit;
+    //         $cp->setQuantite($quantite);
+    //         $cp->setProduit($produit);
+    //         $commande->addCommandeProduit($cp);
+    //         $line_items[] = [
+    //             'price_data' => [
+    //                 'currency' => 'eur',
+    //                 'product_data' => [
+    //                     'name' => $produit->getNom(),
+    //                     'images' => [$produit->getImage()] // Lien ABSOLU
+    //                 ],
+    //                 'unit_amount' => $produit->getPrix() * 100 // Montant en centimes
+    //             ],
+    //             'quantity' => $quantite,
+    //         ];
+    //     }
+    //     $line_items[] = [
+    //         'price_data' => [
+    //             'currency' => 'eur',
+    //             'unit_amount' => $commande->getTransportPrix() * 100,// Montant en centimes
+                
+    //             'product_data' => [
+    //                 'name' => $commande->getTransportNom(),
+    //             ],],
+    //             'quantity' => 1,
+    //         ];
+    //         // dd($line_items);
+
+    //     $checkout = Session::create([
+    //         'payment_method_types' => ['card'],
+
+    //         'line_items' => $line_items,
+    //         'mode' => 'payment',
+    //         'success_url' => $this->generateUrl('app_payment_success', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL),
+    //         'cancel_url' =>  $this->generateUrl('app_payment_cancel', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL),
+
+    //         // 'success_url' => $this->generateUrl('app_payment_success', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL), // Lien ABSOLU
+    //         // 'cancel_url' => $this->generateUrl('app_payment_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL), // Lien ABSOLU
+    //     ]);
+
+    //     $cr->add($commande);
+
+    //     return $this->redirect($checkout->url);
+    // }
+    // celui de vlad
+    public function index($token, EntityManagerInterface $entityManager, Panier $panier)
     {
-        $panier = $session->get('panier', []);
 
-        Stripe::setApiKey($this->getParameter('stripeSecretKey'));
+        $for_stripe = [];
+        $YOUR_DOMAIN = 'http://localhost:3000/public';
 
-        if (empty($panier)) {
-            $this->addFlash('error', 'Votre panier est vide, vous ne pouvez donc pas payer...');
-            return $this->redirectToRoute('app_produit');
-        }
+        $commande = $entityManager->getRepository(Commande::class)->findOneBy(array('token' => $token));
 
-        $ids = array_keys($panier);
-        $produits = $pr->getAllProduits($ids);
 
-        $commande = new Commande;
-        $commande->setEtat('En cours');
-        $commande->setToken(hash('sha256', random_bytes(32)));
+        //Je boucle sur les entrées de mon panier
+        foreach ($commande->getCommandeProduits()->getValues() as $produit) {
+            // Je transmet la quantité et le prix des produits à stripe
+            $for_stripe[] = [
 
-        $commande->setDateCom(new DateTime);
-        $user = $security->getUser();
-        $commande->setUser($user);
-        $line_items = [];
-
-        foreach ($panier as $id => $quantite) {
-            $produit = $produits[$id];
-            $cp = new CommandeProduit;
-            $cp->setQuantite($quantite);
-            $cp->setProduit($produit);
-            $commande->addCommandeProduit($cp);
-            $line_items[] = [
                 'price_data' => [
                     'currency' => 'eur',
+                    'unit_amount' => $produit->getPrix() *100,
                     'product_data' => [
-                        'name' => $produit->getNom(),
-                        'images' => [$produit->getImage()] // Lien ABSOLU
+                        'name' => $produit->getProduit(),
                     ],
-                    'unit_amount' => $produit->getPrix() * 100 // Montant en centimes
                 ],
-                'quantity' => $quantite,
+                'quantity' => $produit->getQuantite(),
             ];
         }
+        // Je transmet le nom et le prix de la livraison
+        $for_stripe[] = [
+            'price_data' => [
+                'currency' => 'eur',
+                'unit_amount' => $commande->getTransportPrix() * 100,
+                'product_data' => [
+                    'name' => $commande->getTransportNom(),
+                ],
+            ],
+            'quantity' => 1,
+        ];
+Stripe::setApiKey($this->getParameter('stripeSecretKey'));
 
-
-        $checkout = Session::create([
-            'line_items' => $line_items,
+        $checkout_session = Session::create([
+            // Je preremplis le champ email de l'utilisateur
+            'customer_email' => $this->getUser()->getEmail(),
+            'payment_method_types' => ['card'],
+            'line_items' => [
+                $for_stripe
+            ],
             'mode' => 'payment',
-            'success_url' => $this->generateUrl('app_payment_success', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL), // Lien ABSOLU
-            'cancel_url' => $this->generateUrl('app_payment_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL), // Lien ABSOLU
+            // Les redirections en cas de echec ou success de paiement
+            'success_url' => $this->generateUrl('app_payment_success', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL),
+            'cancel_url' =>  $this->generateUrl('app_payment_cancel', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL),
+
         ]);
 
-        $cr->add($commande);
 
-        return $this->redirect($checkout->url);
+        return $this->redirect($checkout_session->url);
     }
+    // fin de vlad
 
     /**
      * @Route("/success/{token}", name="app_payment_success")
