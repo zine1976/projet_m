@@ -1,0 +1,50 @@
+
+
+{% block body %}
+
+    <h1>Mes commandes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>numero de commande</th>
+                <th>Date de la commande</th>
+                <th>Etat</th>
+                <th>produit</th>
+					 {# <th>image</th> #}
+					<th>quantité</th>
+					{# <th>pdf</th> #}
+
+                {# <th>actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {# {% for commande in commandes %} #}
+        {% for commande in app.user.commandes %}
+
+            <tr>
+                <td>{{ commande.numcom }}</td>
+                <td>{{ commande.datecom ? commande.datecom|date('Y-m-d') : '' }}</td>
+                <td>{{ commande.etat }}</td>
+                {# <td>{{ commande.user.nom }}</td> #}
+
+                <td>
+                {% for cp in commande.commandeProduits %}
+								{{(cp.produit.nom) }}</td>
+						</td>
+						{# <td>
+							<img src="{{ asset("uploads/" ~ cp.produit.image) }}" alt="" class="imgreg img-fluid thumbnail">
+						</td> #}
+
+						<td>{{(cp.quantite)}}</td>
+                   {# <td> <a href="{{ path('app_commande_pdf', {'id': commande.id}) }}">pdf</a> #}
+</td>
+					{% endfor %}
+
+            
+        {% endfor %}
+        </tbody>
+    </table>
+					
+
+{% endblock %}

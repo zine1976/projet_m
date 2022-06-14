@@ -1,0 +1,68 @@
+{% block body %}
+
+
+
+	<div class="container">
+		<h1 class="text-center m-5">facture</h1>
+		<hr>
+		<div class="row">
+			<div class="col-md-12 ">
+				<h5 class="text-center">Récapitulatif de votre commande</h5><br>
+				<div class="d-flex">
+					
+				
+				</div>
+				<div class="confirm-section">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Produit</th>
+								<th scope="col">Quantité</th>
+								<th scope="col">Prix</th>
+								<th scope="col">Total HT</th>
+
+							</tr>
+						</thead>
+						 {% set total = null %}
+						{% for produit in commande.commandeProduits %}
+							{# <tr class="{% if key > 0 %} m-2 {% endif %}"> #}
+								<td>{{produit.produit.nom}}</td>
+								<td>
+									{{produit.quantite}}</td>
+
+								<td>{{produit.prix}}€
+								</td>
+								<td>{{ produit.prix * produit.quantite}}€
+								</td>
+							</tr>
+							{% set total = total + (produit.prix * produit.quantite) %}  
+						
+						{% endfor %}
+
+					</tbody>
+				</table>
+			</div>
+			<div class="m-3">
+				<hr>
+				 <strong>Sous total :
+					{{ total }}
+					€</strong><br>
+				<strong>TVA :
+					{{ 0.20 * total |round}}
+					€</strong><br>
+				<strong>Livraison :
+                    {{commande.transportPrix}}
+                    {{commande.transportNom}}
+                    {{commande.adresse}}
+                    {{commande.adressefact}}
+
+
+					€</strong><br>
+				<strong>Total TTC :{{ total + commande.transportPrix + (0.20 * total)}}
+					€</strong><br> 
+
+				
+			</div>
+		</div>
+	</div>
+</div></div>{% endblock %}

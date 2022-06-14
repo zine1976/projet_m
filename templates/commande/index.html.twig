@@ -21,6 +21,8 @@
                 <th>produit</th>
 					 <th>image</th>
 					<th>quantité</th>
+					<th>pdf</th>
+
                 <th>actions</th>
             </tr>
         </thead>
@@ -43,8 +45,10 @@
 						</td>
 
 						<td>{{(cp.quantite)}}</td>
-
+                   <td> <a href="{{ path('app_commande_pdf', {'id': commande.id}) }}">pdf</a>
+</td>
 					{% endfor %}
+
                                                                 <td><a href="{{ path('app_commande_show', {'id': commande.id}) }}">detail</a> </td>
 						{# {% if is_granted('ROLE_ADMIN') %}
 

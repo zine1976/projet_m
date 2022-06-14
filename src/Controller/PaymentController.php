@@ -31,76 +31,7 @@ class PaymentController extends AbstractController
     /**
      * @Route("/payment/{token}", name="app_payment")
      */
-    // public function index(SessionInterface $session, ProduitRepository $pr, CommandeRepository $cr, Security $security, ManagerRegistry $mr): Response
-    // {
-    //     $panier = $session->get('panier', []);
-
-    //     Stripe::setApiKey($this->getParameter('stripeSecretKey'));
-
-    //     if (empty($panier)) {
-    //         $this->addFlash('error', 'Votre panier est vide, vous ne pouvez donc pas payer...');
-    //         return $this->redirectToRoute('app_produit');
-    //     }
-
-    //     $ids = array_keys($panier);
-    //     $produits = $pr->getAllProduits($ids);
-
-    //     $commande = new Commande;
-    //     $commande->setEtat('En cours');
-    //     $commande->setToken(hash('sha256', random_bytes(32)));
-
-    //     $commande->setDateCom(new DateTime);
-    //     $user = $security->getUser();
-    //     $commande->setUser($user);
-    //     $line_items = [];
-
-    //     foreach ($panier as $id => $quantite) {
-    //         $produit = $produits[$id];
-    //         $cp = new CommandeProduit;
-    //         $cp->setQuantite($quantite);
-    //         $cp->setProduit($produit);
-    //         $commande->addCommandeProduit($cp);
-    //         $line_items[] = [
-    //             'price_data' => [
-    //                 'currency' => 'eur',
-    //                 'product_data' => [
-    //                     'name' => $produit->getNom(),
-    //                     'images' => [$produit->getImage()] // Lien ABSOLU
-    //                 ],
-    //                 'unit_amount' => $produit->getPrix() * 100 // Montant en centimes
-    //             ],
-    //             'quantity' => $quantite,
-    //         ];
-    //     }
-    //     $line_items[] = [
-    //         'price_data' => [
-    //             'currency' => 'eur',
-    //             'unit_amount' => $commande->getTransportPrix() * 100,// Montant en centimes
-                
-    //             'product_data' => [
-    //                 'name' => $commande->getTransportNom(),
-    //             ],],
-    //             'quantity' => 1,
-    //         ];
-    //         // dd($line_items);
-
-    //     $checkout = Session::create([
-    //         'payment_method_types' => ['card'],
-
-    //         'line_items' => $line_items,
-    //         'mode' => 'payment',
-    //         'success_url' => $this->generateUrl('app_payment_success', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL),
-    //         'cancel_url' =>  $this->generateUrl('app_payment_cancel', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL),
-
-    //         // 'success_url' => $this->generateUrl('app_payment_success', ['token' => $commande->getToken()], UrlGeneratorInterface::ABSOLUTE_URL), // Lien ABSOLU
-    //         // 'cancel_url' => $this->generateUrl('app_payment_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL), // Lien ABSOLU
-    //     ]);
-
-    //     $cr->add($commande);
-
-    //     return $this->redirect($checkout->url);
-    // }
-    // celui de vlad
+       
     public function index($token, EntityManagerInterface $entityManager, Panier $panier)
     {
 
@@ -155,7 +86,7 @@ Stripe::setApiKey($this->getParameter('stripeSecretKey'));
 
         return $this->redirect($checkout_session->url);
     }
-    // fin de vlad
+    
 
     /**
      * @Route("/success/{token}", name="app_payment_success")
