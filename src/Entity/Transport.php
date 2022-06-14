@@ -74,6 +74,6 @@ class Transport
     }
     public function __toString()
     {
-        return $this->getNom();
+        return $this->getNom().' '. $this->getPrix() .'€'. $this->getDetail();
     }
 }

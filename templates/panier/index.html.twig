@@ -46,9 +46,9 @@
 							<td>{{ produit.produit.prix }}&nbsp;€</td>
 
 							<td>{{ (produit.produit.prix * produit.quantite) }}&nbsp;€</td>
-							<td>{{ produit.produit.prix * 0.206 * produit.quantite}}&nbsp;€</td>
+							<td>{{ produit.produit.prix * 0.20 * produit.quantite}}&nbsp;€</td>
 
-							<td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.206 * produit.quantite) }}&nbsp;€</td>
+							<td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.20 * produit.quantite) }}&nbsp;€</td>
 
 							
 
@@ -59,7 +59,7 @@
 							
 						</tr>
 
-						{% set total = total + (produit.produit.prix * produit.quantite)*1.206 %}
+						{% set total = total + (produit.produit.prix * produit.quantite)*1.20 %}
 					{% endfor %}
 
 				</tbody>
@@ -70,7 +70,7 @@
 <td><strong>Total TTC :
 					&nbsp;{{total}}
 					€</strong></td>
-			 <td><a href="{{path('app_regroup')}}" class="btn btn-primary mt-4"> Valider mon panier {{total + 5}} €</a> </td>
+			 <td><a href="{{path('app_regroup')}}" class="btn btn-primary mt-4"> Valider mon panier {{total}} €</a> </td>
 </tr>
 
 </div>

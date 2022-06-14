@@ -19,9 +19,9 @@ class AdresseType extends AbstractType
             ->add('nom', TextType::class,
            [ 'label' => 'votre nom'
            ])
-            ->add('numero', NumberType::class, [ 'label' => 'votre numero'
+            ->add('numero', NumberType::class, [ 'label' => 'votre numero de rue'
             ])
-            ->add('rue', TextType::class, [ 'label' => 'votre numero de rue'])
+            ->add('rue', TextType::class, [ 'label' => 'votre rue'])
             ->add('cp', NumberType::class, [ 'label' => 'votre code postal'])
             ->add('ville', TextType::class, ['label' => 'votre ville'])
             ->add('pays', CountryType::class, ['label' => 'votre pays'])

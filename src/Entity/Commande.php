@@ -47,7 +47,7 @@ class Commande
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, name="user_id", onDelete="SET NULL")
      */
     private $user;
 
