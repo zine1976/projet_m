@@ -158,41 +158,46 @@ class CommandeController extends AbstractController
 
             // Je recupere les informations liés à la livraison
             $adresse_info = $adresse->getNomPrenom();
-            $adresse_info .= '<br/>' . $adresse->getTel();
+            $adresse_info .= '<br/>' . $adresse->getNumero();
+            $adresse_info .= '<br/>' .  $adresse->getRue();
+            $adresse_info .= '<br/>' . $adresse->getCp();
+            $adresse_info .= '<br/>' . $adresse->getVille();
+            $adresse_info .= '<br/>' . $adresse->getPays();
 
             if ($adresse->getSociete()) {
 
                 $adresse_info .= '<br/>' . $adresse->getSociete();
             }
-            $adresse_info .= '<br/>' . $adresse->getNumero();
-            $adresse_info .= '<br/>' .  $adresse->getRue();
+           
 
             if ($adresse->getInfo()) {
 
                 $adresse_info .= '<br/>' . $adresse->getInfo();
             }
+            $adresse_info .= '<br/>' . $adresse->getTel();
 
-            $adresse_info .= '<br/>' . $adresse->getCp();
-            $adresse_info .= '<br/>' . $adresse->getVille();
-            $adresse_info .= '<br/>' . $adresse->getPays();
+
+            
             //Je recupere toutes les information liés à la facturation
 
             $adressefact_info = $adresse->getNomPrenom();
-            $adressefact_info .= '<br/>' . $adressefact->getTel();
-
-            if ($adressefact->getSociete()) {
-                $adressefact_info .= '<br/>' . $adressefact->getSociete();
-            }
+           
             $adressefact_info .= '<br/>' . $adressefact->getNumero();
             $adressefact_info .= '<br/>' .  $adressefact->getRue();
+            $adressefact_info .= '<br/>' . $adressefact->getCp();
+            $adressefact_info .= '<br/>' . $adressefact->getVille();
+            $adressefact_info .= '<br/>' . $adressefact->getPays();
 
             if ($adressefact->getInfo()) {
 
                 $adressefact_info .= '<br/>' . $adressefact->getInfo();
             }
-            $adressefact_info .= '<br/>' . $adressefact->getCp();
-            $adressefact_info .= '<br/>' . $adressefact->getVille();
-            $adressefact_info .= '<br/>' . $adressefact->getPays();
+            $adressefact_info .= '<br/>' . $adressefact->getTel();
+
+            if ($adressefact->getSociete()) {
+                $adressefact_info .= '<br/>' . $adressefact->getSociete();
+            }
+            
 
 
             $commande = new Commande();
@@ -231,15 +236,7 @@ class CommandeController extends AbstractController
         return $this->redirectToRoute('app_panier');
     }
 
-    //  /**
-    //   * @Route("/commande/detail", name="app_commande_pdf", methods={"GET"})
-    //   */
-    //  public function generatePdfCommande(Commande $commande = null, PdfService $pdf) {
-    //      $html = $this->render('commande/detail.html.twig', ['commande' => $commande,
-
-    //     ]);
-    //      $pdf->showPdfFile($html);
-    //  }
+    
     /**
      * @Route("/commande/facture{id}", name="app_facture_pdf", methods={"GET"})
      */
@@ -248,13 +245,6 @@ class CommandeController extends AbstractController
 
     {
       
-        // $produit = $produitRepository->findAll();
-        // $transport = $transportRepository->findAll();
-        // $adresse = $adresseRepository->findAll();
-        // $commande = $commandeRepository->findAll();
-
-        
-
 
         $html = $this->render('commande/facture.html.twig', [
             'commande' => $commandeRepository->findOneBy([

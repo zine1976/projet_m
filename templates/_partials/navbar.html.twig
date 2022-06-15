@@ -46,10 +46,10 @@
 	</a>
 	{% if is_granted('ROLE_ADMIN') %}
 
-		<a class="nav-link" href="{{path('app_user_index')}}">liste utilisateurs</a>
 		<a class="nav-link" href="{{path('admin')}}">Admin</a>
 		<a class="nav-link" href="{{path('app_adresse_index')}}">adresse liv</a>
 		<a class="nav-link" href="{{path('app_adressefact_index')}}">adresse fact</a>
+		<a class="nav-link" href="{{path('app_user_index')}}">liste utilisateurs</a>
 
 
 		{# <a class="nav-link" href="{{path('app_produit')}}">Produits</a> #}

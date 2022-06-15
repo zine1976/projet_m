@@ -21,7 +21,7 @@
                 <th>produit</th>
 					 <th>image</th>
 					<th>quantité</th>
-					<th>pdf</th>
+					{# <th>pdf</th> #}
 
                 <th>actions</th>
             </tr>
@@ -45,7 +45,7 @@
 						</td>
 
 						<td>{{(cp.quantite)}}</td>
-                   <td> <a href="{{ path('app_commande_pdf', {'id': commande.id}) }}">pdf</a>
+                   {# <td> <a href="{{ path('app_commande_pdf', {'id': commande.id}) }}">pdf</a> #}
 </td>
 					{% endfor %}
 

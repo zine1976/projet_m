@@ -1,17 +1,17 @@
 {% block body %}
-
+<h1>L'ART DU MAROC</h1>
 
 
 	<div class="container">
 		<h1 class="text-center m-5">facture</h1>
-		<hr>
-		<div class="row">
-			<div class="col-md-12 ">
+		{# <hr>/ #}
+		{# <div class="row"> #}
+			{# <div class="col-md-12 "> #}
+			<h5 class="text-center">Bonjour 
+			{{commande.user.nom}}
+                    {{commande.user.prenom}}</h5><br>
 				<h5 class="text-center">Récapitulatif de votre commande</h5><br>
-				<div class="d-flex">
-					
 				
-				</div>
 				<div class="confirm-section">
 					<table class="table">
 						<thead>
@@ -44,25 +44,46 @@
 			</div>
 			<div class="m-3">
 				<hr>
-				 <strong>Sous total :
+				 <strong>Total HT :
 					{{ total }}
 					€</strong><br>
 				<strong>TVA :
 					{{ 0.20 * total |round}}
 					€</strong><br>
+					
 				<strong>Livraison :
-                    {{commande.transportPrix}}
-                    {{commande.transportNom}}
-                    {{commande.adresse}}
-                    {{commande.adressefact}}
+                    {{commande.transportPrix}}€</strong><br>
+				<strong>Transporteur :
+                    {{commande.transportNom}}</strong><br>
+					<strong>Montant TTC :{{ total + commande.transportPrix + (0.20 * total)}}
+					€</strong><br> </div>
+					<div class="facture">
+					<div class="col-4">
+				<strong>vos coordonnées de livraison:
+                    {{commande.adresse|raw}}
+                    </strong><br> </div>
+					<div class="col-4">
 
+<strong>vos coordonnées de facturation:
+                    {{commande.adressefact|raw}}
+                    </strong><br>
+</div>
+</div> 
+				<strong>votre email :
+                    {{commande.user.email}}</strong><br>
 
-					€</strong><br>
-				<strong>Total TTC :{{ total + commande.transportPrix + (0.20 * total)}}
-					€</strong><br> 
+</div>
+
 
 				
+				
+
+				
+				
+
+{# 				
 			</div>
 		</div>
 	</div>
-</div></div>{% endblock %}
+</div></div> #}
+{% endblock %}

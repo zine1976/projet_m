@@ -282,3 +282,7 @@ position: relative;
 .card:hover .overlay{
   transform: scale(1);
 } 
+.facture {
+  display: flex;
+  justify-content: center;
+}
