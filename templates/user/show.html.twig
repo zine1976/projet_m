@@ -46,12 +46,12 @@
   </a>
   <a href="{{path('app_adresse_index')}}" class="list-group-item list-group-item-action">Mon adresse de livraison</a>
   <a href="{{path('app_adressefact_index')}}" class="list-group-item list-group-item-action">Mon adresse de facturation</a>
-  <a href="{{path('app_transport_index')}}" class="list-group-item list-group-item-action">transport</a>
   
   <a href="{{path('app_panier')}}" class="list-group-item list-group-item-action">Mon panier</a>
 </div>
 
 
+  <a href="{{path('app_donnees_pdf', {id: user.id})}}" class="">exporter mes données</a>
     
 
 {% endblock %}

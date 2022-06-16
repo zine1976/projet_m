@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\PdfService;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,5 +91,23 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+        /**
+     * @Route("/user/donnees{id}", name="app_donnees_pdf", methods={"GET"})
+     */
+    public function facturePdfCommande($id, UserRepository $userRepository, PdfService $pdf)
+
+    {
+      
+
+        $html = $this->render('user/donnees.html.twig', [
+            'user' => $userRepository->findOneBy([
+                'id'=>$id,
+            ]),
+
+        ]);
+        
+        $pdf->showPdfFile($html);
     }
 }

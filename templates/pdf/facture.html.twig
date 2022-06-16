@@ -1,102 +1,89 @@
 {% block body %}
-
+<h1>L'ART DU MAROC</h1>
 
 
 	<div class="container">
 		<h1 class="text-center m-5">facture</h1>
-		<hr>
-		<div class="row">
-			<div class="col-md-12 ">
+		{# <hr>/ #}
+		{# <div class="row"> #}
+			{# <div class="col-md-12 "> #}
+			<h5 class="text-center">Bonjour 
+			{{commande.user.nom}}
+                    {{commande.user.prenom}}</h5><br>
 				<h5 class="text-center">Récapitulatif de votre commande</h5><br>
-				<div class="d-flex">
-					<div class=" confirm-section">
-						<h5>Votre choix de livraison</h5>
-						<hr>
-						<b>Societé :
-						</b>
-						{# {{transport.nom}}<br>
-						<b>Tarif:
-						</b>
-						{{transport.prix}}
-						€<br>
-						<b>Déscription :
-						</b>
-						{{transport.detail|raw}}<br> #}
-					</div>
-					<div class="confirm-section">
-						<h5>Votre adresse de livraison</h5>
-						<hr>
-						<b>
-							Votre nom et prénom :
-						</b>
-						{# {{adresse.nomPrenom}} #}
-						<br>
-						<b>
-							Societé :</b>
-						{# {{adresse.societe}}<br> #}
-						<b>
-							Télephone :</b>
-						{# {{adresse.tel}}<br> #}
-						{# {{adresse.info}}<br> #}
-						<b>
-							Adresse :</b>
-						{# {{adresse.numero}} #}
-						{# {{adresse.rue}}<br> #}
-						{# {{adresse.ville}} #}
-						{# {{adresse.cp}} #}
-						<br>
-						{# {{adresse.pays}} #}
-					</div>
-				</div>
+				
 				<div class="confirm-section">
 					<table class="table">
 						<thead>
 							<tr>
 								<th scope="col">Produit</th>
 								<th scope="col">Quantité</th>
-								{# <th scope="col">Image</th> #}
 								<th scope="col">Prix</th>
 								<th scope="col">Total HT</th>
-								<th scope="col">pdf</th>
 
 							</tr>
 						</thead>
-						{# {% set total = null %}
-						{% for key,prod in produit %}
-							<tr class="{% if key > 0 %} m-2 {% endif %}">
-								<td>{{prod.produit.nom}}</td>
+						 {% set total = null %}
+						{% for produit in commande.commandeProduits %}
+							{# <tr class="{% if key > 0 %} m-2 {% endif %}"> #}
+								<td>{{produit.produit.nom}}</td>
 								<td>
-									{{prod.quantite}}</td>
-								{# <td><img src="/uploads/{{produit.produit.image}}" alt=" image du produit: {{produit.produit.nom}}" style="width:17px;"></td> #}
+									{{produit.quantite}}</td>
 
-								{# <td>{{prod.produit.prix}}€
+								<td>{{produit.prix}}€
 								</td>
-								<td>{{ prod.produit.prix * prod.quantite}}€
+								<td>{{ produit.prix * produit.quantite}}€
 								</td>
 							</tr>
-							{% set total = total + (prod.produit.prix * prod.quantite) %} #} #}
-                    {# <td> <a href="{{ path('app_commande_pdf', {'id': commande.id}) }}">pdf</a>  #}
+							{% set total = total + (produit.prix * produit.quantite) %}  
 						
-						{# {% endfor %} #}
+						{% endfor %}
+
 					</tbody>
 				</table>
 			</div>
 			<div class="m-3">
 				<hr>
-				{# <strong>Sous total :
+				 <strong>Total HT :
 					{{ total }}
 					€</strong><br>
 				<strong>TVA :
 					{{ 0.20 * total |round}}
 					€</strong><br>
+					
 				<strong>Livraison :
-					{{transport.prix}}
-					€</strong><br>
-				<strong>Total TTC :{{ total + transport.prix + (0.20 * total)}}
-					€</strong><br> #}
+                    {{commande.transportPrix}}€</strong><br>
+				<strong>Transporteur :
+                    {{commande.transportNom}}</strong><br>
+					<strong>Montant TTC :{{ total + commande.transportPrix + (0.20 * total)}}
+					€</strong><br> </div>
+					<div class="facture">
+					<div class="col-4">
+				<strong>vos coordonnées de livraison:
+                    {{commande.adresse|raw}}
+                    </strong><br> </div>
+					<div class="col-4">
+
+<strong>vos coordonnées de facturation:
+                    {{commande.adressefact|raw}}
+                    </strong><br>
+</div>
+</div> 
+				<strong>votre email :
+                    {{commande.user.email}}</strong><br>
+
+</div>
+
 
 				
+				
+
+				
+				
+
+{# 				
 			</div>
 		</div>
 	</div>
-</div></div>{% endblock %}
+</div></div> #}
+{% endblock %}

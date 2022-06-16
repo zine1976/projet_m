@@ -6,6 +6,7 @@ use DateTime;
 use Stripe\Stripe;
 use App\Classe\Panier;
 use App\Entity\Commande;
+use App\Service\PdfService;
 use Stripe\Checkout\Session;
 use App\Entity\CommandeProduit;
 use Doctrine\ORM\EntityManager;
@@ -91,10 +92,11 @@ Stripe::setApiKey($this->getParameter('stripeSecretKey'));
     /**
      * @Route("/success/{token}", name="app_payment_success")
      */
-    public function success($token, SessionInterface $session, CommandeRepository $cr): Response
+    public function success($token,  SessionInterface $session, CommandeRepository $cr): Response
     {
         $commande = $cr->findOneBy([
-            'token' => $token
+            'token' => $token,
+
         ]);
 
         if (empty($commande)) throw new AccessDeniedHttpException;
@@ -104,6 +106,7 @@ Stripe::setApiKey($this->getParameter('stripeSecretKey'));
         $cr->add($commande);
 
         return $this->render('payment/success.html.twig');
+
     }
 
     /**
@@ -113,4 +116,21 @@ Stripe::setApiKey($this->getParameter('stripeSecretKey'));
     {
         return $this->render('payment/cancel.html.twig');
     }
+    //  /**
+    //  * @Route("/pdf/facture{id}", name="app_pdf_fact", methods={"GET"})
+    //  */
+    // public function facturePdfSession($id, CommandeRepository $commandeRepository, PdfService $pdf)
+
+    // {
+      
+
+    //     $html = $this->render('pdf/facture.html.twig', [
+    //         'commande' => $commandeRepository->findOneBy([
+    //             'id'=>$id,
+    //         ]),
+
+    //     ]);
+        
+    //     $pdf->showPdfFile($html);
+    // }
 }

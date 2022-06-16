@@ -240,7 +240,6 @@ class CommandeController extends AbstractController
     /**
      * @Route("/commande/facture{id}", name="app_facture_pdf", methods={"GET"})
      */
-    //   public function facturePdfCommande(Produit $produit = null, PdfService $pdf) 
     public function facturePdfCommande($id, CommandeRepository $commandeRepository, PdfService $pdf)
 
     {

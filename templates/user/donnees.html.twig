@@ -1,0 +1,49 @@
+{% block body %}
+	<h1>L'ART DU MAROC</h1>
+
+	<h2>Mes données personnelles</h2>
+
+	<table class="table">
+		<tbody>
+
+			<tr>
+				<th>Nom</th>
+				<td>{{ user.nom }}</td>
+			</tr>
+			<tr>
+				<th>Prenom</th>
+				<td>{{ user.prenom }}</td>
+			</tr>
+
+
+			<tr>
+				<th>Email</th>
+				<td>{{ user.email }}</td>
+			</tr>
+            <h2>votre adresse de livraison</h2>   
+                     {% for us in app.user.adresses %}
+			<tr>
+				<th>adresse</th>
+				<td>{{ us.numero }}{{ us.rue }}</td>
+			</tr>
+            <tr>
+				<th>informations complémentaires</th>
+				<td>{{ us.info }}</td>
+			</tr>
+			<tr>
+				<th>code postal</th>
+				<td>{{ us.cp }}</td>
+			</tr>
+			<tr>
+				<th>pays</th>
+				<td>{{ us.pays }}</td>
+			</tr>
+			<tr>
+				<th>Téléphone</th>
+				<td>{{ us.tel }}</td>
+			</tr>
+		</tbody>
+	</table>
+    {% endfor %}
+
+{% endblock %}
