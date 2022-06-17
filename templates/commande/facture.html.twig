@@ -4,9 +4,7 @@
 
 	<div class="container">
 		<h1 class="text-center m-5">facture</h1>
-		{# <hr>/ #}
-		{# <div class="row"> #}
-			{# <div class="col-md-12 "> #}
+	
 			<h5 class="text-center">Bonjour 
 			{{commande.user.nom}}
                     {{commande.user.prenom}}</h5><br>
@@ -25,7 +23,6 @@
 						</thead>
 						 {% set total = null %}
 						{% for produit in commande.commandeProduits %}
-							{# <tr class="{% if key > 0 %} m-2 {% endif %}"> #}
 								<td>{{produit.produit.nom}}</td>
 								<td>
 									{{produit.quantite}}</td>
@@ -74,16 +71,16 @@
 
 </div>
 
-
+{% block css %}
+<style>
+.facture {
+	 /* display: flex;
+  justify-content: center; */
+}
+</style>
+{% endblock %}
 				
 				
 
-				
-				
 
-{# 				
-			</div>
-		</div>
-	</div>
-</div></div> #}
 {% endblock %}

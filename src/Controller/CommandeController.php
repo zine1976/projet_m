@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use DateTime;
 use App\Entity\User;
 use App\Classe\Panier;
 use App\Entity\Adresse;
@@ -14,6 +14,7 @@ use App\Entity\Transport;
 use App\Form\RegroupType;
 use App\Form\CommandeType;
 use App\Service\PdfService;
+use Doctrine\ORM\Mapping\Id;
 use App\Entity\CommandeProduit;
 use App\Repository\UserRepository;
 use App\Repository\AdresseRepository;
@@ -21,10 +22,10 @@ use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
 use App\Repository\TransportRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -103,6 +104,7 @@ class CommandeController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $commande->getId(), $request->request->get('_token'))) {
             $commandeRepository->remove($commande);
+
         }
 
         return $this->redirectToRoute('app_commande_index', [], Response::HTTP_SEE_OTHER);

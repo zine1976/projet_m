@@ -282,7 +282,16 @@ position: relative;
 .card:hover .overlay{
   transform: scale(1);
 } 
+.recapfact {
+  display: flex;
+  justify-content: space-around;
+}
 .facture {
   display: flex;
+  align-items: center;
   justify-content: center;
+  border: solid 1px orange;
+  border-radius: 5px;
+  border-width: 40px;
+width: 320px;
 }

@@ -62,8 +62,7 @@
                 <strong>Sous total : {{ total }} €</strong><br>
                 <strong>Livraison : {{transport.prix}} €</strong><br>
                 <strong>Total TTC :{{ total + transport.prix}} €</strong><br>
-                <strong>Dont TVA : {{ 0.206 *(total + transport.prix)/(1+0.206)|round}} €</strong><br>
-                {# <a id="checkout-button" href="{{path('app_payment_stripe',{'token': commande.token})}}" class="btn btn-primary"> Payer {{ total + transport.prix }} €</a> #}
+                <strong>Dont TVA : {{ 0.20 *(total + transport.prix)/(1+0.20)|round}} €</strong><br>
             </div>
         </div>
     </div>
