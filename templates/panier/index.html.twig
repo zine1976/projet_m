@@ -23,8 +23,8 @@
 						<th scope="col">Image</th>
 
 						<th scope="col">Prix</th>
-						<th scope="col">HT</th>
-						<th scope="col">TVA</th>
+						{# <th scope="col">HT</th> #}
+						{# <th scope="col">TVA</th> #}
 						<th scope="col">TTC</th>
 
 
@@ -46,9 +46,9 @@
 							<td>{{ produit.produit.prix }}&nbsp;€</td>
 
 							<td>{{ (produit.produit.prix * produit.quantite) }}&nbsp;€</td>
-							<td>{{ produit.produit.prix * 0.20 * produit.quantite}}&nbsp;€</td>
+							{# <td>{{ produit.produit.prix * 0.20 * produit.quantite}}&nbsp;€</td> #}
 
-							<td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.20 * produit.quantite) }}&nbsp;€</td>
+							{# <td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.20 * produit.quantite) }}&nbsp;€</td> #}
 
 							
 
@@ -59,7 +59,7 @@
 							
 						</tr>
 
-						{% set total = total + (produit.produit.prix * produit.quantite)*1.20 %}
+						{% set total = total + (produit.produit.prix * produit.quantite) %}
 					{% endfor %}
 
 				</tbody>
@@ -81,8 +81,6 @@
 		<a name="" id="" class="btn btn-danger" role="button" href="{{ path('remove_panier') }}">Vider le panier</a>
 	{% endif %}
 	<a class="nav-link" href="{{path('app_regroup')}}">livraison</a>
-	{# <a class="nav-link" href="{{path('app_adressefact')}}">facturation</a> #}
-	{# <a class="nav-link" href="{{path('app_recap')}}">recap</a>    #}
 				
 				{# <b>
 					Total de mon panier :

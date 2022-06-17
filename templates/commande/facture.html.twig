@@ -3,30 +3,29 @@
 
 
 	<div class="container">
-		<h1 class="text-center m-5">facture</h1>
-	
-			<h5 class="text-center">Bonjour 
+		<h2 class="text-center m-5">facture</h2>
+	<div class="">
+			<h5 class=""><strong>Bonjour 
 			{{commande.user.nom}}
-                    {{commande.user.prenom}}</h5><br>
-				<h5 class="text-center">Récapitulatif de votre commande</h5><br>
-				
+                    {{commande.user.prenom}}</strong></h5><br>
+				<p class=""> votre commande du
+				 {{ commande.datecom ? commande.datecom|date('Y-m-d') : '' }}</p>
+				</div>
 				<div class="confirm-section">
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">Produit</th>
 								<th scope="col">Quantité</th>
+								<th scope="col">Produit</th>
 								<th scope="col">Prix</th>
 								<th scope="col">Total HT</th>
-
 							</tr>
 						</thead>
 						 {% set total = null %}
 						{% for produit in commande.commandeProduits %}
-								<td>{{produit.produit.nom}}</td>
 								<td>
 									{{produit.quantite}}</td>
-
+								<td>{{produit.produit.nom}}</td>
 								<td>{{produit.prix}}€
 								</td>
 								<td>{{ produit.prix * produit.quantite}}€
@@ -54,31 +53,39 @@
                     {{commande.transportNom}}</strong><br>
 					<strong>Montant TTC :{{ total + commande.transportPrix + (0.20 * total)}}
 					€</strong><br> </div>
-					<div class="facture">
-					<div class="col-4">
-				<strong>vos coordonnées de livraison:
+					<div class="facturepdf">
+				<strong>vos coordonnées de livraison: </strong><br>
                     {{commande.adresse|raw}}
-                    </strong><br> </div>
-					<div class="col-4">
+                   <br> </div>
+					<div class="facturepdf2">
 
-<strong>vos coordonnées de facturation:
+<strong>vos coordonnées de facturation: </strong><br>
                     {{commande.adressefact|raw}}
-                    </strong><br>
+                   <br>
 </div>
-</div> 
-				<strong>votre email :
-                    {{commande.user.email}}</strong><br>
+				<strong>votre email :</strong>
+                    {{commande.user.email}}
 
 </div>
 
-{% block css %}
+ {% block css %}
 <style>
-.facture {
-	 /* display: flex;
-  justify-content: center; */
+.facturepdf {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+.facturepdf2 {
+  padding-bottom: 20px;
+}
+h1{
+	margin-left: 200px;
+}
+h2{
+	margin-left: 300px;
 }
 </style>
-{% endblock %}
+{% endblock %} 
 				
 				
 

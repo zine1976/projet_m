@@ -116,21 +116,5 @@ Stripe::setApiKey($this->getParameter('stripeSecretKey'));
     {
         return $this->render('payment/cancel.html.twig');
     }
-    //  /**
-    //  * @Route("/pdf/facture{id}", name="app_pdf_fact", methods={"GET"})
-    //  */
-    // public function facturePdfSession($id, CommandeRepository $commandeRepository, PdfService $pdf)
-
-    // {
-      
-
-    //     $html = $this->render('pdf/facture.html.twig', [
-    //         'commande' => $commandeRepository->findOneBy([
-    //             'id'=>$id,
-    //         ]),
-
-    //     ]);
-        
-    //     $pdf->showPdfFile($html);
-    // }
+  
 }

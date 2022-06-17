@@ -1,103 +1,107 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commande{% endblock %}
+{% block title %}Commande
+{% endblock %}
 
 {% block body %}
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{path('app_user_show',{id: app.user.id})}}">Mon compte</a></li>
+	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{{path('app_user_show',{id: app.user.id})}}">Mon compte</a>
+			</li>
 
-    <li class="breadcrumb-item"><a href="{{path('app_commande_index', {id: app.user.id})}}">Mes commandes</a></li>
-    <li class="breadcrumb-item active" aria-current="page">vous êtes ici</li>
-  </ol>
-</nav>
-    <h1>Commande</h1>
+			<li class="breadcrumb-item">
+				<a href="{{path('app_commande_index', {id: app.user.id})}}">Mes commandes</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">vous êtes ici</li>
+		</ol>
+	</nav>
+	<h1>Commande</h1>
 
-    <table class="table">
-        <tbody>
-            {% if is_granted('ROLE_ADMIN') %}
+	<table class="table">
+		<tbody>
+			{% if is_granted('ROLE_ADMIN') %}
 
-            <tr>
-                <th>Id</th>
-                <td>{{ commande.id }}</td>
-            </tr>
-            {% endif %}
+				<tr>
+					<th>Id</th>
+					<td>{{ commande.id }}</td>
+				</tr>
+			{% endif %}
 
-             <tr>
-                <th>client</th>
-                <td>{{ commande.user.nom}}</td>
-            </tr>
-                <th>numero de commande</th>
-                <td>{{ commande.numcom }}</td>
+			<tr>
+				<th>client</th>
+				<td>{{ commande.user.nom}}</td>
+			</tr>
+			<th>numero de commande</th>
+			<td>{{ commande.numcom }}</td>
 
-            <tr>
-                <th>Date de commande</th>
-                <td>{{ commande.datecom ? commande.datecom|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Etat</th>
-                <td>{{ commande.etat }}</td>
-            </tr>
-            <tr>
-                <th>transporteur</th>
-                <td>{{ commande.transportNom}}</td>€
-            </tr>
-           
-                {% for cp in commande.commandeProduits %}
+			<tr>
+				<th>Date de commande</th>
+				<td>{{ commande.datecom ? commande.datecom|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Etat</th>
+				<td>{{ commande.etat }}</td>
+			</tr>
+			<tr>
+				<th>transporteur</th>
+				<td>{{ commande.transportNom}}</td>
+			</tr>
 
-             <tr>
-                <th>produit</th>
-                <td>{{ cp.produit.nom}}</td>
-            </tr> <tr>
-                <th>image</th>
-                <td>							<img src="{{ asset("uploads/" ~ cp.produit.image) }}" alt="" class="imgreg img-fluid thumbnail">
-</td>
-            </tr>
-            <tr>
-                <th>quantité</th>
-                <td>{{ cp.quantite}}</td>
-            </tr>
-            <tr>
-                <th>prix HT</th>
-                <td>{{ cp.prix}}€</td>
-            </tr>
-            <tr>
-                <th>total HT</th>
-                <td>{{ cp.total}}€</td>
-            </tr>
-            <tr>
-                <th>TVA</th>
-                <td>{{ cp.total * 0.20 }}€</td>
-            </tr>
-                {# {% endfor %} #}
- 
-            <tr>
-                <th>frais de livraison</th>
-                <td>{{ commande.transportPrix}}€</td>
-            </tr>
-            <tr>
-                <th>montant TTC</th>
-                <td>{{ commande.transportPrix + (cp.total * 0.20) + cp.total }}€</td>
-            </tr>
-                {% endfor %}
+			{% for cp in commande.commandeProduits %}
 
-        </tbody>
-    </table>
+				<tr>
+					<th>produit</th>
+					<td>{{ cp.produit.nom}}</td>
+				</tr>
+				<tr>
+					<th>image</th>
+					<td>
+						<img src="{{ asset("uploads/" ~ cp.produit.image) }}" alt="" class="imgreg img-fluid thumbnail">
+					</td>
+				</tr>
+				<tr>
+					<th>quantité</th>
+					<td>{{ cp.quantite}}</td>
+				</tr>
+				<tr>
+					<th>prix HT</th>
+					<td>{{ cp.prix}}€</td>
+				</tr>
+				<tr>
+					<th>total HT</th>
+					<td>{{ cp.total}}€</td>
+				</tr>
+				<tr>
+					<th>TVA</th>
+					<td>{{ cp.total * 0.20 }}€</td>
+				</tr>
+
+				<tr>
+					<th>frais de livraison</th>
+					<td>{{ commande.transportPrix}}€</td>
+				</tr>
+				<tr>
+					<th>montant TTC</th>
+					<td>{{ commande.transportPrix + (cp.total * 0.20) + cp.total }}€</td>
+				</tr>
+			{% endfor %}
+
+		</tbody>
+	</table>
 
 
-
-<div class="facture">
-    <h5 class="card-title">Votre facture</h5>
-								 <a href="{{ path('app_facture_pdf', {'id': commande.id}) }}"><img src="{{asset('pdfico.ico') }}"></i></a> 
+	<div class="facture">
+		<h5 class="card-title">Votre facture</h5>
+		<a href="{{ path('app_facture_pdf', {'id': commande.id}) }}"><img src="{{asset('pdfico.ico') }}"></i>
+	</a>
 
 </div>
-            {% if is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMIN') %}
 
-    <a href="{{ path('app_commande_index') }}">liste</a>
+	<a href="{{ path('app_commande_index') }}">liste</a>
 
-    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">modifier</a>
+	<a href="{{ path('app_commande_edit', {'id': commande.id}) }}">modifier</a>
 
-    {{ include('commande/_delete_form.html.twig') }}
-            {% endif %}
-
-{% endblock %}
+	{{ include('commande/_delete_form.html.twig') }}
+{% endif %}{% endblock %}

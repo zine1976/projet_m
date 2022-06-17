@@ -33,8 +33,6 @@
 								<th scope="col">Image</th>
 
 								<th scope="col">Prix</th>
-								<th scope="col">HT</th>
-								<th scope="col">TVA</th>
 								<th scope="col">TTC</th>
 							</tr>
 						</thead>
@@ -48,12 +46,10 @@
 									<td><img src="/uploads/{{produit.produit.image}}" alt=" image du produit: {{produit.produit.nom}}" style="width:17px;"></td>
 
 									<td>{{produit.produit.prix}}€ </td>
-									<td>{{ produit.produit.prix * produit.quantite}}€ </td>
-							<td>{{ produit.produit.prix * 0.206 * produit.quantite}}&nbsp;€</td>
-							<td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.206 * produit.quantite) }}&nbsp;€</td>
+									<td>{{ produit.produit.prix * produit.quantite}}&nbsp;€ </td>
 
 								</tr>
-								{% set total = total + (produit.produit.prix * produit.quantite)*1.206 %}
+								{% set total = total + (produit.produit.prix * produit.quantite) %}
 							{% endfor %}
 						</tbody> 
 						

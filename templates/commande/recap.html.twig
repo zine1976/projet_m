@@ -62,8 +62,8 @@
 								<th scope="col">Quantité</th>
 								<th scope="col">Image</th>
 								<th scope="col">Prix</th>
-								<th scope="col">Total HT</th>
-								<th scope="col">pdf</th>
+								<th scope="col">sous total</th>
+								{# <th scope="col">pdf</th> #}
 
 							</tr>
 						</thead>
@@ -79,7 +79,7 @@
 								</td>
 								<td>{{ produit.produit.prix * produit.quantite}}€
 								</td>
-								<td> <a href="{{ path('app_facture_pdf', {'id': commande.id}) }}"><img src="{{asset('pdfico.ico') }}"></i></a> 
+								{# <td> <a href="{{ path('app_facture_pdf', {'id': commande.id}) }}"><img src="{{asset('pdfico.ico') }}"></i></a>  #}
 						</td>
 							</tr>
 							{% set total = total + (produit.produit.prix * produit.quantite) %}
@@ -93,19 +93,19 @@
 				<strong>Sous total :
 					{{ total }}
 					€</strong><br>
-				<strong>TVA :
+			dont TVA :
 					{{ 0.20 * total |round}}
-					€</strong><br>
+					€<br>
 				<strong>Livraison :
 					{{transport.prix}}
 					€</strong><br>
-				<strong>Total TTC :{{ total + transport.prix + (0.20 * total)}}
+				<strong>Total TTC :{{ total + transport.prix }}
 					€</strong><br>
 
 				<a id="checkout-button" href="{{path('app_payment',{'token': commande.token})}}" class="btn btn-primary">
 					<i class="fa fa-credit-card-alt" aria-hidden="true"></i>
 					Payer
-					{{ total + transport.prix + (0.20 * total)}}
+					{{ total + transport.prix }}
 					€</a>
 			</div>
 		</div>
