@@ -16,94 +16,14 @@
 
 <body>
 
-	<img src="peinture3.jpg" class="portrait" alt="peinture">
+	<img src={{asset("peinture3.jpg")}} class="portrait" alt="peinture">
 
 
-	<div class="corps1">
-		<div class="tab col-4">
-			<div class="accordion accordion-flush" id="accordionFlushExample">
-				<div class="accordion-item">
-					<h1 class="accordion-header" id="flush-headingOne">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-							<strong>Service a thé</strong>
-						</button>
-					</h1>
-					<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">Theieres</a><br>
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">Plateaux</a><br>
+	<div
+		class="corps1">
 
-					</div> 
-				</div>
-				
-				<div class="accordion-item">
-					<h1 class="accordion-header" id="flush-headingTwo">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-							<strong>Decoration</strong>
-						</button>
-					</h1>
-					<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">poufs</a><br>
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">poufs</a><br>
-					
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h1 class="accordion-header" id="flush-headingThree">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-							<strong>Luminaires
-							</strong>
-						</button>
-					</h1>
-					<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-						 <a class="accordion-body" type="" href="{{path('app_accueil')}}">lampes</a><br>  
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">abat-jour</a><br>
-					
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h1 class="accordion-header" id="flush-headingFour">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-							<strong>Poteries</strong>
-						</button>
-					</h1>
-					<div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-			{% for categorie in categories %}
-						
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">test</a><br>
-						<a class="accordion-body" type="" href="{{path('app_register')}}">ici les liens</a><br>
-			{% endfor %}
-					
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h1 class="accordion-header" id="flush-headingFive">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-							<strong>Meubles</strong>
-						</button>
-					</h1>
-					<div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">prodnew</a><br>
-						<a class="accordion-body" type="" href="{{path('app_register')}}">ici les liens</a>
-
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h1 class="accordion-header" id="flush-headingSix">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-							<strong>Cosmétiques</strong>
-						</button>
-					</h1>
-					<div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">Khol</a><br> 
-						<a class="accordion-body" type="" href="{{path('app_accueil')}}">huiles</a><br>
-
-					</div>
-				</div>
-			</div> 
-
-		</div> 
 		{# caroussel #}
-		<div class="caro col-8">
+		<div class="caro col-6">
 			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -137,58 +57,55 @@
 
 	<div class="container">
 		<div class="card-body d-inline-flex">
-				<img src="{{ asset("tannerie.jpg")}}" class="card-img-top" style="width: 28rem;" alt="..."></a>
-			<div class="parag">
-				<h2 class="tit1">Tannerie de Fes</h2>
-				<p class="ml-5 mr-5">
-					Nombreux sont les termes associés à l’huile d’Argan, qui de nos jours, n’a plus besoin de présentation.
-					{# <a class="btn btn-primary" href="{{path('app_detailproduit',{id:8})}}" role="button">suite...</a> #}
-				</p>
-			</div>
-
+			<img src="{{ asset("tannerie.jpg")}}" class="card-img-top" style="width: 28rem;" alt="..."></a>
+		<div class="parag">
+			<h2 class="tit1">Tannerie de Fes</h2>
+			<p class="ml-5 mr-5">
+				La tannerie Chouara est l'une des trois tanneries de la ville de Fès, au Maroc. C'est la plus grande tannerie de la ville et l'une des plus anciennes. Il est situé dans le Fès el Bali, le plus ancien quartier médina de la ville, près de la madrasa Saffarine le long de l'Oued Fès
+			</p>
 		</div>
-		<div class="card-body d-inline-flex">
-
-			<div class="parag">
-				<h2 class="tit1">Le khol</h2>
-				<p class="ml-5 mr-5">
-
-					Le khôl est toujours utilisé par les femmes d’hier et d’aujourd’hui. Un peu d’histoire pour mieux apprécier cet incomparable produit de beauté.
-					{# <a class="btn btn-primary" href="{{path('app_khol')}}" role="button">suite...</a> #}
-				</p>
-			</div>
-
-			{# <a href="{{path('app_khol')}}"> #}
-				<img src="{{ asset("kholima.jpg")}}" class="card-img-top" style="width: 28rem;" alt="..."></a>
-
-		</div>
-
-
-		<div class="card-body d-inline-flex">
-			{# <a href="{{path('app_detailproduit',{id:13})}}"> #}
-				<img src="{{ asset("poufrouge.jpg")}}" class="card-img-top" style="width: 28rem;" alt="..."></a>
-			<div class="parag">
-				<h2 class="tit1">Les poufs</h2>
-
-				<p class="ml-5 mr-5">
-					Le pouf marocain invite à un beau voyage vers le Maroc et à la découverte de l’incroyable richesse du pays. Il donne vie à n’importe quel intérieur.
-					{# <a class="btn btn-primary" href="{{path('app_detailproduit',{id:13})}}" role="button">suite...</a> #}
-				</p>
-			</div>
-		</div>
-
-		<div class="card-body d-inline-flex">
-
-			<div class="parag">
-				<h2 class="tit1">Les théières</h2>
-				<p class="ml-5 mr-5">
-					La théière marocaine, fabriquée en cuivre doré ou argenté ciselé, martelé ou gravé d'un décor oriental et travaillé avec finesse à la main avec des artisans. Elle a une forme unique.
-					<a class="btn btn-primary" href="{{path('app_accueil')}}" role="button">suite...</a>
-				</p>
-			</div>
-
-			{# <a href="{{path('app_theiere')}}">  #}
-				 <img src="{{ asset("uploads/11df291cf4ed4c2c751a6beb24092904b462f55e.jpg")}}" class="card-img-top" style="width: 28rem;" alt="les théières"></a>
 
 	</div>
-</body></div></body></div><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>{% endblock %}
+
+	<div class="parag">
+		<h2 class="tit1">Place Seffarine</h2>
+		<p class="ml-5 mr-5">
+
+			La Place Seffarine tire son nom des dinandiers qui y exercent un métier artisanal de premier plan dans l’histoire de Fès . Porteurs d’un savoir-faire ancestral, les dinandiers et les chaudronniers s’y activent toujours , martelant le cuivre et le laiton dans un concert remarquable de sonorités . De leurs mains expertes , toutes sortes d’ustensiles sont façonnés : chaudrons, marmites, seaux, brule-parfums, plateaux , théières boites a thé et à sucre , braseros haut sur pieds, bouilloires , couscoussiers, samovars, etc . Ils servent au quotidien ou lors de grandes fêtes, dans le maisons modestes ou chez les familles aisées. Leurs prix varie selon leurs dimensions, leur qualités d’exécution et de finition. Les techniques ancestrales de cet artisanat, ont enrichies au fil du temps par des procédés nouveaux.
+		</p>
+	</div>
+	<div class="seffar">
+
+		<img src="{{ asset("seffarine.jpg")}}" class="card-img-top" style="width: 28rem;" alt="...">
+	<img src="{{ asset("sefarine2.jpg")}}" class="card-img-top" style="width: 28rem;" alt="...">
+</div>
+
+<div class="parag">
+<h2 class="tit1">La poterie</h2>
+<p class="ml-5 mr-5">
+Cet art ancestral qu’est la poterie au Maroc est ancré depuis des siècles, ce sont les Maures il y a plus de 1000 ans qui ont installés les premiers fours à Fès, Meknès, Safi et Marrakech.
+
+La poterie au Maroc est une pure tradition marocaine transmise de générations en générations.
+On peut ainsi dire que la poterie au Maroc est un véritable art de vivre !
+L’histoire de la poterie au Maroc est très riche et variée mais, tout comme le temps, elle a dû se confronter à de nouveaux concepts avec pour objectif d’évoluer et de s’adapter aux nouvelles tendances, utilitaires comme décoratives tout en conservant toute son authenticité.
+Ainsi, toujours teintée de culture locale, la poterie se diversifie et notamment entre le nord et le sud du royaume, de même entre les villes et les villages ruraux, c’est cette diversité qui fait valoir les belles poteries du maroc, poteries citadines et poteries berbères. Née de cet héritage très ancien, cette poterie marocaine et berbère séduit toujours de toutes les particularités qu’elle peut faire valoir.</p>
+</div>
+	<div class="seffar">
+<img src="{{ asset("poteriemar.jpg")}}" class="card-img-top" style="width: 28rem;" alt="...">
+
+<img src="{{ asset("poterie2.jpg")}}" class="card-img-top" style="width: 28rem;" alt="...">
+</div>
+<div class="card-body d-inline-flex">
+			<img src="{{ asset("themar.jpg")}}" class="card-img-top" style="width: 28rem;" alt="...">
+		<div class="parag">
+			<h2 class="tit1">Le thé a la menthe</h2>
+			<p class="ml-5 mr-5">
+				La tannerie Chouara est l'une des trois tanneries de la ville de Fès, au Maroc. C'est la plus grande tannerie de la ville et l'une des plus anciennes. Il est situé dans le Fès el Bali, le plus ancien quartier médina de la ville, près de la madrasa Saffarine le long de l'Oued Fès
+			</p>
+			</div></div></div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}
