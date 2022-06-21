@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Service\PdfService;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -93,21 +94,39 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-        /**
+    /**
      * @Route("/user/donnees{id}", name="app_donnees_pdf", methods={"GET"})
      */
     public function facturePdfCommande($id, UserRepository $userRepository, PdfService $pdf)
 
     {
-      
+
 
         $html = $this->render('user/donnees.html.twig', [
             'user' => $userRepository->findOneBy([
-                'id'=>$id,
+                'id' => $id,
             ]),
 
         ]);
-        
+
         $pdf->showPdfFile($html);
+    }
+
+    /**
+     * @IsGranted("ROLE_ADMIN")
+     * @Route("/notverified/", name="app_notverified")
+     */
+    public function notVerified(UserRepository $userRepository, EntityManagerInterface $entityManager): Response
+    {
+
+        // Je vais chercher les users non verifiés
+        $users = $userRepository->notVerifiedUser();
+        // Le temps limite est de 2 heures, je boucle sur les users non verifiés et je les supprime de la bdd
+        foreach ($users as $timelimit) {
+            $entityManager->remove($timelimit);
+            $entityManager->flush();
+        }
+        $this->addFlash('success', 'Les users non vérifiés ont bien étés supprimés');
+        return $this->redirectToRoute('app-accueil');
     }
 }

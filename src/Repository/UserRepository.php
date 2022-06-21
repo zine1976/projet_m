@@ -76,6 +76,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
+    public function unVerified()
+    {
+        $value = date('Y-m-d H:i:s', strtotime('-2 hours'));
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.isVerified = :0')
+            ->andWhere('u.createdAt <= :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+    
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

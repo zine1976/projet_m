@@ -48,18 +48,18 @@ class DashboardController extends AbstractDashboardController
         $this->categorieRepository = $categorieRepository;
 
     }
-    /**
-     * @Route("/admin", name="admin")
-     */
-    public function index(): Response
-    {
+    // /**
+    //  * @Route("/admin", name="admin")
+    //  */
+    // public function index(): Response
+    // {
 
-           return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
-            'countUser' => $this->userRepository->countAllUser(),
-            'countCommande' => $this->commandeRepository->countAllCommande(),
-            'produits' => $this->produitRepository->findAll()
-        ]);
-    }
+    //        return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
+    //         // 'countUser' => $this->userRepository->countAllUser(),
+    //         // 'countCommande' => $this->commandeRepository->countAllCommande(),
+    //         // 'produits' => $this->produitRepository->findAll()
+    //     ]);
+    // }
 
     public function configureDashboard(): Dashboard
     {
