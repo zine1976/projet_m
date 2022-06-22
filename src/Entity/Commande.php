@@ -30,10 +30,7 @@ class Commande
 
   
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $etat;
+   
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -71,9 +68,17 @@ class Commande
      */
     private $Adressefact;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="Commande")
+     */
+    private $etat;
+
+   
+
     public function __construct()
     {
         $this->commandeProduits = new ArrayCollection();
+        $this->etats = new ArrayCollection();
     }
 
     
@@ -100,17 +105,7 @@ class Commande
    
 
 
-    public function getEtat(): ?string
-    {
-        return $this->etat;
-    }
-
-    public function setEtat(string $etat): self
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
+   
 
     public function getToken(): ?string
     {
@@ -218,5 +213,19 @@ class Commande
 
         return $this;
     }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?Etat $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+     
     
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Etat;
 use App\Entity\User;
 use App\Entity\Adresse;
 use App\Entity\Produit;
@@ -48,18 +49,18 @@ class DashboardController extends AbstractDashboardController
         $this->categorieRepository = $categorieRepository;
 
     }
-    // /**
-    //  * @Route("/admin", name="admin")
-    //  */
-    // public function index(): Response
-    // {
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function index(): Response
+    {
 
-    //        return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
-    //         // 'countUser' => $this->userRepository->countAllUser(),
-    //         // 'countCommande' => $this->commandeRepository->countAllCommande(),
-    //         // 'produits' => $this->produitRepository->findAll()
-    //     ]);
-    // }
+           return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
+            'countUser' => $this->userRepository->countAllUser(),
+            'countCommande' => $this->commandeRepository->countAllCommande(),
+            'produits' => $this->produitRepository->findAll()
+        ]);
+    }
 
     public function configureDashboard(): Dashboard
     {
@@ -73,6 +74,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produit', 'fas fa-list', Produit::class);
         yield MenuItem::linkToCrud('Commande', 'fas fa-list', Commande::class);
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Etat', 'fas fa-list', Etat::class);
         yield MenuItem::linkToCrud('Comments', 'fas fa-list', Comments::class);
         yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Categorie::class);
         yield MenuItem::linkToCrud('Adresse de livraison', 'fas fa-list', Adresse::class);

@@ -20,6 +20,7 @@ use App\Repository\UserRepository;
 use App\Repository\AdresseRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
+use App\Repository\EtatRepository;
 use App\Repository\TransportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -142,7 +143,7 @@ class CommandeController extends AbstractController
     /**
      * @Route("/commande/recap", name="app_recap", methods={"GET", "POST"})
      */
-    public function recap(Request $request, Panier $panier): Response
+    public function recap(Request $request, Panier $panier, EtatRepository $etatrepository): Response
     {
         $form = $this->createForm(RegroupType::class, null, [
             'user' => $this->getUser()
@@ -156,6 +157,7 @@ class CommandeController extends AbstractController
             $transport = $form->get('transport')->getData();
             $adresse = $form->get('Adresse')->getData();
             $adressefact = $form->get('Adressefact')->getData();
+            $etat = $etatrepository->find(1);
 
 
             // Je recupere les informations liés à la livraison
@@ -208,6 +210,7 @@ class CommandeController extends AbstractController
             $commande->setTransportNom($transport->getNom());
             $commande->setTransportPrix($transport->getPrix());
             $commande->setAdresse($adresse_info);
+            $commande->setEtat($etat);
             $commande->setAdressefact($adressefact_info);
             $commande->setToken(hash('sha256', random_bytes(32)));
             //Je fige les données de commande

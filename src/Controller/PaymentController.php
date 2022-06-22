@@ -12,6 +12,7 @@ use App\Entity\CommandeProduit;
 use Doctrine\ORM\EntityManager;
 use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
+use App\Repository\EtatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Security;
@@ -92,8 +93,9 @@ Stripe::setApiKey($this->getParameter('stripeSecretKey'));
     /**
      * @Route("/success/{token}", name="app_payment_success")
      */
-    public function success($token,  SessionInterface $session, CommandeRepository $cr): Response
+    public function success($token,  SessionInterface $session, CommandeRepository $cr, EtatRepository $etatRepository): Response
     {
+        $etat = $etatRepository->find(2);
         $commande = $cr->findOneBy([
             'token' => $token,
 
@@ -102,7 +104,7 @@ Stripe::setApiKey($this->getParameter('stripeSecretKey'));
         if (empty($commande)) throw new AccessDeniedHttpException;
 
         $session->set('panier', []);
-        $commande->setEtat('Payée');
+        $commande->setEtat($etat);
         $cr->add($commande);
 
         return $this->render('payment/success.html.twig');
