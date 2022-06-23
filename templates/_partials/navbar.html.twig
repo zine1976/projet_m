@@ -30,9 +30,19 @@
 			</div>
 		</div>
 	</div>
-
-	<a class="nav-link" href="{{path('app_accueil')}}">Accueil</a>
-	<a class="nav-item dropdown">
+{# debut nouvelle nav #}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+	<a class="navbar-brand">
+      <img src="{{asset('favicon.ico')}}" type="image/x-icon" alt="" width="30" height="24">
+    </a>
+      <a class="navbar-brand" href="{{path('app_accueil')}}">Accueil</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <a class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" href="" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 			Produits
 		</a>
@@ -44,16 +54,43 @@
 			{% endfor %}
 		</ul>
 	</a>
+	<li class="nav-item">
+          <a class="nav-link" href="{{path('app_contact')}}">Contact</a>
+        </li>
+	{# <li class="nav-item">
+
+<a class="material-symbols-outlined" title="mon compte" href="" type"button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							person</a>
+        </li>
+	<li class="nav-item">
+
+						<a class="material-symbols-outlined"  title="mon panier" href="{{ path('app_panier') }}">
+							shopping_bag
+						</a>
+        </li> #}
+
 	{% if is_granted('ROLE_ADMIN') %}
 
-		<a class="nav-link" href="{{path('admin')}}">Admin</a>
-		<a class="nav-link" href="{{path('app_adresse_index')}}">adresse liv</a>
-		<a class="nav-link" href="{{path('app_adressefact_index')}}">adresse fact</a>
-		<a class="nav-link" href="{{path('app_user_index')}}">liste utilisateurs</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('admin')}}">Admin</a>
+        </li>
+	{% endif %}
+       
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+</nav>
+
+
+{# fin nouvelle nav #}
+
+
+	
+		{# <a class="nav-link" href="{{path('app_user_index')}}">liste utilisateurs</a> #} 
 
 
 		{# <a class="nav-link" href="{{path('app_produit')}}">Produits</a> #}
-	{% endif %}
 
 
-</nav>

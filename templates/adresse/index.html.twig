@@ -1,59 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adresse livraison index{% endblock %}
+{% block title %}Adresse livraison index
+{% endblock %}
 
 {% block body %}
-    <h1>liste des Adresses de livraison</h1>
+	<h1>liste des Adresses de livraison</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
+	<table class="table">
+		<thead>
+			<tr>
 				{% if is_granted('ROLE_ADMIN') %}
 
-                <th>Id</th>
+					<th>Id</th>
 				{% endif %}
 
-                <th>Nom</th>
-                <th>Numero</th>
-                <th>Rue</th>
-                <th>Cp</th>
-                <th>Ville</th>
-                <th>Pays</th>
-                <th>Info</th>
-                <th>Societe</th>
-                <th>Tel</th>
-                {# <th>Nom_prenom</th> #}
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for adresse in app.user.adresses %}
-            <tr>
-				{% if is_granted('ROLE_ADMIN') %}
-                <td>{{ adresse.id }}</td>
-				{% endif %}
-                <td>{{ adresse.nom }}</td>
-                <td>{{ adresse.numero }}</td>
-                <td>{{ adresse.rue }}</td>
-                <td>{{ adresse.cp }}</td>
-                <td>{{ adresse.ville }}</td>
-                <td>{{ adresse.pays }}</td>
-                <td>{{ adresse.info }}</td>
-                <td>{{ adresse.societe }}</td>
-                <td>{{ adresse.tel }}</td>
-                {# <td>{{ adresse.nomPrenom }}</td> #}
-                <td>
-                    <a href="{{ path('app_adresse_show', {'id': adresse.id}) }}">detail</a>
-                    <a href="{{ path('app_adresse_edit', {'id': adresse.id}) }}">modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="12">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+				<th>Nom</th>
+				<th>Numero</th>
+				<th>Rue</th>
+				<th>Cp</th>
+				<th>Ville</th>
+				<th>Pays</th>
+				<th>Info</th>
+				<th>Societe</th>
+				<th>Tel</th>
+				{# <th>Nom_prenom</th> #}
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for adresse in app.user.adresses %}
+				<tr>
+					{% if is_granted('ROLE_ADMIN') %}
+						<td>{{ adresse.id }}</td>
+					{% endif %}
+					<td>{{ adresse.nom }}</td>
+					<td>{{ adresse.numero }}</td>
+					<td>{{ adresse.rue }}</td>
+					<td>{{ adresse.cp }}</td>
+					<td>{{ adresse.ville }}</td>
+					<td>{{ adresse.pays }}</td>
+					<td>{{ adresse.info }}</td>
+					<td>{{ adresse.societe }}</td>
+					<td>{{ adresse.tel }}</td>
+					<td>
+						<a href="{{ path('app_adresse_show', {'id': adresse.id}) }}">detail</a>
+						<a href="{{ path('app_adresse_edit', {'id': adresse.id}) }}">modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="12">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_adresse_new') }}">Créer une nouvelle adresse</a>
+	<a href="{{ path('app_adresse_new') }}">Créer une nouvelle adresse</a>
 {% endblock %}

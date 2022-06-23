@@ -63,7 +63,6 @@
 								<th scope="col">Image</th>
 								<th scope="col">Prix</th>
 								<th scope="col">sous total</th>
-								{# <th scope="col">pdf</th> #}
 
 							</tr>
 						</thead>
@@ -79,7 +78,6 @@
 								</td>
 								<td>{{ produit.produit.prix * produit.quantite}}€
 								</td>
-								{# <td> <a href="{{ path('app_facture_pdf', {'id': commande.id}) }}"><img src="{{asset('pdfico.ico') }}"></i></a>  #}
 						</td>
 							</tr>
 							{% set total = total + (produit.produit.prix * produit.quantite) %}

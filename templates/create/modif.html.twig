@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier un produit{% endblock %}
+{% block title %}Modifier un produit
+{% endblock %}
 
 {% block body %}
 
 
-<div class="ajoutprodtitre">
-    <h1>Modifier un produit</h1> 
-</div>
-<div class="ajout">
-
-	<div class="col-4">
-		<img src="{{asset("peinture.jpg")}}" alt="" class="img-fluid thumbnail">
-
+	<div class="titre_general">
+		<h1>Modifier un produit</h1>
 	</div>
-	<div class="container col-4">
-        {{ form(form) }}
-    </div>
-    </div>
-    
-{% endblock %}
+	<div class="tit">
+
+		<div class="col-4">
+			<img src="{{asset("peinture.jpg")}}" alt="" class="img-fluid thumbnail">
+
+		</div>
+		<div class="container col-4">
+			{{ form(form) }}
+			</div>
+		</div>
+
+	{% endblock %}

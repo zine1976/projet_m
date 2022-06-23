@@ -3,7 +3,7 @@
 {% block title %}liste des Produits{% endblock %}
 
 {% block body %}
-    <div class="ajoutprodtitre">
+    <div class="titre_general">
 		<h1>liste des produits</h1>
 	</div>
 
@@ -14,10 +14,6 @@
                 <th>Nom</th>
                 <th>Stock</th>
                 <th>Prix</th>
-                {# <th>Description</th> #}
-                {# <th>Image</th> #}
-                {# <th>Histoire</th> #}
-                {# <th>Utilisation</th> #}
                 <th>actions</th>
             </tr>
         </thead>
@@ -28,10 +24,7 @@
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.stock }}</td>
                 <td>{{ produit.prix }}&nbsp;€</td>
-                {# <td>{{ produit.description }}</td> #}
-                {# <td>{{asset('uploads/' ~ produit.image) }}</td> #}
-                {# <td>{{ produit.Histoire }}</td> #}
-                {# <td>{{ produit.utilisation }}</td> #}
+               
                 <td>
                     <a href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
 						{% if is_granted('ROLE_ADMIN') %}

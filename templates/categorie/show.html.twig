@@ -3,47 +3,56 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
-    <h1>{{ categorie.nom|capitalize }}</h1>
+    <h1 class="tit">{{ categorie.nom|capitalize }}</h1>
 
     <table class="table">
         <tbody>
             {% for produit in produits %}
                 
-                <div class="pouf">
+                {# <div class="categ">
 
-		<div class="pouf1">
+		<div class="categ1">
     <figure class="card">
 
-			{# <a href="{{path('app_produit_show',{id: produit.id})}}"> #}
 				<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
-                {# </a> #}
 					<figcaption class="overlay">
 <p>{{ produit.nom }}</p>
 </figcaption>
 		</figure>
 		</p>
-                {# <p class="surplus5">{{ produit.nom }}</p> #}
+		<div>
 			<a class="btn btn-primary" href="{{path('app_produit_show',{id: produit.id})}}" role="button">voir</a>
-					{# <a class="btn btn-primary" href="{{path('app_detailproduit',{id:8})}}" role="button">suite...</a> #}
+		</div>
+		
+		</div> #}
+{# 2eme essai #}
+<div class="categ">
+
+		<div class="categ1">
+    {# <figure class="card"> #}
+			<a class="" href="{{path('app_produit_show',{id: produit.id})}}" role="button"> 
+				<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
+			
+			</a>
+
+					{# <figcaption class="overlay"> #}
+{# <p>{{ produit.nom }}</p> #}
+{# </figcaption> #}
+		{# </figure> #}
+		{# </p>
+		<div>
+			<a class="btn btn-primary" href="{{path('app_produit_show',{id: produit.id})}}" role="button">voir</a>
+		</div> #}
 		
 		</div>
-
             {% endfor %}
 
         </div>
         </tbody>
     </table>
 
-    {# <figure class="card"> #}
-			{# <a href="{{path('app_theiere')}}"> #}
-				{# <img src="{{ asset("uploads/11df291cf4ed4c2c751a6beb24092904b462f55e.jpg")}}" class="card-img-top" style="width: 28rem;" alt="les théières"></a> #}
-					{# <figcaption class="overlay"> #}
-{# <p>les théières</p> #}
-{# </figcaption> #}
-		{# </figure> #}
-		{# </p> #}
+    
 	</div>
-	{# </main> #}
 						{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_categorie_index') }}">back to list</a>

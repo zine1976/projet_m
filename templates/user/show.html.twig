@@ -3,7 +3,7 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>Mon compte</h1>
+    <h1 class="tit">Mon compte</h1>
 
     <table class="table">
         <tbody>
@@ -45,7 +45,7 @@
   
   <a href="{{path('app_donnees_pdf', {id: user.id})}}" class="list-group-item list-group-item-action">exporter mes données<img src="{{asset('pdfico.ico') }}"></a>
 </div>
-    <div class="compteperso">
+    <div class="tit">
 
 <a class="btn btn-danger"{{ include('user/_delete_form.html.twig') }}</a>
 </div>

@@ -4,7 +4,9 @@
 {% endblock %}
 
 {% block body %}
-
+<div class="progress">
+		<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+	</div>
 	<div class="text-center m-3">
 		<h1>Mon panier</h1>
 		<i>
@@ -21,13 +23,8 @@
 						<th scope="col">Produit</th>
 						<th scope="col">Quantité</th>
 						<th scope="col">Image</th>
-
 						<th scope="col">Prix</th>
-						{# <th scope="col">HT</th> #}
-						{# <th scope="col">TVA</th> #}
 						<th scope="col">TTC</th>
-
-
 					</tr>
 				</thead>
 				<tbody>
@@ -36,27 +33,23 @@
 						<tr>
 							<th>{{ produit.produit.nom}}</th>
 
-							<td>	<a href="{{path('decremente_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-minus nav-link active link-style" alt="diminuer" style="width:18px ;"></a>
-							&nbsp;{{ produit.quantite }}&nbsp;
+							<td>
+								<a href="{{path('decremente_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-minus nav-link active link-style" alt="diminuer" style="width:18px ;"></a>
+								&nbsp;{{ produit.quantite }}&nbsp;
 								<a href="{{path('add_panier', {'id' : produit.produit.id})}}" class="fa-solid fa-plus nav-link active link-style" alt="ajout" style="width:18px ;"></a>
-							
+
 							</td>
-							<th> <img src="/uploads/{{produit.produit.image}}" alt="image produit {{produit.produit.nom}}" style="width:35px;"></th>
+							<th>
+								<img src="/uploads/{{produit.produit.image}}" alt="image produit {{produit.produit.nom}}" style="width:35px;"></th>
 
 							<td>{{ produit.produit.prix }}&nbsp;€</td>
 
 							<td>{{ (produit.produit.prix * produit.quantite) }}&nbsp;€</td>
-							{# <td>{{ produit.produit.prix * 0.20 * produit.quantite}}&nbsp;€</td> #}
-
-							{# <td>{{ (produit.quantite * produit.produit.prix) + (produit.produit.prix * 0.20 * produit.quantite) }}&nbsp;€</td> #}
-
-							
 
 							<td>
 								<a href="{{path('del_ligne-panier', {'id' : produit.produit.id})}}" class="fa-solid fa-trash-can" alt="supprimer" style="width:18px ;"></a>
 							</td>
 
-							
 						</tr>
 
 						{% set total = total + (produit.produit.prix * produit.quantite) %}
@@ -64,35 +57,42 @@
 
 				</tbody>
 			</table>
-<div class="totalpanier">
 
-<tr>
-<td><strong>Total TTC :
-					&nbsp;{{total}}
-					€</strong></td>
-			 <td><a href="{{path('app_regroup')}}" class="btn btn-primary mt-4"> Valider mon panier {{total}} €</a> </td>
-</tr>
+				<div>
+					<td>
+						<strong>Total TTC :
+												&nbsp;{{total}}
+							€</strong>
+					</td>
+					</div>
+			<div class="totalpanier">
 
+					<td>
+						<a href="{{path('app_regroup')}}" class="btn btn-primary mt-4">
+							Valider mon panier
+							{{total}}
+							€</a>
+					</td>
+					</div>
+
+			{# </div> #}
+
+<div class="buttlogin">
+			{% if app.user %}
+				<a name="" id="" class="btn btn-danger" role="button" href="{{ path('remove_panier') }}">Vider le panier</a>
+			{% endif %}
 </div>
+			{# <b>
+								Total de mon panier :
+								{{panier|length}}</b> #}
 
-		
-		
-	{% if app.user %}
-		<a name="" id="" class="btn btn-danger" role="button" href="{{ path('remove_panier') }}">Vider le panier</a>
-	{% endif %}
-	<a class="nav-link" href="{{path('app_regroup')}}">livraison</a>
-				
-				{# <b>
-					Total de mon panier :
-					{{panier|length}}</b> #}
-
-		 </div>
+		</div>
 	{% else %}
-		 <div class="my-formular">
+		<div class="my-formular">
 			<h5 class="text-center">
 				Oups ! Votre panier est vide...</h5>
 			<p class="text-center">
 				Ajoutez un produit pour remédier à ce malentendu !</p>
-		</div> 
-	{% endif %} 
+		</div>
+	{% endif %}
 {% endblock %}

@@ -24,18 +24,7 @@
 				{{ form_row(registrationForm.prenom, 
         {'attr':{'class':'form-control'}}) }}
 			</div>
-			{# <div class"form-group">
-				{{ form_row(registrationForm.adresse, 
-        {'attr':{'class':'form-control'}}) }}
-			</div> #}
-			{# <div class"form-group">
-				{{ form_row(registrationForm.cp, 
-        {'attr':{'class':'form-control'}}) }}
-			</div>
-			<div class"form-group">
-				{{ form_row(registrationForm.ville, 
-        {'attr':{'class':'form-control'}}) }}
-			</div> #}
+
 
 			<div class"form-group">
 				{{ form_row(registrationForm.email,
@@ -53,11 +42,11 @@
 				{{ form_row(registrationForm.agreeTerms,
         ) }}
 			</div>
-			<div class="buttregis">
-			<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-    confetti()
-    </script>
+			<div class="">
+				<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+				<script>
+					confetti()
+				</script>
 				<button type="submit" class="btn btn-success">Envoyer</button>
 			</div>
 			{{ form_end(registrationForm) }}
