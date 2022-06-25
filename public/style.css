@@ -27,12 +27,23 @@
 .portrait {
   display: flex;
   justify-content: center;
-  width: 80vw !important;
-  height: 60vh !important;
+  width: 95vw !important;
+  height: 80vh !important;
   /* margin-top: 30px; */
-  margin: 20px auto;
+  margin: 0px auto;
 }
-@media all and (max-width: 600px) {
+@media (min-width:500px) and (max-width:760px) {
+  .title1 {
+    font-family: BeauRivage-Regular;
+    font-size: 30px !important;
+    color: black;
+  display: flex;
+  justify-content: center;
+    margin: 10px auto;
+  
+  }
+}
+@media all and (max-width: 500px) {
   .portrait {
     display: flex;
     justify-content: center;
@@ -40,6 +51,10 @@
     height: 48vh !important;
     /* margin-top: 30px; */
     margin: 20px auto;
+  }
+  .nav1 {
+    width: 53vw !important;
+    height: 48vh !important;
   }
   .seffar {
     display: block;
@@ -62,21 +77,14 @@
     align-items: center;
     flex-direction: column;
   }
-  .title {
-    /* border: solid 2px;
-    border-width: 5px;
-    font-family: Sabana;
-    font-size: 100px;
+  .title1 {
+    font-family: BeauRivage-Regular;
+    font-size: 20px !important;
     color: black;
-    display: flex;
-    justify-content: center;
-    width: 80vw !important;
-    height: 30vh !important;
-    align-items: center;
-    background-image: url(decorfontaine.jpg);
-    margin-bottom: 20px;
-    margin: auto; */
-    margin: 20px auto;
+  display: block;
+  justify-content: center;
+    margin: 10px auto;
+  
   }
   .categ1 {
     /* margin-right: 40px; */
@@ -93,33 +101,27 @@
 .corps {
   min-height: 600px;
 }
-.container {
-  min-height: 500px;
-  background-color: white;
-}
-.surplus5 {
-  margin-left: 60px;
-}
 
-.title {
-  border: solid 2px;
-  border-width: 5px;
-  font-family: Sabana;
-  font-size: 100px;
+
+.title1 {
+  font-family: BeauRivage-Regular;
+  font-size: 70px;
   color: black;
-  display: flex;
-  justify-content: center;
-  width: 80vw !important;
-  height: 30vh !important;
-  align-items: center;
-  background-image: url(decorfontaine.jpg);
-  margin-bottom: 20px;
+display: flex;
+justify-content: center;
+  margin: 30px auto;
+
 }
 .nav1 {
+  margin-top: 10px auto;
+
   font-family: BeauRivage-Regular;
   font-size: 25px;
-  display: flex;
-  justify-content: space-around;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  width: 95vw !important;
+  margin: 0px auto;
+
 }
 .tab {
   margin-top: 170px;
@@ -129,10 +131,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.nav2 {
-  display: flex;
-  justify-content: space-between;
-}
+
 .corps1 {
   display: flex;
   justify-content: space-around;
@@ -146,11 +145,7 @@
   width: 80vw !important;
   height: 60vh !important;
 }
-.carotte {
-  height: 300px;
-  width: 300px;
-  margin-bottom: 20px;
-}
+
 .rowi {
   display: flex;
   justify-content: space-around;
@@ -167,15 +162,7 @@
   width: 400px;
 }
 
-/* modalbase */
-.modal-body1 {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70px;
-  width: 290px;
-}
+
 .modal-footer1,
 .modal-header1 {
   display: flex;
@@ -252,7 +239,7 @@
   width: 400px;
   height: 300px;
 }
-.categ {
+.categ, .fact {
   display: flex;
   justify-content: center;
 }

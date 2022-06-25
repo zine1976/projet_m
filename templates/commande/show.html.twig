@@ -90,11 +90,13 @@
 		</tbody>
 	</table>
 
+	<div class="fact">
 
 	<div class="facture">
 		<h5 class="card-title">Votre facture</h5>
 		<a href="{{ path('app_facture_pdf', {'id': commande.id}) }}"><img src="{{asset('pdfico.ico') }}"></i>
 	</a>
+</div>
 
 </div>
 {% if is_granted('ROLE_ADMIN') %}

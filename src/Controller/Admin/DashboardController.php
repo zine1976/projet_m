@@ -52,7 +52,7 @@ class DashboardController extends AbstractDashboardController
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(): Response
+     public function index(): Response
     {
 
            return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [

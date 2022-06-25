@@ -11,6 +11,7 @@ use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -29,6 +30,7 @@ class ProduitController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="app_produit_new", methods={"GET", "POST"})
      */
     public function new(Request $request, ProduitRepository $produitRepository): Response
@@ -95,6 +97,7 @@ class ProduitController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="app_produit_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
@@ -114,6 +117,7 @@ class ProduitController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="app_produit_delete", methods={"POST"})
      */
     public function delete(Request $request, Produit $produit, ProduitRepository $produitRepository): Response

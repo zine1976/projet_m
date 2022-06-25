@@ -30,7 +30,7 @@ class ContactController extends AbstractController
             $email = new TemplatedEmail;
             $email
                 ->from('Contact projet_m <' . $data['email'] . '>')
-                ->to('mahdizmen@hotmail.com')
+                ->to('zine@ouazzanichahdi.com')
                 ->replyTo($data['email'])
                 ->subject('Vous avez une demande de contact.')
                 ->htmlTemplate('emails/contact.html.twig')
@@ -45,6 +45,7 @@ class ContactController extends AbstractController
             $mailer->send($email);
             $this->addFlash('success', 'Message envoyé.');
         $formulaire = $this->createForm(ContactType::class);
+        return $this->redirectToRoute('app_accueil');
 
         } 
             return $this->render('contact/formulaire.html.twig', [
@@ -52,6 +53,7 @@ class ContactController extends AbstractController
                 'form' => $formulaire->createView()
 
             ]);
+
         }
     }
 

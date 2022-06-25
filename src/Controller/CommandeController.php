@@ -16,17 +16,18 @@ use App\Form\CommandeType;
 use App\Service\PdfService;
 use Doctrine\ORM\Mapping\Id;
 use App\Entity\CommandeProduit;
+use App\Repository\EtatRepository;
 use App\Repository\UserRepository;
 use App\Repository\AdresseRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
-use App\Repository\EtatRepository;
 use App\Repository\TransportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -50,6 +51,7 @@ class CommandeController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="app_commande_new", methods={"GET", "POST"})
      */
     public function new(Request $request, CommandeRepository $commandeRepository): Response
@@ -99,6 +101,7 @@ class CommandeController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="app_commande_delete", methods={"POST"})
      */
     public function delete(Request $request, Commande $commande, CommandeRepository $commandeRepository): Response

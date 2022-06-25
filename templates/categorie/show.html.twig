@@ -1,65 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categorie{% endblock %}
+{% block title %}Categorie
+{% endblock %}
 
 {% block body %}
-    <h1 class="tit">{{ categorie.nom|capitalize }}</h1>
+	<h1 class="tit">{{ categorie.nom|capitalize }}</h1>
 
-    <table class="table">
-        <tbody>
-            {% for produit in produits %}
-                
-                {# <div class="categ">
+	<table class="table">
+		<tbody>
+			{% for produit in produits %}
 
-		<div class="categ1">
-    <figure class="card">
+				{# <div class="categ">
+				
+						<div class="categ1">
+				    <figure class="card">
+				
+								<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
+									<figcaption class="overlay">
+				<p>{{ produit.nom }}</p>
+				</figcaption>
+						</figure>
+						</p>
+						<div>
+							<a class="btn btn-primary" href="{{path('app_produit_show',{id: produit.id})}}" role="button">voir</a>
+						</div>
+						
+						</div> #}
+				{# 2eme essai #}
+					<div class="categ"> <div
+						class="categ1">
+						{# <figure class="card"> #}
+						<a class="" href="{{path('app_produit_show',{id: produit.id})}}" role="button">
+							<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
+						<h1>{{ produit.nom }}</h1>
 
-				<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
-					<figcaption class="overlay">
-<p>{{ produit.nom }}</p>
-</figcaption>
-		</figure>
-		</p>
-		<div>
-			<a class="btn btn-primary" href="{{path('app_produit_show',{id: produit.id})}}" role="button">voir</a>
-		</div>
-		
-		</div> #}
-{# 2eme essai #}
-<div class="categ">
+						</a>
 
-		<div class="categ1">
-    {# <figure class="card"> #}
-			<a class="" href="{{path('app_produit_show',{id: produit.id})}}" role="button"> 
-				<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
-			
-			</a>
 
-					{# <figcaption class="overlay"> #}
-{# <p>{{ produit.nom }}</p> #}
-{# </figcaption> #}
-		{# </figure> #}
-		{# </p>
-		<div>
-			<a class="btn btn-primary" href="{{path('app_produit_show',{id: produit.id})}}" role="button">voir</a>
-		</div> #}
-		
-		</div>
-            {% endfor %}
+					</div>
+				{% endfor %}
 
-        </div>
-        </tbody>
-    </table>
+			</div>
+		</tbody>
+	</table>
 
-    
-	</div>
-						{% if is_granted('ROLE_ADMIN') %}
 
-    <a href="{{ path('app_categorie_index') }}">back to list</a>
+</div>
+{% if is_granted('ROLE_ADMIN') %}
 
-    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">modifier</a>
+	<a href="{{ path('app_categorie_index') }}">back to list</a>
 
-    {{ include('categorie/_delete_form.html.twig') }}
-						{% endif %}
+	<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">modifier</a>
 
-{% endblock %}
+	{{ include('categorie/_delete_form.html.twig') }}
+{% endif %}{% endblock %}
