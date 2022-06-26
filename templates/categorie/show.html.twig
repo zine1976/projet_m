@@ -10,34 +10,19 @@
 		<tbody>
 			{% for produit in produits %}
 
-				{# <div class="categ">
 				
-						<div class="categ1">
-				    <figure class="card">
-				
-								<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
-									<figcaption class="overlay">
-				<p>{{ produit.nom }}</p>
-				</figcaption>
-						</figure>
-						</p>
-						<div>
-							<a class="btn btn-primary" href="{{path('app_produit_show',{id: produit.id})}}" role="button">voir</a>
-						</div>
-						
-						</div> #}
 				{# 2eme essai #}
 					<div class="categ"> <div
 						class="categ1">
-						{# <figure class="card"> #}
-						<a class="" href="{{path('app_produit_show',{id: produit.id})}}" role="button">
+						<a class="hov" href="{{path('app_produit_show',{id: produit.id})}}" role="button">
 							<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
-						<h1>{{ produit.nom }}</h1>
 
 						</a>
-
+		
 
 					</div>
+						{# <h1>{{ produit.nom }}</h1> #}
+
 				{% endfor %}
 
 			</div>

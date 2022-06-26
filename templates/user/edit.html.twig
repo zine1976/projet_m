@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Modifiez mes données</h1>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('user/_form.html.twig', {'button_label': 'Valider'}) }}
 				{% if is_granted('ROLE_ADMIN') %}
 
     <a href="{{ path('app_user_index') }}">liste</a>
