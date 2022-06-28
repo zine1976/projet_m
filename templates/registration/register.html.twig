@@ -7,7 +7,7 @@
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
-	<div class="ajoutprodtitre">
+	<div class="tit">
 
 		<h1>Inscription</h1>
 	</div>
@@ -47,7 +47,7 @@
 				<script>
 					confetti()
 				</script>
-				<button type="submit" class="btn btn-success">Envoyer</button>
+				<button type="submit" class="animated-link"><span>Envoyer</span></button>
 			</div>
 			{{ form_end(registrationForm) }}
 		</div>

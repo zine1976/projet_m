@@ -31,29 +31,48 @@
         </tbody>
     </table>
     
-   
+   {# essai boxhover #}
+   <div class="boxhover">
+   <div class="box one"> 
+  <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="boxx">Modifier des données</a>
 
-
-     <div class="list-group_user">
-  <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="list-group-item list-group-item-action">Modifier des données</a>
-
-  <a href="{{path('app_commande_index', {id: app.user.id})}}" class="list-group-item list-group-item-action" aria-current="true">
+    </div>
+   <div class="box two">
+   <a href="{{path('app_commande_index', {id: app.user.id})}}" class="boxx" aria-current="true">
     Mes commandes
   </a>
-  <a href="{{path('app_adresse_index')}}" class="list-group-item list-group-item-action">Mon adresse de livraison</a>
-  <a href="{{path('app_adressefact_index')}}" class="list-group-item list-group-item-action">Mon adresse de facturation</a>
-  
-  <a href="{{path('app_donnees_pdf', {id: user.id})}}" class="list-group-item list-group-item-action">exporter mes données<img src="{{asset('pdfico.ico') }}"></a>
-</div>
-    <div class="tit">
-
-<a class="btn btn-danger"{{ include('user/_delete_form.html.twig') }}</a>
-</div>
+   </div>
+   <div class="box three">
+  <a href="{{path('app_adresse_index')}}" class="boxx">Mon adresse de livraison</a>
+   
+   </div>
+   <div class="box four">
+  <a href="{{path('app_adressefact_index')}}" class="boxx">Mon adresse de facturation</a>
+   
+   </div>
+   <div class="box five">
+  <a href="{{path('app_donnees_pdf', {id: user.id})}}" class="boxx">exporter mes données<img src="{{asset('pdfico.ico') }}"></a>
+   
+   </div>
 				{% if is_granted('ROLE_ADMIN') %}
 
-    <a href="{{ path('app_user_index') }}">liste</a>
-
-
+    <div class="box six">
+  <a href="{{ path('app_user_index') }}" class="boxx">liste utilisateurs</a>
+   
+   </div>
 				{% endif %}
+
+</div>
+
+{# fin boxhover #}
+
+    {# <div class="tit">
+
+<a class="btn btn-danger"{{ include('user/_delete_form.html.twig') }}</a>
+</div> #}
+				{# essai button #}
+<div class="buttonrouge" id="red">
+                <a style="--clr:#ff1867"><span>{{ include('user/_delete_form.html.twig') }}</span><i></i></a>
+</div>
 
 {% endblock %}
