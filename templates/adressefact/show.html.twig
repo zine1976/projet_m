@@ -3,7 +3,7 @@
 {% block title %}Adressefact{% endblock %}
 
 {% block body %}
-    <h1>Adressefact</h1>
+    <h1 class="tit">Adresse de facturation</h1>
 
     <table class="table">
         <tbody>
@@ -60,7 +60,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_adressefact_index') }}">retour a la listé</a>
+    <a href="{{ path('app_adressefact_index') }}">retour a la liste</a>
 
     <a href="{{ path('app_adressefact_edit', {'id': adressefact.id}) }}">modifier mon adresse</a>
 

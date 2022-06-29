@@ -19,6 +19,10 @@ framework:
 
 when@test:
     framework:
+        templating:
+        engines: ['twig']
         test: true
+        fragments: { path: /_fragment }
         session:
             storage_factory_id: session.storage.factory.mock_file
+

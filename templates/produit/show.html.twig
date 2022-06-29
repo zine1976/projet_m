@@ -88,7 +88,7 @@
 			</h2>
 			<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
 				<div class="accordion-body">
-					{{produit.description}}</div>
+					{{produit.description|raw}}</div>
 			</div>
 		</div>
 		<div class="accordion-item">
@@ -98,7 +98,7 @@
 				</button>
 			</h2>
 			<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-				<div class="accordion-body">{{produit.histoire}}</div>
+				<div class="accordion-body">{{produit.histoire|raw}}</div>
 			</div>
 		</div>
 		<div class="accordion-item">
@@ -108,7 +108,7 @@
 				</button>
 			</h2>
 			<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-				<div class="accordion-body">{{produit.utilisation}}</div>
+				<div class="accordion-body">{{produit.utilisation|raw}}</div>
 			</div>
 		</div>
 	</div>

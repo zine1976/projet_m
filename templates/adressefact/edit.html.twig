@@ -3,7 +3,7 @@
 {% block title %}modifier Adresse de facturation{% endblock %}
 
 {% block body %}
-    <h1>Modifier votre adresse de facturation</h1>
+    <h1 class="tit">Modifier votre adresse de facturation</h1>
 
     {{ include('adressefact/_form.html.twig', {'button_label': 'Update'}) }}
 				{% if is_granted('ROLE_ADMIN') %}

@@ -3,7 +3,7 @@
 {% block title %}modifier Adresse de livraison{% endblock %}
 
 {% block body %}
-    <h1>Modifier votre adresse de livraison</h1>
+    <h1 class="tit">Modifier votre adresse de livraison</h1>
 
     {{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
 				{% if is_granted('ROLE_ADMIN') %}

@@ -3,7 +3,7 @@
 {% block title %}New Adressefact{% endblock %}
 
 {% block body %}
-    <h1>Creez une nouvelle Adresse de facturation</h1>
+    <h1 class="tit">Creez une nouvelle Adresse de facturation</h1>
 
     {{ include('adressefact/_form.html.twig') }}
 				{% if is_granted('ROLE_ADMIN') %}

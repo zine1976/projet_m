@@ -58,7 +58,6 @@ class DashboardController extends AbstractDashboardController
            return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
             'countUser' => $this->userRepository->countAllUser(),
             'countCommande' => $this->commandeRepository->countAllCommande(),
-            'produits' => $this->produitRepository->findAll()
         ]);
     }
 
