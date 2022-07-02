@@ -3,7 +3,7 @@
 
 
 {#  nouvelle nav #}
-<nav class="navbar-expand-lg navbar-light" style="background-color: rgba(255, 166, 0, 0.886);">
+<nav class="navbar-expand-lg navbar-light"  style="background-color: rgba(255, 166, 0, 0.886);">
   <div class="container-fluid">
  <div class="d-flex justify-content-center">
     <a class="navbar-brand" href="{{path('app_accueil')}}">Accueil</a>
@@ -12,9 +12,10 @@
     </button>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse " id="navbarSupportedContent"> 
 
-      <ul class="navbar-nav me-auto mb-2 ml-auto mb-lg-2">
+      {# <ul class="navbar-nav me-auto mb-2 ml-auto mb-lg-2"> #}
+      <ul class="navbar-nav mx-auto me-auto">
 
         <li class="nav-item">
 		  {% if app.user %}
@@ -39,7 +40,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 			{% for categorie in categories %}
 
-            <li><a class="dropdown-item" href="{{ path('app_categorie_show', {id: categorie.id}) }}">{{ categorie.nom }}</a></li>
+            <li><a class="dropdown-item gral" href="{{ path('app_categorie_show', {id: categorie.id}) }}">{{ categorie.nom }}</a></li>
             <li><hr class="dropdown-divider"></li>
 			{% endfor %}
 

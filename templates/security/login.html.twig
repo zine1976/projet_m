@@ -1,66 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-	<div class="compte">
-<h1>Connexion</h1>
-	</div>
 	<div class="tit">
+		<h1>Connexion</h1>
+	</div>
 
-<div class="col-4"
-<p>tu n'es pas encore inscrit?</p>
-<a name="" id="" class="btn btn-primary" href="{{path('app_register')}}" role="button">inscription</a>
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+	<div class="tito">
+		<p>tu n'es pas encore inscrit?</p>
+		<a name="" id="mdp" class="btn" href="{{path('app_register')}}" role="button">inscription</a>
+		<form method="post">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+			{% if app.user %}
+				<div class="mb-3">
+					You are logged in as
+					{{ app.user.username }},
+					<a href="{{ path('app_logout') }}">Logout</a>
+				</div>
+			{% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">connecte toi</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+			{# new login #}
+			<div class="" id="loginBox">
+            
+				<h1 class="h3 mb-3 font-weight-normal">connecte toi</h1>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+				<div class="inputBox">
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required="required">
+					<span>email</span>
+				</div>
+				<div class="inputBox">
+					<input type="password" name="password" id="inputPassword" autocomplete="current-password" required="required">
+					<span>password</span>
+				</div>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <button class="animated-link" type="submit">
+					<span>
+						Connexion
+					</span>
+				</button>
+		<a name="" id="mdp" class="btn" href="{{path('app_forgot_password_request')}}" role="button">mot de passe oublié?</a>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-<div class="buttlogin">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-    confetti()
-    </script>
-    
-    <button class="animated-link" type="submit">
-    <span>
-        Connexion
-        </span>
-    </button>
-    </div>
-</form>
-<a name="" id="" class="btn btn-primary" href="{{path('app_forgot_password_request')}}" role="button">mot de passe oublié?</a>
+			</div>
 
-</div>
-<div class="col-4">
-			<img src="{{asset("peinture.jpg")}}" alt="" class="img-fluid thumbnail">
+			{# fin essai #}
+				<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+				<script>
+					confetti()
+				</script>
 
-		</div>
-        </div>
-{% endblock %}
+				
+		</form>
+	</div>
+
+	{# </div>
+	<div class="col-4">
+				<img src="{{asset("peinture.jpg")}}" alt="" class="img-fluid thumbnail">
+	
+			</div> #}
+</div>{% endblock %}
