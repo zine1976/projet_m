@@ -22,7 +22,7 @@ class TransportCrudController extends AbstractCrudController
         return [
             // IdField::new('id'),
             TextField::new('nom'),
-            TextEditorField::new('detail'),
+            TextField::new('detail'),
             NumberField::new('prix'),
 
         ];

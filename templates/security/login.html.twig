@@ -11,7 +11,8 @@
 	<div class="tito">
 		<p>tu n'es pas encore inscrit?</p>
 		<a name="" id="mdp" class="btn" href="{{path('app_register')}}" role="button">inscription</a>
-		<form method="post">
+		<form method="post" id="form">
+
 			{% if error %}
 				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 			{% endif %}
@@ -27,40 +28,65 @@
 
 			{# new login #}
 			<div class="" id="loginBox">
-            
-				<h1 class="h3 mb-3 font-weight-normal">connecte toi</h1>
 
-				<div class="inputBox">
-					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required="required">
-					<span>email</span>
-				</div>
-				<div class="inputBox">
-					<input type="password" name="password" id="inputPassword" autocomplete="current-password" required="required">
-					<span>password</span>
-				</div>
-				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                <button class="animated-link" type="submit">
-					<span>
-						Connexion
-					</span>
-				</button>
-		<a name="" id="mdp" class="btn" href="{{path('app_forgot_password_request')}}" role="button">mot de passe oublié?</a>
+				<h1 class="h3 mb-3 font-weight-normal">connecte toi</h1>
+				{# <form id="form1" action"#"> #}
+					<div class="inputBox">
+						<input type="text" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required="required" onkeydown="validation()">
+						<span id="text">email</span>
+					</div>
+					<script type="text/javascript">
+						function validation() {
+var form = document.getElementById("form");
+var inputEmail = document.getElementById("inputEmail").value;
+var text = document.getElementById("text");
+var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+if (inputEmail.match(pattern)) {
+form.classList.add("valid");
+form.classList.remove("invalid");
+// text.innerHTML = "Adresse email valide.";
+// text.style.color = "#00ff00";
+} else {
+form.classList.remove("valid");
+form.classList.add("invalid");
+// text.innerHTML = "Mettez une adresse email valide svp.";
+// text.style.color = "#ff0000";
+}
+if (inputEmail == "") {
+form.classList.remove("valid");
+form.classList.remove("invalid");
+// text.innerHTML = "";
+// text.style.color = "#00ff00";
+}
+
+}
+					</script>
+
+					<div class="inputBox">
+						<input type="password" name="password" id="inputPassword" autocomplete="current-password" required="required">
+						<span id="text">password</span>
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<button class="animated-link" type="submit">
+						<span>
+							Connexion
+						</span>
+					</button>
+				</form>
+				
+				<a name="" id="mdp" class="btn" href="{{path('app_forgot_password_request')}}" role="button">mot de passe oublié?</a>
 
 			</div>
 
-			{# fin essai #}
-				<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-				<script>
-					confetti()
-				</script>
+			<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+			<script>
+				confetti()
+			</script>
 
-				
-		</form>
+
+		{# </form> #}
 	</div>
 
-	{# </div>
-	<div class="col-4">
-				<img src="{{asset("peinture.jpg")}}" alt="" class="img-fluid thumbnail">
-	
-			</div> #}
+
 </div>{% endblock %}

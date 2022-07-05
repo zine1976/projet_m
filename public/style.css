@@ -90,22 +90,26 @@
     margin: 20px auto;
   }
   .categ {
-    display: flex;
+    display: block;
     align-items: center;
     flex-direction: column;
+    margin: 70px;
   }
   .title1 {
     font-family: BeauRivage-Regular;
     font-size: 20px !important;
     color: black;
-    display: block;
+    display: flex;
     justify-content: center;
-    margin: 10px auto;
+margin-top: 40px;
   }
+ 
   .categ1 {
-    /* margin-right: 40px; */
     width: 60vw !important;
     height: 60vh !important;
+  }
+  .categ2 {
+margin-bottom: 40px !important;
   }
 }
 
@@ -146,18 +150,13 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.corps1 {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 50px;
-}
+
 .caro {
-  padding-top: 40px;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  width: 80vw !important;
-  height: 60vh !important;
+  padding-top: 10px;
+ 
+  margin-bottom: 20px;
+  /* user-select: none; */
+
 }
 
 .rowi {
@@ -264,24 +263,8 @@
   display: flex;
   justify-content: flex-start;
 }
-section:first-child {
-  display: flex;
-  width: 100%;
-  height: 380px;
-  border: 3px solid rgb(175, 156, 242);
-  overflow: auto;
-  scroll-snap-type: x mandatory;
-}
 
-.colib {
-  width: 360px;
-  height: 330px;
-  flex: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  scroll-snap-align: center;
-}
+
 
 .recapfact,
 .seffar {
@@ -469,18 +452,21 @@ ul li a.nav-link:before {
 .boxhover {
   width: 100vw;
   height: 50vh;
+  margin-top: 80px !important;
+
 }
 .boxx {
   text-decoration: none;
 }
 .box {
-  width: 200px;
+  width: 300px;
   height: 50px;
   transition-duration: 0.5s;
   transition-property: width;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
 .boxhover:hover .box {
@@ -685,6 +671,13 @@ ul li a.nav-link:before {
 }
 
 /* produit box */
+.drike1 {
+  display: block;
+  /* justify-content: center; */
+  width: 65vw !important;
+  margin-bottom: 50px !important;
+  margin: auto;
+}
 #prodbox {
   display: flex;
   justify-content: center;
@@ -739,4 +732,242 @@ ul li a.nav-link:before {
 #mdp {
   background: #1d2b3a;
   color: #00dfc4;
+}
+/* new carousel */
+
+#slider {
+  position: relative;
+  width: 50%;
+  height: 30vw;
+  margin: 80px auto;
+  font-family: 'Helvetica Neue', sans-serif;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+input[type=radio] {
+  position: relative;
+  top: 108%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: 0 15px 0 0;
+  opacity: 0.4;
+  transform: translateX(-83px);
+  cursor: pointer;
+  display: none;
+}
+
+input[type=radio]:nth-child(5) {
+  margin-right: 0px;
+}
+
+input[type=radio]:checked {
+  opacity: 1;
+}
+
+#slider label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 70px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 400ms ease;
+}
+
+#slide1 {
+  background: tomato;
+}
+
+#slide2 {
+  background: yellowgreen;
+}
+
+#slide3 {
+  background: dodgerblue;
+}
+
+#slide4 {
+  background: slateblue;
+}
+
+#slide5 {
+  background: violet;
+}
+
+
+/* Slider Functionality */
+
+/* Active Slide */
+#s1:checked ~ #slide1, #s2:checked ~ #slide2, #s3:checked ~ #slide3, #s4:checked ~ #slide4, #s5:checked ~ #slide5 {
+  box-shadow: 0 13px 26px rgba(0,0,0, 0.3), 0 12px 6px rgba(0,0,0, 0.2);
+  transform: translate3d(0%, 0, 0px);
+}
+
+/* Next Slide */
+#s1:checked ~ #slide2, #s2:checked ~ #slide3, #s3:checked ~ #slide4, #s4:checked ~ #slide5, #s5:checked ~ #slide1 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(15%, 0, -100px);
+}
+
+
+/* Next to Next Slide */
+#s1:checked ~ #slide3, #s2:checked ~ #slide4, #s3:checked ~ #slide5, #s4:checked ~ #slide1, #s5:checked ~ #slide2 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(30%, 0, -250px);
+}
+
+/* Previous to Previous Slide */
+#s1:checked ~ #slide4, #s2:checked ~ #slide5, #s3:checked ~ #slide1, #s4:checked ~ #slide2, #s5:checked ~ #slide3 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(-30%, 0, -250px);
+}
+
+/* Previous Slide */
+#s1:checked ~ #slide5, #s2:checked ~ #slide1, #s3:checked ~ #slide2, #s4:checked ~ #slide3, #s5:checked ~ #slide4 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(-15%, 0, -100px);
+}
+/* new email */
+#form inputEmail{
+  outline: none;
+}
+#form.invalid .inputBox:before {
+content: '';
+right: 12px;
+top: 12px;
+width: 24px;
+height: 24px;
+background: url(invalid.png);
+background-size: cover;
+z-index: 1000;
+position: absolute;
+}
+#form.valid .inputBox:before {
+  content: '';
+  right: 12px;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  background: url(valid.png);
+  background-size: cover;
+  z-index: 1000;
+  position: absolute;
+  }
+
+  /* new contact */
+  #contact .container{
+    width: 80%;
+    padding: 20px;
+  }
+  #contact .container h2 {
+    width: 100%;
+    color: #45f3ff;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  #contact .container .row100 {
+position: relative;
+width: 100%;
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  }
+  #contact .container .row100  .col {
+    position: relative;
+    width: 100%;
+padding: 0 10px;
+margin: 30px 0 10px;
+transition: 0.5s;
+}
+#contact .container .row100 .box {
+  position: relative;
+  width: 100%;
+height: 40px;
+color: #45f3ff;
+}
+#contact .container .row100 .box input,
+#contact .container .row100 .box.textarea textarea {
+  position: absolute;
+  width: 100%;
+height: 100px;
+color: #000;
+background: transparent;
+box-shadow: none;
+border: none;
+outline: none;
+font-size: 18px;
+padding: 0 10px;
+z-index: 1;
+}
+#contact .container .row100 .box .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 40px;
+  font-size: 18px;
+  padding: 0 10px;
+  display: block;
+  transition: 0.5s;
+  pointer-events: none;
+}
+#contact .container .row100 .box input:focus + .text,
+#contact .container .row100 .box input:valid + .text
+ {
+top: -35px;
+left: -10px;
+}
+#contact .container .row100 .box .line {
+position: absolute;
+bottom: 0;
+display: block;
+width: 100%;
+height: 2px;
+background: #45f3ff;
+transition: 0.5s;
+border-radius: 2px;
+pointer-events: none;
+}
+#contact .container .row100 .box input:focus ~ .line,
+#contact .container .row100 .box input:valid ~ .line
+ {
+height: 100%;
+}
+#contact .container .row100 .box.textarea {
+  position: relative;
+width: 100%;
+height: 100px;
+padding: 10px 0;
+}
+#contact .container .row100 .box.textarea textarea {
+  height: 100%;
+  resize: none;
+}
+#contact .container .row100 .box textarea:focus + .text,
+#contact .container .row100 .box textarea:valid + .text {
+  top: -35px;
+  left: -10px;
+}
+#contact .container .row100 .box textarea:focus ~ .line,
+#contact .container .row100 .box textarea:valid ~ .line
+ {
+height: 100%;
+}
+input[type="submit"] {
+  border: none;
+  padding: 7px 35px;
+  cursor: pointer;
+  outline: none;
+  background: #45f3ff;
+color: #000;
+font-size: 18px;
+border-radius: 2px;
 }

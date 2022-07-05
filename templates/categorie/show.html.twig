@@ -9,19 +9,18 @@
 	<table class="table">
 		<tbody>
 			{% for produit in produits %}
-
 				
-				{# 2eme essai #}
 					<div class="categ"> <div
 						class="categ1">
 						<a class="hov" href="{{path('app_produit_show',{id: produit.id})}}" role="button">
 							<img src="{{ asset("uploads/" ~ produit.image) }}" class="card-img-top" alt="...">
 
 						</a>
-		
 
-					</div>
-						{# <h1>{{ produit.nom }}</h1> #}
+					 <div class="categ2">
+						<h1>{{ produit.nom }}</h1>
+</div> 
+</div> 
 
 				{% endfor %}
 

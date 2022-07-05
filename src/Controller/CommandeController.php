@@ -133,7 +133,6 @@ class CommandeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // dd($form->getData());
         }
 
         return $this->render('commande/regroup.html.twig', [
