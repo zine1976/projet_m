@@ -16,7 +16,7 @@ class AccueilController extends AbstractController
     public function index(ProduitRepository $produitRepo, CategorieRepository $categorieRepo): Response
     {
         $categories = $categorieRepo->findAll();
-        $derniersProduits = $produitRepo->findBy([], ['id' => 'DESC'], 3);
+        $derniersProduits = $produitRepo->findBy([], ['id' => 'DESC'], 5);
 
         return $this->render('accueil/index.html.twig',
          [

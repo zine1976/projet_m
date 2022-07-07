@@ -24,7 +24,7 @@ public function buildForm(FormBuilderInterface $builder, array $options): void
             'class' => Adresse::class,
             'choices' => $user->getAdresses(),
             'multiple' => false,
-            'expanded' => true
+            'expanded' => true,
         ])
         ->add('Adressefact', EntityType::class, [
             'label' => 'Choisissez votre adresse de facturation',

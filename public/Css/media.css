@@ -1,0 +1,84 @@
+@media (min-width: 500px) and (max-width: 1200px) {
+    ul li a.nav-link:hover {
+      transform: scale(1) !important;
+      opacity: 1;
+      filter: blur(0);
+    }
+    ul:hover li a.nav-link {
+      transform: scale(0.5);
+      opacity: 0.2;
+      filter: blur(5px);
+    }
+  }
+  @media (min-width: 500px) and (max-width: 760px) {
+    .title1 {
+      font-family: BeauRivage-Regular;
+      font-size: 30px !important;
+      color: black;
+      display: flex;
+      justify-content: center;
+      margin: 10px auto;
+    }
+  }
+  @media all and (max-width: 500px) {
+    .portrait {
+      display: flex;
+      justify-content: center;
+      height: 48vh !important;
+    }
+    .nav1 {
+      width: 53vw !important;
+    }
+    ul li a.nav-link:hover {
+      transform: scale(1) !important;
+      opacity: 1;
+      filter: blur(0);
+    }
+    ul:hover li a.nav-link {
+      transform: scale(0.5);
+      opacity: 0.2;
+      filter: blur(5px);
+    }
+  
+    .seffar {
+      display: block;
+    }
+  
+    .tan,
+    .rowi,
+    .recapfact {
+      display: block;
+      align-items: center;
+      flex-direction: column;
+    }
+    .caro {
+      width: 53vw !important;
+      height: 48vh !important;
+      margin: 20px auto;
+    }
+    .categ {
+      display: block;
+      align-items: center;
+      flex-direction: column;
+      margin: 70px;
+    }
+    .title1 {
+      font-family: BeauRivage-Regular;
+      font-size: 20px !important;
+      color: black;
+      display: flex;
+      justify-content: center;
+  margin-top: 40px;
+    }
+   
+    .categ1 {
+      width: 60vw !important;
+      height: 60vh !important;
+    }
+    .categ2 {
+  margin-bottom: 40px !important;
+    }
+  }
+  
+  /* fin de mediaquery */
+  

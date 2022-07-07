@@ -19,37 +19,8 @@
 	<img src={{asset("portemaroc.jpg")}} class="portrait" alt="peinture">
 
 
-	
-
-		{# caroussel #}
-		{# <div class="caro col-6">
-			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-				</ol>
-				<div class="carousel-inner">
-					{% for produit in derniersProduits %}
-						<div class="carousel-item {{ loop.first ? 'active' }}">
-							<img class="img-fluid1" src="{{ asset("uploads/" ~ produit.image) }}" alt="Responsive image">
-						</div>
-					{% endfor %}
-				</div>
-				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-	</div> #}
 
 		<div class="caro">
-{# <div> #}
 	<br><br>
 
 	<section id="slider">
@@ -58,25 +29,16 @@
 		<input type="radio" name="slider" id="s3">
 		<input type="radio" name="slider" id="s4">
 		<input type="radio" name="slider" id="s5">
+		{% set cpt = 1 %}
 					{% for produit in derniersProduits %}
 
-		<label for="s1" id="slide1">
+		<label for="s{{cpt}}" id="slide{{cpt}}">
 			<img src="{{ asset("uploads/" ~ produit.image) }}" height="100%" width="100%">
 		</label>
-
-		<label for="s2" id="slide2">
-			<img src="{{ asset("uploads/" ~ produit.image) }}" height="100%" width="100%">
-		</label>
-		<label for="s3" id="slide3">
-			<img src="{{ asset("uploads/" ~ produit.image) }}" height="100%" width="100%">
-		</label>
-		<label for="s4" id="slide4">
-			<img src="{{ asset("uploads/" ~ produit.image) }}" height="100%" width="100%">
-		</label>
-		<label for="s5" id="slide5">
-			<img src="{{ asset("uploads/" ~ produit.image) }}" height="100%" width="100%">
-		</label>
+		{% set cpt = cpt+1 %}
 	{% endfor %}
+
+
 
 	</section>
 	</div>

@@ -63,39 +63,41 @@
 
 	</div>
 
-	<div class="tab2 accordion accordion-flush" id="accordionFlushExample">
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="flush-headingOne">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-					<strong>Description</strong>
-				</button>
-			</h2>
-			<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-				<div class="accordion-body">
-					{{produit.description|raw}}</div>
-			</div>
-		</div>
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="flush-headingTwo">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-					<strong>Histoire</strong>
-				</button>
-			</h2>
-			<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-				<div class="accordion-body">{{produit.histoire|raw}}</div>
-			</div>
-		</div>
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="flush-headingThree">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-					<strong>Utilisation</strong>
-				</button>
-			</h2>
-			<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-				<div class="accordion-body">{{produit.utilisation|raw}}</div>
-			</div>
-		</div>
-	</div>
+
+	{# essai new accordion #}
+	<div class"" id="accord">
+<div class="container">
+<h1>Informations sur le produit</h1>
+<div class="tabi">
+<input type="radio" name="acc" id="acc1">
+<label for="acc1">
+<h2>01</h2>
+<h3>Description</h3>
+</label>
+<div class="content"><p>{{produit.description|raw}}</p></div>
+</div>
+
+<div class="tabi">
+<input type="radio" name="acc" id="acc2">
+<label for="acc2">
+<h2>02</h2>
+<h3>Histoire</h3>
+</label>
+<div class="content"><p>{{produit.histoire|raw}}</p></div>
+</div>
+
+<div class="tabi">
+<input type="radio" name="acc" id="acc3">
+<label for="acc3">
+<h2>03</h2>
+<h3>Utilisation</h3>
+</label>
+<div class="content"><p>{{produit.utilisation|raw}}</p></div>
+</div>
+
+</div>
+</div>
+{# fin accordion #}
 	<div class="tit">
 		<h2>Vous aimerez aussi</h2>
 	</div>

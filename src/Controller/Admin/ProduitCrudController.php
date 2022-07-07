@@ -27,11 +27,11 @@ class ProduitCrudController extends AbstractCrudController
             ->setCrudController(CategorieCrudController::class),
 
             TextField::new('nom'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             NumberField::new('Stock'),
             NumberField::new('Prix'),
-            TextEditorField::new('histoire'),
-            TextEditorField::new('utilisation'),
+            TextField::new('histoire'),
+            TextField::new('utilisation'),
             ImageField::new('image')
             ->setBasePath('uploads/')
             ->setUploadDir('public/uploads')
