@@ -104,21 +104,27 @@
 	<div class="drike1">
 		<div class="drike" id="prodbox">
 			<ul>
-				<li style="--clr:#00ade1">
+				{# <li style="--clr:#00ade1">
 					<a href="{{path('app_accueil')}}" data-text="&nbsp;Divers">&nbsp;Divers&nbsp;</a>
 				</li>
 				<li style="--clr:#ff6493">
 					<a href="{{path('app_accueil')}}" data-text="&nbsp;Mobilier">&nbsp;Mobilier&nbsp;</a>
+				</li> #}
+			{% for categorie in categories %}
+<li style="--clr:#ffdd1c">
+					<a href="{{ path('app_categorie_show', {id: categorie.id}) }}" data-text="&nbsp;{{ categorie.nom }}">&nbsp;{{ categorie.nom }}&nbsp;</a>
 				</li>
-				<li style="--clr:#ffdd1c">
+				{# <li style="--clr:#ffdd1c">
 					<a href="{{path('app_accueil')}}" data-text="&nbsp;Cosmetic">&nbsp;Cosmetic&nbsp;</a>
-				</li>
-				<li style="--clr:#00dc82">
+				</li> #}
+			{% endfor %}
+
+				{# <li style="--clr:#00dc82">
 					<a href="{{path('app_accueil')}}" data-text="&nbsp;Deco">&nbsp;Deco&nbsp;</a>
 				</li>
 				<li style="--clr:#dc00d4">
 					<a href="{{path('app_accueil')}}" data-text="&nbsp;poterie">&nbsp;poterie&nbsp;</a>
-				</li>
+				</li> #}
 
 			</ul>
 			{# fin liste #}

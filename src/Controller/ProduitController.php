@@ -8,6 +8,7 @@ use App\Entity\Comments;
 use App\Form\ProduitType;
 use App\Form\CommentsType;
 use App\Repository\ProduitRepository;
+use App\Repository\CategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,8 +54,9 @@ class ProduitController extends AbstractController
     /**
      * @Route("/{id}", name="app_produit_show", methods={"GET", "POST"})
      */
-    public function show(Request $request, Produit $produit): Response
+    public function show(Request $request, Produit $produit, CategorieRepository $categorieRepo): Response
     {
+        $categories = $categorieRepo->findAll();
         
         $comment = new Comments;
         $commentForm = $this->createForm(CommentsType::class, $comment);
@@ -92,7 +94,9 @@ class ProduitController extends AbstractController
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
             'comments' => $produit->getComments(),
-            'commentForm' => $commentForm->createView()
+            'commentForm' => $commentForm->createView(),
+            'categories' => $categories
+
         ]);
     }
 
